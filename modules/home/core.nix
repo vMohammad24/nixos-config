@@ -29,6 +29,7 @@
     grim
     slurp
     wl-clipboard
+    cliphist
 
     # clis
     eza
