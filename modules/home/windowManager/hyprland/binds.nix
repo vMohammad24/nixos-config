@@ -15,7 +15,7 @@
         "$mainMod, C, exec, code"
         "$mainMod, S, exec, steam"
         "$mainMod, T, exec, tidal-hifi"
-        "$mainMod, E, exec, equibop"
+        "$mainMod SHIFT, E, exec, equibop"
 
         # utils
         "$mainMod, P, exec, hyprpicker -a"
