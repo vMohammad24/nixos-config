@@ -1,0 +1,48 @@
+{
+  pkgs,
+  alejandra,
+  tidaLuna,
+  ...
+}: {
+  users.users.vmohammad = {
+    isNormalUser = true;
+    extraGroups = ["wheel" "gamemode"];
+    packages = with pkgs; [
+      vscode
+    ];
+    shell = pkgs.fish;
+  };
+
+  programs.fish.enable = true;
+  programs.firefox.enable = true;
+  programs.gamemode.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    curl
+    unzip
+    git
+    fastfetch
+    libsecret
+    btop
+    p7zip
+    zoxide
+    fzf
+    fd
+    direnv
+    nix-direnv
+    alejandra.defaultPackage.${pkgs.system}
+    tidaLuna.packages.${pkgs.system}.default
+  ];
+
+  nixpkgs.overlays = [
+    tidaLuna.overlays.default
+  ];
+}

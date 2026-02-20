@@ -6,7 +6,7 @@
   home.username = "vmohammad";
   home.homeDirectory = "/home/vmohammad";
   home.stateVersion = "25.11";
-  
+
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
