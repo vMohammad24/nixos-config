@@ -40,6 +40,7 @@
     nix-direnv
     inputs.alejandra.defaultPackage.${pkgs.system}
     inputs.tidaLuna.packages.${pkgs.system}.default
+    prismlauncher
   ];
 
   nixpkgs.overlays = [
