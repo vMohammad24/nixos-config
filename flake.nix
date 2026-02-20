@@ -18,14 +18,13 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     home-manager,
-    alejandra,
-    tidaLuna,
     ...
-  }: {
+  } @ inputs: {
     nixosConfigurations.hyprland = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit alejandra tidaLuna;};
+      specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
         {
@@ -36,6 +35,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = { inherit inputs; };
             users.vmohammad = import ./home.nix;
             backupFileExtension = "backup";
           };

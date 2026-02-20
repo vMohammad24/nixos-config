@@ -1,7 +1,6 @@
 {
   pkgs,
-  alejandra,
-  tidaLuna,
+  inputs,
   ...
 }: {
   users.users.vmohammad = {
@@ -38,11 +37,11 @@
     fd
     direnv
     nix-direnv
-    alejandra.defaultPackage.${pkgs.system}
-    tidaLuna.packages.${pkgs.system}.default
+    inputs.alejandra.defaultPackage.${pkgs.system}
+    inputs.tidaLuna.packages.${pkgs.system}.default
   ];
 
   nixpkgs.overlays = [
-    tidaLuna.overlays.default
+    inputs.tidaLuna.overlays.default
   ];
 }
