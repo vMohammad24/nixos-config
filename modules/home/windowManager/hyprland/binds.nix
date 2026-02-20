@@ -14,7 +14,7 @@
         "$mainMod, E, exec, nautilus"
         "$mainMod, C, exec, code"
         "$mainMod, S, exec, steam"
-        "$mainMod, T, exec, tidal-hifi"
+        "$mainMod SHIFT, T, exec, tidal-hifi"
         "$mainMod SHIFT, E, exec, equibop"
 
         # utils

@@ -28,6 +28,7 @@
     glib-networking
     wivrn
     bs-manager
+    teamspeak6-client
 
     # utils/essentials
     waybar
