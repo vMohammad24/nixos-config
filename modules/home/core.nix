@@ -6,14 +6,28 @@
   home.username = "vmohammad";
   home.homeDirectory = "/home/vmohammad";
   home.stateVersion = "25.11";
-
+  
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     # core
     kitty
-    firefox
     nautilus
+
+    # apps
+    zed-editor
+    helix
+    foot
+    hyprpolkitagent
+    protonup-rs
+    mangohud
+    wayland-utils
+    glib
+    nodejs_24
+    bun
+    glib-networking
+    wivrn
+    bs-manager
 
     # utils/essentials
     waybar

@@ -21,7 +21,6 @@
   programs.gamemode.enable = true;
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true;
     gamescopeSession.enable = true;
   };
 
@@ -48,6 +47,15 @@
     alsa.enable = true;
     alsa.support32Bit = true;
   };
+
+  services.wivrn = {
+    enable = true;
+    openFirewall = true;
+    defaultRuntime = true;
+    autoStart = true;
+    package = pkgs.wivrn.override {cudaSupport = true;};
+ };
+
   services.gnome.gnome-keyring.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
@@ -60,7 +68,6 @@
     isNormalUser = true;
     extraGroups = ["wheel" "gamemode"];
     packages = with pkgs; [
-      tree
       vscode
     ];
     shell = pkgs.fish;
@@ -71,31 +78,18 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    foot
-    kitty
-    foot
     curl
     unzip
     git
-    zed-editor
-    helix
     fastfetch
     libsecret
-    hyprpolkitagent
-    protonup-rs
-    mangohud
     btop
     p7zip
-    wayland-utils
-    glib
     zoxide
     fzf
     fd
-    nodejs_24
-    bun
     direnv
     nix-direnv
-    glib-networking
     alejandra.defaultPackage.${pkgs.system}
     tidaLuna.packages.${pkgs.system}.default
   ];
@@ -121,6 +115,7 @@
 
     config.common.default = ["*"];
   };
+
   environment.sessionVariables = {
     GTK_USE_PORTAL = "1";
     GIO_EXTRA_MODULES = ["${pkgs.glib-networking}/lib/gio/modules"];
