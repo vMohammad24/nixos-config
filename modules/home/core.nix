@@ -29,7 +29,8 @@
     wivrn
     bs-manager
     teamspeak6-client
-
+    mullvad-vpn
+    
     # utils/essentials
     waybar
     fuzzel
