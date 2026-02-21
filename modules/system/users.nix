@@ -41,6 +41,7 @@
     inputs.alejandra.defaultPackage.${pkgs.system}
     inputs.tidaLuna.packages.${pkgs.system}.default
     prismlauncher
+    mullvad-vpn
   ];
 
   nixpkgs.overlays = [
