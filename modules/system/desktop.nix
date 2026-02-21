@@ -24,7 +24,6 @@
   ];
 
   environment.sessionVariables = {
-    GTK_USE_PORTAL = "1";
     GIO_EXTRA_MODULES = ["${pkgs.glib-networking}/lib/gio/modules"];
   };
 }
