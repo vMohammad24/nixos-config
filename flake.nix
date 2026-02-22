@@ -35,7 +35,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {inherit inputs;};
             users.vmohammad = import ./home.nix;
             backupFileExtension = "backup";
           };

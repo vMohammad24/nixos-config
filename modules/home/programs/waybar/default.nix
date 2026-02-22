@@ -76,7 +76,7 @@
       window#waybar {
           background-color: rgba(25, 23, 36, 0.85); /* base but 0.85 */
           color: @text;
-          border-bottom: 2px solid @rose; 
+          border-bottom: 2px solid @rose;
           transition-property: background-color;
           transition-duration: .5s;
       }
