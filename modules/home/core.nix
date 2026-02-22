@@ -29,7 +29,8 @@
     wivrn
     bs-manager
     teamspeak6-client
-    
+    qview
+
     # utils/essentials
     waybar
     fuzzel
