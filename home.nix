@@ -13,6 +13,7 @@
     ./modules/home/programs/fuzzel.nix
     ./modules/home/programs/git.nix
     ./modules/home/programs/waybar
+    ./modules/home/programs/wlogout.nix
     ./modules/home/windowManager/hyprland
   ];
 }

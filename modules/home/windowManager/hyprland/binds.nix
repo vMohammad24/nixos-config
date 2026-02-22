@@ -18,6 +18,9 @@
         "$mainMod SHIFT, T, exec, tidal-hifi"
         "$mainMod SHIFT, E, exec, equibop"
 
+        # wlogout
+        "CTRL ALT, delete, exec, wlogout"
+
         # utils
         "$mainMod, P, exec, hyprpicker -a"
         "$mainMod, V, exec, cliphist list | fuzzel -d | cliphist decode | wl-copy"
