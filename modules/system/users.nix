@@ -22,6 +22,7 @@
   };
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+  programs.localsend.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -42,6 +43,7 @@
     inputs.tidaLuna.packages.${pkgs.system}.default
     prismlauncher
     mullvad-vpn
+    watchexec
   ];
 
   nixpkgs.overlays = [
