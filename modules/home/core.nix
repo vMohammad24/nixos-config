@@ -41,6 +41,7 @@
     libnotify
     pavucontrol
     brightnessctl
+    playerctl
 
     #  screenshot & clipboard
     grim
