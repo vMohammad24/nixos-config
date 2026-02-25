@@ -25,7 +25,7 @@
         "$mainMod, P, exec, hyprpicker -a"
         "$mainMod, V, exec, cliphist list | fuzzel -d | cliphist decode | wl-copy"
         "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
-        ", Print, exec, grabit"
+        ", Print, exec, grabit -p --freeze"
         # window management
         "$mainMod, Q, killactive,"
         "$mainMod ALT, Q, exec, hyprctl kill"

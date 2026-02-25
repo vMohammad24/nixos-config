@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772039490,
-        "narHash": "sha256-G3Je553g/OX8gsgtvT3nuy5sZcSJRsBvt7p3Pzs1Jtw=",
+        "lastModified": 1772047256,
+        "narHash": "sha256-+2w4UoTXhxCt2hOTd4E857A0vgDVaQlMJ93ymodvMU0=",
         "ref": "refs/heads/main",
-        "rev": "b331f377f7820a91d2ba98324c160c52ddce501a",
-        "revCount": 29,
+        "rev": "42d324e0af0f5b3a032de457759cbe822b7ecd0e",
+        "revCount": 31,
         "type": "git",
         "url": "https://heliopolis.live/creations/grabit.git"
       },
