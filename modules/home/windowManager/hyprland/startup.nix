@@ -5,6 +5,7 @@
 }: {
   wayland.windowManager.hyprland.settings.exec-once = [
     "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
+    "udiskie --autostart --tray --notify"
     "hyprpaper"
     "mako"
     "wl-paste --watch cliphist store"

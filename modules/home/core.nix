@@ -13,6 +13,7 @@
     # core
     kitty
     nautilus
+    udiskie
 
     # apps
     zed-editor

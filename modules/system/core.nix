@@ -2,6 +2,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["ntfs"];
+  boot.kernelModules = ["ntfs3"];
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.hostName = "nixos";
@@ -13,6 +14,9 @@
   time.timeZone = "Asia/Amman";
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  security.polkit.enable = true;
+  programs.dconf.enable = true;
 
   system.stateVersion = "25.11";
 }
