@@ -14,7 +14,7 @@
         spacing = 4;
         modules-left = ["hyprland/workspaces" "hyprland/window"];
         modules-center = ["clock"];
-        modules-right = ["pulseaudio" "cpu" "memory" "tray"];
+        modules-right = ["mpris" "pulseaudio" "cpu" "memory" "tray"];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -24,6 +24,16 @@
         "clock" = {
           format = " {:%H:%M   %a, %d %b}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>";
+        };
+        "mpris" = {
+          format = "{status_icon} {title} - {artist}";
+          player-icons = {
+            default = "󰎆";
+          };
+          status-icons = {
+            paused = "󰐊";
+            playing = "󰏤";
+          };
         };
         "pulseaudio" = {
           format = "{icon} {volume}%";
@@ -99,10 +109,13 @@
           box-shadow: inherit;
           text-shadow: inherit;
       }
-      #clock, #pulseaudio, #cpu, #memory, #network, #battery, #tray {
+      #clock, #pulseaudio, #cpu, #memory, #network, #battery, #tray, #mpris {
           padding: 0 12px;
           margin: 4px 0;
           color: @text;
+      }
+      #mpris {
+          color: @gold;
       }
       #pulseaudio {
           color: @rose;
