@@ -25,8 +25,7 @@
         "$mainMod, P, exec, hyprpicker -a"
         "$mainMod, V, exec, cliphist list | fuzzel -d | cliphist decode | wl-copy"
         "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
-        # TODO: make this declartive/use flakes
-        ", Print, exec, /home/vmohammad/Downloads/grabit/main.sh"
+        ", Print, exec, grabit"
         # window management
         "$mainMod, Q, killactive,"
         "$mainMod ALT, Q, exec, hyprctl kill"
