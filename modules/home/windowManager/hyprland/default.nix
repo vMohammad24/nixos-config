@@ -39,6 +39,11 @@
           color = "rgba(00000055)";
         };
       };
+
+      input = {
+        sensitivity = -0.5;
+        accel_profile = "flat";
+      };
     };
   };
 }
