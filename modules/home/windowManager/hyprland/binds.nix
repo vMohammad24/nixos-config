@@ -17,6 +17,8 @@
         "$mainMod SHIFT, P, exec, prismlauncher"
         "$mainMod SHIFT, T, exec, tidal-hifi"
         "$mainMod SHIFT, E, exec, equibop"
+        # app keybinds
+        ", Scroll_Lock, exec, equibop --toggle-deafen"
 
         # wlogout
         "CTRL ALT, delete, exec, wlogout"
