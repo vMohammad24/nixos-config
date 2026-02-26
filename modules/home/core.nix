@@ -31,6 +31,7 @@
     bs-manager
     teamspeak6-client
     qview
+    bruno
 
     # utils/essentials
     waybar
