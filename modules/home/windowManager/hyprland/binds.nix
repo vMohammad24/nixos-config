@@ -35,6 +35,7 @@
         "$mainMod, SPACE, togglefloating,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod, D, fullscreen, 1"
+        "$mainMod ALT, F, fullscreenstate, 0 3"
         "ALT, Tab, cyclenext,"
         "ALT, Tab, bringactivetotop,"
         "Ctrl $mainMod, Backslash, resizeactive, exact 640 480"
