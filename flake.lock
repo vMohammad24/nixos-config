@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772047256,
-        "narHash": "sha256-+2w4UoTXhxCt2hOTd4E857A0vgDVaQlMJ93ymodvMU0=",
+        "lastModified": 1772296055,
+        "narHash": "sha256-gBUEfCAz2uaYrOGtYdQz2HagJJyB2bDOQm4Gt4zQ1vA=",
         "ref": "refs/heads/main",
-        "rev": "42d324e0af0f5b3a032de457759cbe822b7ecd0e",
-        "revCount": 31,
+        "rev": "6ee57e27d1806edf54e23a32f45a0785ee4ee4c7",
+        "revCount": 33,
         "type": "git",
         "url": "https://heliopolis.live/creations/grabit.git"
       },
@@ -107,11 +107,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771851181,
-        "narHash": "sha256-gFgE6mGUftwseV3DUENMb0k0EiHd739lZexPo5O/sdQ=",
+        "lastModified": 1772218752,
+        "narHash": "sha256-G8nArvOTZXU8DRvrzAdz3Elcj6kA/vMtvY9mrGLATtA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9a4b494b1aa1b93d8edf167f46dc8e0c0011280c",
+        "rev": "f3a30376bb9eb2f6f61816be7d6ed954b6d2a3b9",
         "type": "github"
       },
       "original": {
