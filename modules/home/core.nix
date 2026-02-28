@@ -11,14 +11,12 @@
 
   home.packages = with pkgs; [
     # core
-    kitty
     nautilus
     udiskie
 
     # apps
     zed-editor
     helix
-    foot
     hyprpolkitagent
     protonup-rs
     mangohud
@@ -34,10 +32,6 @@
     bruno
 
     # utils/essentials
-    waybar
-    fuzzel
-    mako
-    hyprpaper
     hyprpicker
     libnotify
     pavucontrol

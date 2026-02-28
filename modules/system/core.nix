@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = ["ntfs3"];
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
@@ -19,9 +18,20 @@
   time.timeZone = "Asia/Amman";
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
 
   security.polkit.enable = true;
   programs.dconf.enable = true;
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+  };
 
   system.stateVersion = "25.11";
 }

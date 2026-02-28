@@ -26,8 +26,6 @@
     EGL_PLATFORM = "wayland";
     __GL_GSYNC_ALLOWED = "1";
     __GL_VRR_ALLOWED = "1";
-    WLR_DRM_NO_ATOMIC = "1";
-    RADV_PERFTEST = "gpl";
   };
 
   # WlMouse (beast) 8k dongle

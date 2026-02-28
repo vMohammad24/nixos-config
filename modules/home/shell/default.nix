@@ -7,8 +7,6 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # disable greeting
-      starship init fish | source
-      zoxide init fish --cmd cd | source
     '';
     shellAliases = {
       ls = "eza --icons";
@@ -32,6 +30,12 @@
         error_symbol = "[➜](bold red)";
       };
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    options = ["--cmd" "cd"];
   };
 
   programs.direnv = {
