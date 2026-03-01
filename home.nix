@@ -9,6 +9,8 @@
     ./modules/home/terminal/kitty.nix
     ./modules/home/theme
     ./modules/home/services/hyprpaper.nix
+    ./modules/home/services/hypridle.nix
+    ./modules/home/services/hyprlock.nix
     ./modules/home/services/mako.nix
     ./modules/home/programs/fuzzel.nix
     ./modules/home/programs/git.nix

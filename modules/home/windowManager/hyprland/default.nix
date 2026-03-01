@@ -2,7 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  c = config.theme.colors;
+  t = config.theme;
+in {
   imports = [
     ./monitors.nix
     ./env.nix
@@ -19,14 +22,14 @@
         gaps_in = 4;
         gaps_out = 8;
         border_size = 2;
-        "col.active_border" = "rgba(ebbcbaff)";
-        "col.inactive_border" = "rgba(26233aff)";
+        "col.active_border" = "rgba(${c.rose}ff)";
+        "col.inactive_border" = "rgba(${c.overlay}ff)";
         layout = "dwindle";
         allow_tearing = true;
       };
 
       decoration = {
-        rounding = 6;
+        rounding = t.rounding;
         blur = {
           enabled = true;
           size = 8;

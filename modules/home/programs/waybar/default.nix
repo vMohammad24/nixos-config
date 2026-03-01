@@ -2,7 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  c = config.theme.colors;
+  t = config.theme;
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -60,31 +63,31 @@
     };
     style = ''
 
-      @define-color base            #191724;
-      @define-color surface         #1f1d2e;
-      @define-color overlay         #26233a;
+      @define-color base            #${c.base};
+      @define-color surface         #${c.surface};
+      @define-color overlay         #${c.overlay};
 
-      @define-color muted           #6e6a86;
-      @define-color subtle          #908caa;
-      @define-color text            #e0def4;
+      @define-color muted           #${c.muted};
+      @define-color subtle          #${c.subtle};
+      @define-color text            #${c.text};
 
-      @define-color love            #eb6f92;
-      @define-color gold            #f6c177;
-      @define-color rose            #ebbcba;
-      @define-color pine            #31748f;
-      @define-color foam            #9ccfd8;
-      @define-color iris            #c4a7e7;
+      @define-color love            #${c.love};
+      @define-color gold            #${c.gold};
+      @define-color rose            #${c.rose};
+      @define-color pine            #${c.pine};
+      @define-color foam            #${c.foam};
+      @define-color iris            #${c.iris};
 
-      @define-color highlightLow    #21202e;
-      @define-color highlightMed    #403d52;
-      @define-color highlightHigh   #524f67;
+      @define-color highlightLow    #${c.highlightLow};
+      @define-color highlightMed    #${c.highlightMed};
+      @define-color highlightHigh   #${c.highlightHigh};
       * {
-          font-family: "JetBrainsMono Nerd Font";
+          font-family: "${t.font.name}";
           font-size: 13px;
           font-weight: bold;
       }
       window#waybar {
-          background-color: rgba(25, 23, 36, 0.85); /* base but 0.85 */
+          background-color: rgba(25, 23, 36, ${toString t.opacity});
           color: @text;
           border-bottom: 2px solid @rose;
           transition-property: background-color;

@@ -2,7 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  c = config.theme.colors;
+  t = config.theme;
+in {
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -10,16 +13,16 @@
         terminal = "${pkgs.kitty}/bin/kitty";
         layer = "overlay";
         width = 40;
-        font = "JetBrainsMono Nerd Font:size=14";
-        icon-theme = "rose-pine";
+        font = "${t.font.name}:size=14";
+        icon-theme = t.name;
       };
       colors = {
-        background = "191724fa";
-        text = "e0def4ff";
-        match = "ebbcbaff";
-        selection = "26233aff";
-        selection-text = "e0def4ff";
-        border = "ebbcbaff";
+        background = "${c.base}fa";
+        text = "${c.text}ff";
+        match = "${c.rose}ff";
+        selection = "${c.overlay}ff";
+        selection-text = "${c.text}ff";
+        border = "${c.rose}ff";
       };
       border = {
         width = 2;
