@@ -15,7 +15,6 @@
     udiskie
 
     # apps
-    zed-editor
     helix
     hyprpolkitagent
     protonup-rs
