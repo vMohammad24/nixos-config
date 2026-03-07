@@ -45,10 +45,5 @@
 
     # clis
     eza
-
-    # themes
-    rose-pine-gtk-theme
-    rose-pine-icon-theme
-    rose-pine-hyprcursor
   ];
 }

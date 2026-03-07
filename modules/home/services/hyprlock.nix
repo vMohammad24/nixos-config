@@ -3,8 +3,7 @@
   pkgs,
   ...
 }: let
-  c = config.theme.colors;
-  t = config.theme;
+  c = config.lib.stylix.colors;
 in {
   programs.hyprlock = {
     enable = true;
@@ -15,7 +14,7 @@ in {
 
       background = [
         {
-          path = "${config.home.homeDirectory}/Pictures/wallpaper.png";
+          path = "${config.stylix.image}";
           blur_passes = 3;
           blur_size = 8;
           noise = 1.17e-2;
@@ -33,20 +32,20 @@ in {
           dots_size = 0.25;
           dots_spacing = 0.2;
           dots_center = true;
-          outer_color = "rgb(${c.rose})";
-          inner_color = "rgb(${c.surface})";
-          font_color = "rgb(${c.text})";
+          outer_color = "rgb(${c.base0A})";
+          inner_color = "rgb(${c.base01})";
+          font_color = "rgb(${c.base05})";
           fade_on_empty = true;
           placeholder_text = "<i>Password...</i>";
           hide_input = false;
-          check_color = "rgb(${c.gold})";
-          fail_color = "rgb(${c.love})";
+          check_color = "rgb(${c.base09})";
+          fail_color = "rgb(${c.base08})";
           fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-          capslock_color = "rgb(${c.gold})";
+          capslock_color = "rgb(${c.base09})";
           position = "0, -20";
           halign = "center";
           valign = "center";
-          rounding = t.rounding;
+          rounding = 6;
         }
       ];
 
@@ -54,22 +53,22 @@ in {
         # time
         {
           text = "cmd[update:1000] date +\"%H:%M\"";
-          color = "rgb(${c.text})";
+          color = "rgb(${c.base05})";
           font_size = 90;
-          font_family = t.font.name;
+          font_family = config.stylix.fonts.monospace.name;
           position = "0, 200";
           halign = "center";
           valign = "center";
           shadow_passes = 2;
           shadow_size = 3;
-          shadow_color = "rgb(${c.base})";
+          shadow_color = "rgb(${c.base00})";
         }
         # date
         {
           text = "cmd[update:60000] date +\"%A, %d %B\"";
-          color = "rgb(${c.subtle})";
+          color = "rgb(${c.base04})";
           font_size = 20;
-          font_family = t.font.name;
+          font_family = config.stylix.fonts.monospace.name;
           position = "0, 130";
           halign = "center";
           valign = "center";
@@ -77,9 +76,9 @@ in {
         # hi
         {
           text = "Hi, $USER";
-          color = "rgb(${c.rose})";
+          color = "rgb(${c.base0A})";
           font_size = 16;
-          font_family = t.font.name;
+          font_family = config.stylix.fonts.monospace.name;
           position = "0, 40";
           halign = "center";
           valign = "center";

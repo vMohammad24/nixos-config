@@ -1,10 +1,10 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
-  c = config.theme.colors;
-  t = config.theme;
+  c = config.lib.stylix.colors;
 in {
   imports = [
     ./monitors.nix
@@ -23,14 +23,14 @@ in {
         gaps_in = 4;
         gaps_out = 8;
         border_size = 2;
-        "col.active_border" = "rgba(${c.rose}ff)";
-        "col.inactive_border" = "rgba(${c.overlay}ff)";
+        "col.active_border" = lib.mkForce "rgba(${c.base0A}ff)";
+        "col.inactive_border" = lib.mkForce "rgba(${c.base02}ff)";
         layout = "dwindle";
         allow_tearing = true;
       };
 
       decoration = {
-        rounding = t.rounding;
+        rounding = 6;
         blur = {
           enabled = true;
           size = 8;
@@ -40,7 +40,7 @@ in {
           enabled = true;
           range = 10;
           render_power = 3;
-          color = "rgba(00000055)";
+          color = lib.mkForce "rgba(00000055)";
         };
       };
 

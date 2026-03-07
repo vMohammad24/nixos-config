@@ -1,17 +1,7 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  t = config.theme;
-in {
+{...}: {
   programs.kitty = {
     enable = true;
-    themeFile = t.name;
     settings = {
-      font_family = t.font.name;
-      font_size = 12;
-      background_opacity = "0.95";
       window_padding_width = 10;
       confirm_os_window_close = 0;
     };

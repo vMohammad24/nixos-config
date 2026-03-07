@@ -19,6 +19,10 @@
       url = "git+https://heliopolis.live/creations/grabit.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -31,6 +35,8 @@
       specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
+        inputs.stylix.nixosModules.stylix
+        ./modules/stylix.nix
         {
           nixpkgs.config.allowUnfree = true;
         }

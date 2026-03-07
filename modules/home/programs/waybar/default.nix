@@ -3,8 +3,7 @@
   pkgs,
   ...
 }: let
-  c = config.theme.colors;
-  t = config.theme;
+  c = config.lib.stylix.colors;
 in {
   programs.waybar = {
     enable = true;
@@ -63,31 +62,31 @@ in {
     };
     style = ''
 
-      @define-color base            #${c.base};
-      @define-color surface         #${c.surface};
-      @define-color overlay         #${c.overlay};
+      @define-color base            #${c.base00};
+      @define-color surface         #${c.base01};
+      @define-color overlay         #${c.base02};
 
-      @define-color muted           #${c.muted};
-      @define-color subtle          #${c.subtle};
-      @define-color text            #${c.text};
+      @define-color muted           #${c.base03};
+      @define-color subtle          #${c.base04};
+      @define-color text            #${c.base05};
 
-      @define-color love            #${c.love};
-      @define-color gold            #${c.gold};
-      @define-color rose            #${c.rose};
-      @define-color pine            #${c.pine};
-      @define-color foam            #${c.foam};
-      @define-color iris            #${c.iris};
+      @define-color love            #${c.base08};
+      @define-color gold            #${c.base09};
+      @define-color rose            #${c.base0A};
+      @define-color pine            #${c.base0B};
+      @define-color foam            #${c.base0C};
+      @define-color iris            #${c.base0D};
 
-      @define-color highlightLow    #${c.highlightLow};
-      @define-color highlightMed    #${c.highlightMed};
-      @define-color highlightHigh   #${c.highlightHigh};
+      @define-color highlightLow    #${c.base01};
+      @define-color highlightMed    #${c.base02};
+      @define-color highlightHigh   #${c.base07};
       * {
-          font-family: "${t.font.name}";
+          font-family: "${config.stylix.fonts.monospace.name}";
           font-size: 13px;
           font-weight: bold;
       }
       window#waybar {
-          background-color: rgba(25, 23, 36, ${toString t.opacity});
+          background-color: rgba(${c.base00-rgb-r}, ${c.base00-rgb-g}, ${c.base00-rgb-b}, 0.85);
           color: @text;
           border-bottom: 2px solid @rose;
           transition-property: background-color;
@@ -101,13 +100,13 @@ in {
           transition: all 0.3s ease;
       }
       #workspaces button.active {
-          background-color: rgba(235, 188, 186, 0.1); /* rose but low opacity */
+          background-color: rgba(${c.base0A-rgb-r}, ${c.base0A-rgb-g}, ${c.base0A-rgb-b}, 0.1);
           color: @rose;
           border-bottom: 3px solid @rose;
           border-radius: 0;
       }
       #workspaces button:hover {
-          background-color: rgba(235, 188, 186, 0.2);
+          background-color: rgba(${c.base0A-rgb-r}, ${c.base0A-rgb-g}, ${c.base0A-rgb-b}, 0.2);
           color: @text;
           box-shadow: inherit;
           text-shadow: inherit;
