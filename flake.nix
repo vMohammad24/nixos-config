@@ -19,6 +19,10 @@
       url = "git+https://heliopolis.live/creations/grabit.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wl-mouse = {
+      url = "git+https://heliopolis.live/creations/wl-mouse.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";

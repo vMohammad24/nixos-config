@@ -307,7 +307,8 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "stylix": "stylix",
-        "tidaLuna": "tidaLuna"
+        "tidaLuna": "tidaLuna",
+        "wl-mouse": "wl-mouse"
       }
     },
     "rust-analyzer-src": {
@@ -324,6 +325,27 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "wl-mouse",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772852295,
+        "narHash": "sha256-3FB/WzLZSiU2Mc50C9q9VXU1LRUZbsU6UHKmZG1C+hU=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "c10801f59c68e14c308aea8fa6b0b3d81d43c61e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
         "type": "github"
       }
     },
@@ -490,6 +512,27 @@
         "owner": "tinted-theming",
         "repo": "base16-zed",
         "type": "github"
+      }
+    },
+    "wl-mouse": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1772912476,
+        "narHash": "sha256-KfhS30ZN0nTTPq24Hjx5iZgsXONH8ZHeRDXrvHijTlc=",
+        "ref": "refs/heads/main",
+        "rev": "5c58c57707b8d04472c3c143dad0eb89ce41bfea",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://heliopolis.live/creations/wl-mouse.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://heliopolis.live/creations/wl-mouse.git"
       }
     }
   },
