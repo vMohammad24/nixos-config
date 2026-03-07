@@ -12,6 +12,7 @@
       ls = "eza --icons";
       ll = "eza -l -g --icons";
       la = "eza -a --icons";
+      ssh = "kitten ssh";
     };
     loginShellInit = ''
       if test "$XDG_VTNR" -eq 1 && uwsm check may-start
