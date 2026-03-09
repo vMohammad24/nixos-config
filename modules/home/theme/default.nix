@@ -4,6 +4,13 @@
     waybar.enable = false;
     gtk.enable = false;
     vscode.enable = false;
+    qt.enable = false;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+    style.name = "gtk2";
   };
 
   gtk = {

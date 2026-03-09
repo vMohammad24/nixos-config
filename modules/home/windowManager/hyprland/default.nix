@@ -12,6 +12,7 @@ in {
     ./startup.nix
     ./binds.nix
     ./animations.nix
+    ./rules.nix
   ];
 
   wayland.windowManager.hyprland = {
