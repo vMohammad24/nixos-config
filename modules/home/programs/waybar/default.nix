@@ -50,6 +50,7 @@ in {
         "cpu" = {
           format = " {usage}%";
           tooltip = false;
+          on-click = "kitty btop";
         };
         "memory" = {
           format = " {used}/{total}GB";
