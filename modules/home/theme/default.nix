@@ -3,7 +3,6 @@
     hyprlock.enable = false;
     waybar.enable = false;
     gtk.enable = false;
-    vscode.enable = false;
     qt.enable = false;
   };
 

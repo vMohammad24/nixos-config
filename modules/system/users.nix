@@ -7,9 +7,6 @@
   users.users.vmohammad = {
     isNormalUser = true;
     extraGroups = ["wheel" "gamemode" "libvirtd"];
-    packages = with pkgs; [
-      vscode
-    ];
     shell = pkgs.fish;
   };
 

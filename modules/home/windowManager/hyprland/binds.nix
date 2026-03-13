@@ -12,11 +12,11 @@
         "$mainMod, T, exec, kitty"
         "$mainMod, W, exec, firefox"
         "$mainMod, E, exec, nautilus"
-        "$mainMod, C, exec, code"
-        "$mainMod, S, exec, steam"
-        "$mainMod SHIFT, P, exec, prismlauncher"
-        "$mainMod SHIFT, T, exec, tidal-hifi"
-        "$mainMod SHIFT, E, exec, equibop"
+        "$mainMod SHIFT, Z, exec, uwsm app zeditor"
+        "$mainMod SHIFT, S, exec, uwsm app steam"
+        "$mainMod SHIFT, P, exec, uwsm app prismlauncher"
+        "$mainMod SHIFT, T, exec, uwsm app tidal-hifi"
+        "$mainMod SHIFT, E, exec, uwsm app equibop"
         # app keybinds
         ", Scroll_Lock, exec, equibop --toggle-deafen"
 
