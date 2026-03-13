@@ -36,6 +36,10 @@
         trust_all_worktrees = true;
       };
       auto_update = false;
+      project_panel = {
+        hide_gitignore = true;
+        dock = "right";
+      };
     };
   };
 

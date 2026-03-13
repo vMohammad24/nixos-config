@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -36,7 +32,10 @@
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
-    options = ["--cmd" "cd"];
+    options = [
+      "--cmd"
+      "cd"
+    ];
   };
 
   programs.direnv = {

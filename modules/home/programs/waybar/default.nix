@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   c = config.lib.stylix.colors;
 in {
   programs.waybar = {
@@ -14,9 +10,18 @@ in {
         position = "top";
         height = 32;
         spacing = 4;
-        modules-left = ["hyprland/workspaces" "hyprland/window"];
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
         modules-center = ["clock"];
-        modules-right = ["mpris" "pulseaudio" "cpu" "memory" "tray"];
+        modules-right = [
+          "mpris"
+          "pulseaudio"
+          "cpu"
+          "memory"
+          "tray"
+        ];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -43,7 +48,11 @@ in {
           format-icons = {
             headphone = "";
 
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = "pavucontrol";
         };

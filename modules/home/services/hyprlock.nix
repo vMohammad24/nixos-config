@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   c = config.lib.stylix.colors;
 in {
   programs.hyprlock = {

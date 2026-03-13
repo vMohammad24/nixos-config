@@ -6,7 +6,11 @@
   services.getty.autologinUser = "vmohammad";
   users.users.vmohammad = {
     isNormalUser = true;
-    extraGroups = ["wheel" "gamemode" "libvirtd"];
+    extraGroups = [
+      "wheel"
+      "gamemode"
+      "libvirtd"
+    ];
     shell = pkgs.fish;
   };
 
