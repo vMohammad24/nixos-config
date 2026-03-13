@@ -25,7 +25,7 @@
 
         # utils
         "$mainMod, P, exec, hyprpicker -a"
-        "$mainMod, V, exec, cliphist list | fuzzel -d | cliphist decode | wl-copy"
+        "$mainMod, V, exec, vicinae vicinae://extensions/vicinae/clipboard/history"
         "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
         ", Print, exec, grabit -p --freeze"
         # window management
@@ -62,7 +62,7 @@
 
     # super (app launcher)
     bindr = [
-      "SUPER, SUPER_L, exec, fuzzel"
+      "SUPER, SUPER_L, exec, vicinae toggle"
     ];
 
     # mouse

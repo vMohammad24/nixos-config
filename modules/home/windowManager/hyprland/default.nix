@@ -49,6 +49,10 @@ in {
         sensitivity = -0.5;
         accel_profile = "flat";
       };
+
+      misc = {
+        focus_on_activate = true;
+      };
     };
   };
 }
