@@ -247,11 +247,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772633327,
-        "narHash": "sha256-jl+DJB2DUx7EbWLRng+6HNWW/1/VQOnf0NsQB4PlA7I=",
+        "lastModified": 1773179137,
+        "narHash": "sha256-EdW2bwzlfme0vbMOcStnNmKlOAA05Bp6su2O8VLGT0k=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5a75730e6f21ee624cbf86f4915c6e7489c74acc",
+        "rev": "3f98e2bbc661ec0aaf558d8a283d6955f05f1d09",
         "type": "github"
       },
       "original": {
@@ -262,11 +262,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1772542754,
-        "narHash": "sha256-WGV2hy+VIeQsYXpsLjdr4GvHv5eECMISX1zKLTedhdg=",
+        "lastModified": 1772963539,
+        "narHash": "sha256-9jVDGZnvCckTGdYT53d/EfznygLskyLQXYwJLKMPsZs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8c809a146a140c5c8806f13399592dbcb1bb5dc4",
+        "rev": "9dcb002ca1690658be4a04645215baea8b95f31d",
         "type": "github"
       },
       "original": {
@@ -420,11 +420,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772612563,
-        "narHash": "sha256-EBlbYihhxjE6vNHsWeVEBwtTth/e2UFRc/CCJrhiczU=",
+        "lastModified": 1773139928,
+        "narHash": "sha256-N6B+pB2VDkHbFn9xCmR0MnTbG/jWQyNj0Ad49JbP2lQ=",
         "owner": "Inrixia",
         "repo": "TidaLuna",
-        "rev": "dfaa48610534ddb74bb4b19d4d7edab50f6d8c73",
+        "rev": "e5ee58c6a79e54aa914d95e774e551ee295f2cc4",
         "type": "github"
       },
       "original": {
@@ -522,11 +522,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1772912476,
-        "narHash": "sha256-KfhS30ZN0nTTPq24Hjx5iZgsXONH8ZHeRDXrvHijTlc=",
+        "lastModified": 1773167421,
+        "narHash": "sha256-T8xGNwgmkBfb6oSO239nvBKcs1fzwQavSET8Wi/1ncs=",
         "ref": "refs/heads/main",
-        "rev": "5c58c57707b8d04472c3c143dad0eb89ce41bfea",
-        "revCount": 5,
+        "rev": "2c8be21d834638f9b04bebfda50bbab9aeab2e30",
+        "revCount": 10,
         "type": "git",
         "url": "https://heliopolis.live/creations/wl-mouse.git"
       },

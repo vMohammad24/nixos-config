@@ -6,6 +6,8 @@
     alsa.support32Bit = true;
   };
 
+  virtualisation.libvirtd.enable = true;
+
   services.wivrn = {
     enable = true;
     openFirewall = true;

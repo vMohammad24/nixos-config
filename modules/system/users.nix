@@ -6,7 +6,7 @@
   services.getty.autologinUser = "vmohammad";
   users.users.vmohammad = {
     isNormalUser = true;
-    extraGroups = ["wheel" "gamemode"];
+    extraGroups = ["wheel" "gamemode" "libvirtd"];
     packages = with pkgs; [
       vscode
     ];
@@ -21,6 +21,7 @@
     gamescopeSession.enable = true;
   };
   programs.localsend.enable = true;
+  programs.virt-manager.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
