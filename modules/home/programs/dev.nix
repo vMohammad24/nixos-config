@@ -30,10 +30,12 @@
     userSettings = {
       telemetry = {
         metrics = false;
+        diagnostics = false;
       };
       session = {
         trust_all_worktrees = true;
       };
+      auto_update = false;
     };
   };
 
