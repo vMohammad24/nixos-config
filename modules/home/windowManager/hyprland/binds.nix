@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
 
@@ -26,6 +22,7 @@
         # utils
         "$mainMod, P, exec, hyprpicker -a"
         "$mainMod, V, exec, vicinae vicinae://extensions/vicinae/clipboard/history"
+        "$mainMod, comma, exec, vicinae vicinae://extensions/vicinae/core/search-emojis"
         "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
         ", Print, exec, grabit -p --freeze"
         # window management
@@ -49,7 +46,8 @@
       ++ (
         # workspaces (from https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#usage)
         # binds $mod + [alt +] {1..9} to [move to] workspace {1..9}
-        builtins.concatLists (builtins.genList (
+        builtins.concatLists (
+          builtins.genList (
             i: let
               ws = i + 1;
             in [
@@ -57,7 +55,8 @@
               "$mainMod ALT, code:1${toString i}, movetoworkspace, ${toString ws}"
             ]
           )
-          9)
+          9
+        )
       );
 
     # super (app launcher)
