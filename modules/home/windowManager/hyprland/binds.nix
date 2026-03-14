@@ -22,9 +22,10 @@
         # utils
         "$mainMod, P, exec, hyprpicker -a"
         "$mainMod, V, exec, vicinae vicinae://extensions/vicinae/clipboard/history"
+        "$mainMod, S, exec, grim -g \"$(slurp)\" - | wl-copy"
         "$mainMod, comma, exec, vicinae vicinae://extensions/vicinae/core/search-emojis"
-        "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
         ", Print, exec, grabit -p --freeze"
+        "$mainMod, Print, exec, grabit --record"
         # window management
         "$mainMod, Q, killactive,"
         "$mainMod ALT, Q, exec, hyprctl kill"
