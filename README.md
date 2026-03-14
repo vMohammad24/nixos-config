@@ -5,7 +5,7 @@ my personal nixos config utilizing flakes & home-manager
 ## features
 
 - **WM**: [hyprland](https://hyprland.org/)
-- **theme**: rose pine via [stylix](https://github.com/danth/stylix)
+- **theme**: rose pine via [stylix](https://github.com/nix-community/stylix)
 - **formatting**: [alejandra](https://github.com/kamadorueda/alejandra)
 
 ## file structure
