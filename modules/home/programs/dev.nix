@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -48,5 +49,9 @@
     nodejs_25
     cargo
     rustc
+    gcc
+    binutils
+    gnumake
+    go
   ];
 }
