@@ -53,8 +53,9 @@
     slurp
     wl-clipboard
     cliphist
-
     # clis
     eza
   ];
+
+  programs.fastfetch.enable = true;
 }

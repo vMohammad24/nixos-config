@@ -30,7 +30,6 @@
     curl
     unzip
     git
-    fastfetch
     libsecret
     btop
     p7zip
