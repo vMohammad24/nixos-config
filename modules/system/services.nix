@@ -7,6 +7,10 @@
   };
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   services.wivrn = {
     enable = true;

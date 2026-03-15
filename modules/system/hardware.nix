@@ -1,11 +1,10 @@
-{ config, ... }:
-{
+{config, ...}: {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   boot.initrd.kernelModules = [
     "nvidia"
@@ -38,7 +37,7 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="36a7", ATTRS{idProduct}=="a869", MODE="0666", TAG+="uaccess"
   '';
 
-  boot.supportedFilesystems = [ "ntfs3" ];
+  boot.supportedFilesystems = ["ntfs3"];
 
   fileSystems."/mnt/SSSD" = {
     device = "/dev/disk/by-uuid/C2E8DF9EE8DF8ED3";

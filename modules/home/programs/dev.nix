@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -54,7 +53,7 @@
               };
               files = {
                 ignoreUnknown = false;
-                ignore = [ ];
+                ignore = [];
               };
               formatter = {
                 enabled = true;
