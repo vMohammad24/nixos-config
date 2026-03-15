@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -17,6 +18,7 @@
       nil
       nixd
       biome
+      rust-analyzer
     ];
     extensions = [
       "biome"
@@ -53,7 +55,7 @@
               };
               files = {
                 ignoreUnknown = false;
-                ignore = [];
+                ignore = [ ];
               };
               formatter = {
                 enabled = true;
