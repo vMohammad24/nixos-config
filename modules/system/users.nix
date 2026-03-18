@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   services.getty.autologinUser = "vmohammad";
   users.users.vmohammad = {
     isNormalUser = true;

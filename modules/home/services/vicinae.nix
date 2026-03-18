@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.vicinae = {
     enable = true;
     package = inputs.vicinae.packages.${pkgs.system}.default;
@@ -7,8 +10,8 @@
       close_on_focus_loss = false;
       activate_on_single_click = true;
       favicon_service = "google";
-      general = {
-        telemetry = false;
+      telemetry = {
+        system_info = false;
       };
       providers = {
         applications = {

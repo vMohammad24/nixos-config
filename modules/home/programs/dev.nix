@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -19,6 +18,8 @@
       nixd
       biome
       rust-analyzer
+      rustfmt
+      clippy
     ];
     extensions = [
       "biome"
@@ -29,6 +30,7 @@
       "nix"
       "toml"
       "zig"
+      "sql"
     ];
     userSettings = {
       telemetry = {
@@ -55,7 +57,7 @@
               };
               files = {
                 ignoreUnknown = false;
-                ignore = [ ];
+                ignore = [];
               };
               formatter = {
                 enabled = true;
