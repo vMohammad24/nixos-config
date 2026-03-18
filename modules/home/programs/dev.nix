@@ -183,6 +183,18 @@
             };
           };
         };
+        "Nix" = {
+          formatter = {
+            external = {
+              command = "alejandra";
+              arguments = [
+                "-q"
+                "-"
+              ];
+            };
+          };
+          format_on_save = "on";
+        };
       };
     };
   };
