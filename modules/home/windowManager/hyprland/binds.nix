@@ -5,14 +5,14 @@
     bind =
       [
         # apps
-        "$mainMod, T, exec, kitty"
-        "$mainMod, W, exec, firefox"
-        "$mainMod, E, exec, nautilus"
-        "$mainMod SHIFT, Z, exec, uwsm app zeditor"
-        "$mainMod SHIFT, S, exec, uwsm app steam"
-        "$mainMod SHIFT, P, exec, uwsm app prismlauncher"
-        "$mainMod SHIFT, T, exec, uwsm app tidal-hifi"
-        "$mainMod SHIFT, E, exec, uwsm app equibop"
+        "$mainMod, T, exec, uwsm app -- kitty"
+        "$mainMod, W, exec, uwsm app -- firefox"
+        "$mainMod, E, exec, uwsm app -- nautilus"
+        "$mainMod SHIFT, Z, exec, uwsm app -- zeditor"
+        "$mainMod SHIFT, S, exec, uwsm app -- steam"
+        "$mainMod SHIFT, P, exec, uwsm app -- prismlauncher"
+        "$mainMod SHIFT, T, exec, uwsm app -- tidal-hifi"
+        "$mainMod SHIFT, E, exec, uwsm app -- equibop"
         # app keybinds
         ", Scroll_Lock, exec, equibop --toggle-deafen"
 
