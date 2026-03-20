@@ -36,10 +36,10 @@
     p7zip
     fzf
     fd
-    inputs.alejandra.defaultPackage.${pkgs.system}
-    inputs.tidaLuna.packages.${pkgs.system}.default
-    inputs.grabit.packages.${pkgs.system}.default
-    inputs.wl-mouse.packages.${pkgs.system}.default
+    inputs.alejandra.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.tidaLuna.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.grabit.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.wl-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
     prismlauncher
     mullvad-vpn
     watchexec

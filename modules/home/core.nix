@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.username = "vmohammad";
   home.homeDirectory = "/home/vmohammad";
   home.stateVersion = "25.11";
@@ -22,6 +26,31 @@
     };
   };
 
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
+
+  gtk = {
+    enable = true;
+    gtk3.bookmarks = let
+      home = config.home.homeDirectory;
+    in
+      map (dir: "file://${home}/${dir}") [
+        "Documents"
+        "Downloads"
+        "Pictures"
+      ];
+  };
+
+  programs.fastfetch.enable = true;
+  programs.eza.enable = true;
+  programs.mpv.enable = true;
+  programs.mangohud = {
+    enable = true;
+    enableSessionWide = true;
+  };
+
   home.packages = with pkgs; [
     # core
     nautilus
@@ -30,7 +59,6 @@
     # apps
     hyprpolkitagent
     protonup-rs
-    mangohud
     wayland-utils
     glib
     glib-networking
@@ -38,7 +66,6 @@
     bs-manager
     teamspeak6-client
     qview
-    mpv
     bruno
 
     # utils/essentials
@@ -52,10 +79,5 @@
     grim
     slurp
     wl-clipboard
-    cliphist
-    # clis
-    eza
   ];
-
-  programs.fastfetch.enable = true;
 }
