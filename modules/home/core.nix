@@ -49,6 +49,10 @@
   programs.mangohud = {
     enable = true;
     enableSessionWide = true;
+    settings = {
+      no_display = true;
+      gui_scaling = 100;
+    };
   };
 
   home.packages = with pkgs; [
