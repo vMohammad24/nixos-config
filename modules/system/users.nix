@@ -37,15 +37,7 @@
     fzf
     fd
     inputs.alejandra.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.tidaLuna.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.grabit.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.wl-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
-    prismlauncher
-    mullvad-vpn
-    watchexec
-  ];
-
-  nixpkgs.overlays = [
-    inputs.tidaLuna.overlays.default
   ];
 }

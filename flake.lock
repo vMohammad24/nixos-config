@@ -323,7 +323,6 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "stylix": "stylix",
-        "tidaLuna": "tidaLuna",
         "vicinae": "vicinae",
         "wl-mouse": "wl-mouse"
       }
@@ -442,26 +441,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tidaLuna": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1773139928,
-        "narHash": "sha256-N6B+pB2VDkHbFn9xCmR0MnTbG/jWQyNj0Ad49JbP2lQ=",
-        "owner": "Inrixia",
-        "repo": "TidaLuna",
-        "rev": "e5ee58c6a79e54aa914d95e774e551ee295f2cc4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Inrixia",
-        "repo": "TidaLuna",
         "type": "github"
       }
     },

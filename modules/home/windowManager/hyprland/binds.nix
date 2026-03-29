@@ -11,7 +11,7 @@
         "$mainMod SHIFT, Z, exec, uwsm app -- zeditor"
         "$mainMod SHIFT, S, exec, uwsm app -- steam"
         "$mainMod SHIFT, P, exec, uwsm app -- prismlauncher"
-        "$mainMod SHIFT, T, exec, uwsm app -- tidal-hifi"
+        "$mainMod SHIFT, T, exec, uwsm app -- high-tide"
         "$mainMod SHIFT, E, exec, uwsm app -- equibop"
         # app keybinds
         ", Scroll_Lock, exec, equibop --toggle-deafen"

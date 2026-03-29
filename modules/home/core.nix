@@ -71,6 +71,11 @@
     teamspeak6-client
     qview
     bruno
+    high-tide
+    mitmproxy
+    mullvad-vpn
+    prismlauncher
+    watchexec
 
     # utils/essentials
     hyprpicker

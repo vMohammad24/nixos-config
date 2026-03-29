@@ -11,10 +11,6 @@
       url = "github:kamadorueda/alejandra/4.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tidaLuna = {
-      url = "github:Inrixia/TidaLuna";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     grabit = {
       url = "git+https://heliopolis.live/creations/grabit.git";
       inputs.nixpkgs.follows = "nixpkgs";
