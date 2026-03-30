@@ -76,6 +76,7 @@
     mullvad-vpn
     prismlauncher
     watchexec
+    jetbrains-toolbox
 
     # utils/essentials
     hyprpicker
