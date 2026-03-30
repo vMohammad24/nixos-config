@@ -40,4 +40,17 @@
     inputs.grabit.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.wl-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
+
+  # i am not proud of this part
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    nss
+    openssl
+    curl
+    expat
+  ];
 }
