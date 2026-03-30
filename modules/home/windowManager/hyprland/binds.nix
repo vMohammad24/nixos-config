@@ -7,7 +7,7 @@
         # apps
         "$mainMod, T, exec, uwsm app -- kitty"
         "$mainMod, W, exec, uwsm app -- firefox"
-        "$mainMod, E, exec, uwsm app -- nautilus"
+        "$mainMod, E, exec, uwsm app -- thunar"
         "$mainMod SHIFT, Z, exec, uwsm app -- zeditor"
         "$mainMod SHIFT, S, exec, uwsm app -- steam"
         "$mainMod SHIFT, P, exec, uwsm app -- prismlauncher"

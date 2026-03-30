@@ -17,7 +17,7 @@
       "x-scheme-handler/http" = ["firefox.desktop"];
       "x-scheme-handler/https" = ["firefox.desktop"];
       "application/pdf" = ["firefox.desktop"];
-      "inode/directory" = ["org.gnome.Nautilus.desktop"];
+      "inode/directory" = ["thunar.desktop"];
       "image/jpeg" = ["qview.desktop"];
       "image/png" = ["qview.desktop"];
       "image/webp" = ["qview.desktop"];
@@ -57,7 +57,7 @@
 
   home.packages = with pkgs; [
     # core
-    nautilus
+    thunar
     udiskie
 
     # apps
