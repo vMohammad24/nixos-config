@@ -25,6 +25,7 @@
         "$mainMod, S, exec, grim -g \"$(slurp)\" - | wl-copy"
         "$mainMod, comma, exec, vicinae vicinae://extensions/vicinae/core/search-emojis"
         ", Print, exec, grabit -p --freeze"
+        "CTRL, Print, exec, grabit --kill & killall -9 grim grimblast slurp"
         "$mainMod, Print, exec, grabit --record"
         # window management
         "$mainMod, Q, killactive,"

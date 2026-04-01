@@ -36,6 +36,7 @@
     p7zip
     fzf
     fd
+    killall
     inputs.alejandra.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.grabit.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.wl-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
