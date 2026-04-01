@@ -20,6 +20,7 @@
       rust-analyzer
       rustfmt
       clippy
+      clang-tools
     ];
     extensions = [
       "biome"
