@@ -30,7 +30,7 @@ my personal nixos config utilizing flakes & home-manager
    
 alot of stuff in this project is hardware-specfic, so you should generate a `hardware-configuration.nix` using the [nixos-generate](https://nixos.wiki/wiki/Nixos-generate-config) tool and place it in the root of the project.
 
-modify `/modules/system/hardware.nix` to match your system.
+modify `/modules/system/hardware.nix` and `home/windowManager/hyprland/monitors.nix` to match your system.
 
 3. **build and switch**:
    ```bash
