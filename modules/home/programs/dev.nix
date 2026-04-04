@@ -21,6 +21,9 @@
       rustfmt
       clippy
       clang-tools
+      lldb
+      delve
+      vscode-extensions.vadimcn.vscode-lldb
     ];
     extensions = [
       "biome"
@@ -34,6 +37,7 @@
       "sql"
     ];
     userSettings = {
+      load_direnv = "shell_hook";
       telemetry = {
         metrics = false;
         diagnostics = false;
