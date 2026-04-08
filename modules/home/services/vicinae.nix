@@ -36,14 +36,6 @@
             };
           };
         };
-        developer = {
-          enabled = false;
-          entrypoints = {
-            create = {
-              enabled = false;
-            };
-          };
-        };
         files = {
           preferences = {
             autoIndexing = true;
