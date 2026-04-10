@@ -55,6 +55,33 @@
             suspend = {
               enabled = false;
             };
+            "soft-reboot" = {
+              enabled = false;
+            };
+            logout = {
+              preferences = {
+                customProgram = "uwsm stop";
+                confirm = false;
+              };
+            };
+            lock = {
+              preferences = {
+                customProgram = "pidof hyprlock || hyprlock";
+                confirm = false;
+              };
+            };
+            shutdown = {
+              preferences = {
+                customProgram = "systemctl poweroff";
+                confirm = false;
+              };
+            };
+            reboot = {
+              preferences = {
+                customProgram = "systemctl reboot";
+                confirm = false;
+              };
+            };
           };
         };
         system = {
