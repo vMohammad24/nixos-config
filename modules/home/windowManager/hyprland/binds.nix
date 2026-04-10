@@ -16,8 +16,8 @@
         # app keybinds
         ", Scroll_Lock, exec, equibop --toggle-deafen"
 
-        # wlogout
-        "CTRL ALT, delete, exec, wlogout"
+        # power management
+        "CTRL ALT, delete, exec, vicinae deeplink vicinae://launch/power"
 
         # utils
         "$mainMod, P, exec, hyprpicker -a"
