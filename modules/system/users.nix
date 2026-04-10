@@ -32,7 +32,8 @@
     unzip
     git
     libsecret
-    btop
+    # change this if you have an AMD GPU (btop-rocm)
+    btop-cuda
     p7zip
     fzf
     fd
