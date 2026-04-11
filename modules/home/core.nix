@@ -71,7 +71,7 @@
     teamspeak6-client
     qview
     bruno
-    high-tide
+    feishin
     mitmproxy
     mullvad-vpn
     prismlauncher
