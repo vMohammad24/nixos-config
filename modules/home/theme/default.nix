@@ -14,6 +14,7 @@
 
   gtk = {
     enable = true;
+    gtk4.theme = null;
     theme = {
       name = "rose-pine";
       package = pkgs.rose-pine-gtk-theme;
