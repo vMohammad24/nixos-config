@@ -46,6 +46,7 @@
       "defaults"
       "noatime"
       "nofail"
+      "x-gvfs-show"
     ];
   };
 
