@@ -51,14 +51,11 @@
   };
 
   fileSystems."/mnt/eSSD" = {
-    device = "/dev/disk/by-uuid/4C08CBD108CBB86A";
-    fsType = "ntfs3";
+    device = "/dev/disk/by-uuid/9c35301d-c3e9-4982-8048-090861bab459";
+    fsType = "xfs";
     options = [
-      "rw"
-      "uid=1000"
-      "gid=100"
-      "umask=000"
-      "exec"
+      "defaults"
+      "noatime"
       "nofail"
       "x-gvfs-show"
     ];
