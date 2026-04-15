@@ -23,6 +23,13 @@
     };
   };
 
+  services.sunshine = {
+    enable = true;
+    autoStart = false;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.rootless = {
     enable = true;

@@ -21,6 +21,7 @@
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
+    remotePlay.openFirewall = true;
   };
   programs.localsend.enable = true;
   programs.virt-manager.enable = true;
