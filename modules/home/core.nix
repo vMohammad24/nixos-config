@@ -67,7 +67,6 @@
     wayland-utils
     glib
     glib-networking
-    wivrn
     bs-manager
     teamspeak6-client
     qview
