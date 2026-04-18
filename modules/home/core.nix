@@ -84,7 +84,8 @@
     pavucontrol
     brightnessctl
     playerctl
-
+    rclone
+    rsrpc
     #  screenshot & clipboard
     grim
     slurp
