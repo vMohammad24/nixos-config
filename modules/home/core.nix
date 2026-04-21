@@ -78,7 +78,6 @@
     watchexec
     jetbrains-toolbox
     equibop
-
     # utils/essentials
     hyprpicker
     libnotify
@@ -87,6 +86,7 @@
     playerctl
     rclone
     rsrpc
+    comma
     #  screenshot & clipboard
     grim
     slurp
