@@ -86,7 +86,6 @@
     playerctl
     rclone
     rsrpc
-    comma
     #  screenshot & clipboard
     grim
     slurp

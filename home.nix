@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     inputs.vicinae.homeManagerModules.default
+    inputs.nix-index-database.homeModules.default
     ./modules/home/core.nix
     ./modules/home/shell
     ./modules/home/terminal/kitty.nix
@@ -14,4 +15,7 @@
     ./modules/home/programs/waybar
     ./modules/home/windowManager/hyprland
   ];
+  
+  programs.nix-index.enable = true;
+  programs.nix-index-database.comma.enable = true;
 }
