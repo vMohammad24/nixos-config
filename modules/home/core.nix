@@ -77,6 +77,7 @@
     prismlauncher
     watchexec
     jetbrains-toolbox
+    equibop
 
     # utils/essentials
     hyprpicker
