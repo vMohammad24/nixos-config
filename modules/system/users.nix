@@ -4,6 +4,7 @@
   ...
 }: {
   services.getty.autologinUser = "vmohammad";
+  nix.settings.trusted-users = ["root" "vmohammad"];
   users.users.vmohammad = {
     isNormalUser = true;
     extraGroups = [
