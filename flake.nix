@@ -21,6 +21,7 @@
     };
     vicinae.url = "github:vicinaehq/vicinae";
     framr.url = "github:vMohammad24/framr";
+    agenix.url = "github:ryantm/agenix";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -40,6 +41,7 @@
       modules = [
         ./configuration.nix
         inputs.stylix.nixosModules.stylix
+        inputs.agenix.nixosModules.default
         ./modules/stylix.nix
         {
           nixpkgs.config.allowUnfree = true;

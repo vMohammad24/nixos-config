@@ -65,11 +65,11 @@
       default_screen = 1;
       uploaders = [
         {
-          name = "vMohammad at nest.rip";
+          name = "nest.rip";
           request_method = "POST";
           request_url = "https://nest.rip/api/files/upload";
           parameters = [];
-          headers = [["Authorization" "testing"]];
+          headers = [["Authorization" "file:${config.age.secrets.nest_api_key.path}"]];
           body_type = "FormData";
           arguments = [];
           file_form_name = "files";
