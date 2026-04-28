@@ -56,6 +56,30 @@
     };
   };
 
+  programs.framr = {
+    enable = true;
+    settings = {
+      default_uploader = "nest.rip";
+      default_action = "UploadAndCopy";
+      default_capture = "Area";
+      default_screen = 1;
+      uploaders = [
+        {
+          name = "vMohammad at nest.rip";
+          request_method = "POST";
+          request_url = "https://nest.rip/api/files/upload";
+          parameters = [];
+          headers = [["Authorization" "testing"]];
+          body_type = "FormData";
+          arguments = [];
+          file_form_name = "files";
+          output_url = "{json:fileURL}";
+          error_message = "{json:message}";
+        }
+      ];
+    };
+  };
+
   home.packages = with pkgs; [
     # core
     thunar

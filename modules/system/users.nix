@@ -41,7 +41,6 @@
     fd
     killall
     inputs.alejandra.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.framr.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.wl-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 

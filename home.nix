@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     inputs.vicinae.homeManagerModules.default
+    inputs.framr.homeManagerModules.default
     inputs.nix-index-database.homeModules.default
     ./modules/home/core.nix
     ./modules/home/shell
