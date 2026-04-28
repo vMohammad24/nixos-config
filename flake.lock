@@ -249,11 +249,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1777389546,
-        "narHash": "sha256-Zo+5OtJbSLdaUyUcHLkO8h35BAAnL530AG3SAwqJ4Kg=",
+        "lastModified": 1777402859,
+        "narHash": "sha256-Tr3wdRm73OVdSX62xhuogRYf7O7Cjs0plgHUrrDnhM4=",
         "owner": "vMohammad24",
         "repo": "framr",
-        "rev": "e73e52253c169d392cf02afef96813f7919b6bd2",
+        "rev": "3e2d8ac9c18b278a5806e1a2b76db14e1545ad98",
         "type": "github"
       },
       "original": {
