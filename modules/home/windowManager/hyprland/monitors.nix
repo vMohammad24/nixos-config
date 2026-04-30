@@ -16,6 +16,11 @@
       }
     ];
 
+    workspace = [
+      "1, monitor:DP-2"
+      "2, monitor:DP-1"
+    ];
+
     # this is required for sunshine to be accurate with its passthrough
     device = [
       {
