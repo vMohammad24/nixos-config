@@ -24,6 +24,7 @@
     agenix.url = "github:ryantm/agenix";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.url = "github:nix-community/plasma-manager";
   };
 
   nixConfig = {

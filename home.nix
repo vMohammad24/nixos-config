@@ -25,6 +25,10 @@
       ./modules/home/services/mako.nix
       ./modules/home/programs/waybar
       ./modules/home/windowManager/hyprland
+    ]
+    ++ lib.optionals (osConfig.myConfig.desktop == "kde") [
+      inputs.plasma-manager.homeModules.plasma-manager
+      ./modules/home/windowManager/kde.nix
     ];
 
   programs.nix-index.enable = true;

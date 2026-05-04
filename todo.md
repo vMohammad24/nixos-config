@@ -1,0 +1,1 @@
+- [] add startups to KDE
