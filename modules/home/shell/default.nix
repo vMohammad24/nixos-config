@@ -1,4 +1,8 @@
-{...}: {
+{
+  osConfig,
+  lib,
+  ...
+}: {
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -9,9 +13,9 @@
       ll = "eza -l -g --icons";
       la = "eza -a --icons";
       ssh = "kitten ssh";
-      nrb = "sudo nixos-rebuild switch --flake .#hyprland";
+      nrb = "sudo nixos-rebuild switch --flake .#${osConfig.myConfig.desktop}";
     };
-    loginShellInit = ''
+    loginShellInit = lib.mkIf (osConfig.myConfig.desktop == "hyprland") ''
       if test "$XDG_VTNR" -eq 1 && uwsm check may-start
           exec uwsm start hyprland-uwsm.desktop
       end

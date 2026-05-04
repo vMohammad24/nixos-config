@@ -35,28 +35,35 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: {
-    nixosConfigurations.hyprland = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./configuration.nix
-        inputs.stylix.nixosModules.stylix
-        inputs.agenix.nixosModules.default
-        ./modules/stylix.nix
-        {
-          nixpkgs.config.allowUnfree = true;
-        }
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = {inherit inputs;};
-            users.vmohammad = import ./home.nix;
-            backupFileExtension = "backup";
-          };
-        }
-      ];
-    };
+  } @ inputs: let
+    mkSystem = desktop:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs desktop;};
+        modules = [
+          ./configuration.nix
+          {
+            myConfig.desktop = desktop;
+          }
+          inputs.stylix.nixosModules.stylix
+          inputs.agenix.nixosModules.default
+          ./modules/stylix.nix
+          {
+            nixpkgs.config.allowUnfree = true;
+          }
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;};
+              users.vmohammad = ./home.nix;
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
+  in {
+    nixosConfigurations.hyprland = mkSystem "hyprland";
+    nixosConfigurations.kde = mkSystem "kde";
   };
 }

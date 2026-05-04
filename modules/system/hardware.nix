@@ -1,26 +1,32 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: let
+  nvidiaEnabled = lib.elem "nvidia" config.services.xserver.videoDrivers;
+in {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
-  boot.initrd.kernelModules = [
+  boot.initrd.kernelModules = lib.optionals nvidiaEnabled [
     "nvidia"
     "nvidia_modeset"
     "nvidia_uvm"
     "nvidia_drm"
   ];
 
-  hardware.nvidia = {
+  hardware.nvidia = lib.mkIf nvidiaEnabled {
     modesetting.enable = true;
     open = true;
     powerManagement.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  environment.sessionVariables = {
+  environment.sessionVariables = lib.mkIf nvidiaEnabled {
     # NVIDIA <3
     NIXOS_OZONE_WL = "1";
     GDK_BACKEND = "wayland,x11";

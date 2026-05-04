@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}: {
   stylix.targets = {
     hyprlock.enable = false;
     waybar.enable = false;
@@ -6,7 +11,7 @@
     qt.enable = false;
   };
 
-  qt = {
+  qt = lib.mkIf (osConfig.myConfig.desktop == "hyprland") {
     enable = true;
     platformTheme.name = "gtk";
     style.name = "gtk2";

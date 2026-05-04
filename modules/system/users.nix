@@ -1,12 +1,15 @@
 {
   pkgs,
   inputs,
+  config,
+  lib,
   ...
 }: {
-  services.getty.autologinUser = "vmohammad";
+  services.getty.autologinUser = lib.mkIf (config.myConfig.desktop == "hyprland") "vmohammad";
   nix.settings.trusted-users = ["root" "vmohammad"];
   users.users.vmohammad = {
     isNormalUser = true;
+    initialPassword = "nixos";
     extraGroups = [
       "wheel"
       "gamemode"
