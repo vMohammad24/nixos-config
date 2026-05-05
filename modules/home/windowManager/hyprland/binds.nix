@@ -21,9 +21,9 @@
 
         # utils
         "$mainMod, P, exec, hyprpicker -a"
-        "$mainMod, V, exec, vicinae vicinae://extensions/vicinae/clipboard/history"
+        "$mainMod, V, exec, vicinae vicinae://launch/clipboard/history"
         "$mainMod, S, exec, grim -g \"$(slurp)\" - | wl-copy"
-        "$mainMod, comma, exec, vicinae vicinae://extensions/vicinae/core/search-emojis"
+        "$mainMod, comma, exec, vicinae vicinae://launch/core/search-emojis"
         ", Print, exec, framr -u -c -a"
         "$mainMod, Print, exec, grabit --record"
         # window management
