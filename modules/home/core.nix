@@ -32,6 +32,13 @@
     setSessionVariables = false;
   };
 
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = ["kitty.desktop"];
+    };
+  };
+
   gtk = {
     enable = true;
     gtk3.bookmarks = let
