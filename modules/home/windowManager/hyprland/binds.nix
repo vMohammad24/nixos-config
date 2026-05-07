@@ -25,7 +25,7 @@
         "$mainMod, S, exec, grim -g \"$(slurp)\" - | wl-copy"
         "$mainMod, comma, exec, vicinae vicinae://launch/core/search-emojis"
         ", Print, exec, framr -u -c -a"
-        "$mainMod, Print, exec, grabit --record"
+        "$mainMod, Print, exec, framr --record -u -c -a"
         # window management
         "$mainMod, Q, killactive,"
         "$mainMod ALT, Q, exec, hyprctl kill"
