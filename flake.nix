@@ -47,6 +47,7 @@
           }
           inputs.stylix.nixosModules.stylix
           inputs.agenix.nixosModules.default
+          inputs.vicinae.nixosModules.default
           ./modules/stylix.nix
           {
             nixpkgs.config.allowUnfree = true;
