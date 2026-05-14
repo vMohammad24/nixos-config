@@ -12,9 +12,7 @@
         "$mainMod SHIFT, S, exec, uwsm app -- steam"
         "$mainMod SHIFT, P, exec, uwsm app -- prismlauncher"
         "$mainMod SHIFT, T, exec, uwsm app -- feishin"
-        "$mainMod SHIFT, E, exec, uwsm app -- equibop"
-        # app keybinds
-        ", Scroll_Lock, exec, equibop --toggle-deafen"
+        "$mainMod SHIFT, E, exec, uwsm app -- discordcanary"
 
         # power management
         "CTRL ALT, delete, exec, vicinae deeplink vicinae://launch/power"

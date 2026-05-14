@@ -108,7 +108,7 @@
     prismlauncher
     watchexec
     jetbrains-toolbox
-    equibop
+    discord-canary
     # utils/essentials
     hyprpicker
     libnotify

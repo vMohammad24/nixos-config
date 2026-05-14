@@ -44,10 +44,10 @@
         key = "Meta+Shift+T";
         command = "feishin";
       };
-      "launch-equibop" = {
-        name = "Launch Equibop";
+      "launch-discord" = {
+        name = "Launch Discord";
         key = "Meta+Shift+E";
-        command = "equibop";
+        command = "discordcanary";
       };
       "vicinae-toggle" = {
         name = "Vicinae Toggle";
