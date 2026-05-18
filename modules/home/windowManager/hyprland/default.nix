@@ -17,7 +17,7 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; # for uwsm
-
+    configType = "lua";
     settings = {
       general = {
         gaps_in = 4;

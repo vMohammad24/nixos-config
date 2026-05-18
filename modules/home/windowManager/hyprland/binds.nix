@@ -1,46 +1,46 @@
-{...}: {
+{...}: let
+  mainMod = "SUPER";
+in {
   wayland.windowManager.hyprland.settings = {
-    "$mainMod" = "SUPER";
-
     bind =
       [
         # apps
-        "$mainMod, T, exec, uwsm app -- kitty"
-        "$mainMod, W, exec, uwsm app -- firefox"
-        "$mainMod, E, exec, uwsm app -- thunar"
-        "$mainMod SHIFT, Z, exec, uwsm app -- zeditor"
-        "$mainMod SHIFT, S, exec, uwsm app -- steam"
-        "$mainMod SHIFT, P, exec, uwsm app -- prismlauncher"
-        "$mainMod SHIFT, T, exec, uwsm app -- feishin"
-        "$mainMod SHIFT, E, exec, uwsm app -- discordcanary"
+        "${mainMod}, T, exec, uwsm app -- kitty"
+        "${mainMod}, W, exec, uwsm app -- firefox"
+        "${mainMod}, E, exec, uwsm app -- thunar"
+        "${mainMod} SHIFT, Z, exec, uwsm app -- zeditor"
+        "${mainMod} SHIFT, S, exec, uwsm app -- steam"
+        "${mainMod} SHIFT, P, exec, uwsm app -- prismlauncher"
+        "${mainMod} SHIFT, T, exec, uwsm app -- feishin"
+        "${mainMod} SHIFT, E, exec, uwsm app -- discordcanary"
 
         # power management
         "CTRL ALT, delete, exec, vicinae deeplink vicinae://launch/power"
 
         # utils
-        "$mainMod, P, exec, hyprpicker -a"
-        "$mainMod, V, exec, vicinae vicinae://launch/clipboard/history"
-        "$mainMod, S, exec, grim -g \"$(slurp)\" - | wl-copy"
-        "$mainMod, comma, exec, vicinae vicinae://launch/core/search-emojis"
+        "${mainMod}, P, exec, hyprpicker -a"
+        "${mainMod}, V, exec, vicinae vicinae://launch/clipboard/history"
+        "${mainMod}, S, exec, grim -g \"$(slurp)\" - | wl-copy"
+        "${mainMod}, comma, exec, vicinae vicinae://launch/core/search-emojis"
         ", Print, exec, framr -u -c -a"
-        "$mainMod, Print, exec, framr --record -u -c -a"
+        "${mainMod}, Print, exec, framr --record -u -c -a"
         # window management
-        "$mainMod, Q, killactive,"
-        "$mainMod ALT, Q, exec, hyprctl kill"
-        "$mainMod, M, exit,"
-        "$mainMod, SPACE, togglefloating,"
-        "$mainMod, F, fullscreen, 0"
-        "$mainMod, D, fullscreen, 1"
-        "$mainMod ALT, F, fullscreenstate, 0 3"
+        "${mainMod}, Q, killactive,"
+        "${mainMod} ALT, Q, exec, hyprctl kill"
+        "${mainMod}, M, exit,"
+        "${mainMod}, SPACE, togglefloating,"
+        "${mainMod}, F, fullscreen, 0"
+        "${mainMod}, D, fullscreen, 1"
+        "${mainMod} ALT, F, fullscreenstate, 0 3"
         "ALT, Tab, cyclenext,"
         "ALT, Tab, bringactivetotop,"
-        "Ctrl $mainMod, Backslash, resizeactive, exact 640 480"
+        "Ctrl ${mainMod}, Backslash, resizeactive, exact 640 480"
 
         # focus
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        "${mainMod}, left, movefocus, l"
+        "${mainMod}, right, movefocus, r"
+        "${mainMod}, up, movefocus, u"
+        "${mainMod}, down, movefocus, d"
       ]
       ++ (
         # workspaces (from https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#usage)
@@ -50,8 +50,8 @@
             i: let
               ws = i + 1;
             in [
-              "$mainMod, code:1${toString i}, workspace, ${toString ws}"
-              "$mainMod ALT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "${mainMod}, code:1${toString i}, workspace, ${toString ws}"
+              "${mainMod} ALT, code:1${toString i}, movetoworkspace, ${toString ws}"
             ]
           )
           9
@@ -65,8 +65,8 @@
 
     # mouse
     bindm = [
-      "$mainMod, mouse:272, movewindow"
-      "$mainMod, mouse:273, resizewindow"
+      "${mainMod}, mouse:272, movewindow"
+      "${mainMod}, mouse:273, resizewindow"
     ];
 
     # volume & brightness (repeat on hold)
