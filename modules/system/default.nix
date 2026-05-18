@@ -7,5 +7,6 @@
     ./users.nix
     ./hyprland.nix
     ./kde.nix
+    ./mango.nix
   ];
 }
