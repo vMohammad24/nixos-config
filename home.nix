@@ -18,13 +18,18 @@
       ./modules/home/services/vicinae.nix
       ./modules/home/programs/dev.nix
     ]
-    ++ lib.optionals (osConfig.myConfig.desktop == "hyprland") [
+    ++ lib.optionals (osConfig.myConfig.desktop != "kde") [
       ./modules/home/services/hyprpaper.nix
       ./modules/home/services/hypridle.nix
       ./modules/home/services/hyprlock.nix
       ./modules/home/services/mako.nix
       ./modules/home/programs/waybar
+    ]
+    ++ lib.optionals (osConfig.myConfig.desktop == "hyprland") [
       ./modules/home/windowManager/hyprland
+    ]
+    ++ lib.optionals (osConfig.myConfig.desktop == "mango") [
+      ./modules/home/windowManager/mango
     ]
     ++ lib.optionals (osConfig.myConfig.desktop == "kde") [
       inputs.plasma-manager.homeModules.plasma-manager

@@ -25,6 +25,7 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.url = "github:nix-community/plasma-manager";
+    mangowm.url = "github:mangowm/mango";
   };
 
   nixConfig = {
@@ -48,6 +49,7 @@
           inputs.stylix.nixosModules.stylix
           inputs.agenix.nixosModules.default
           inputs.vicinae.nixosModules.default
+          inputs.mangowm.nixosModules.mango
           ./modules/stylix.nix
           {
             nixpkgs.config.allowUnfree = true;
@@ -67,5 +69,6 @@
   in {
     nixosConfigurations.hyprland = mkSystem "hyprland";
     nixosConfigurations.kde = mkSystem "kde";
+    nixosConfigurations.mango = mkSystem "mango";
   };
 }

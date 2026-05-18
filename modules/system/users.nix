@@ -5,7 +5,7 @@
   lib,
   ...
 }: {
-  services.getty.autologinUser = lib.mkIf (config.myConfig.desktop == "hyprland") "vmohammad";
+  services.getty.autologinUser = lib.mkIf (config.myConfig.desktop != "kde") "vmohammad";
   nix.settings.trusted-users = ["root" "vmohammad"];
   users.users.vmohammad = {
     isNormalUser = true;

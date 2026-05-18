@@ -5,7 +5,7 @@
 }: {
   options = {
     myConfig.desktop = lib.mkOption {
-      type = lib.types.enum ["hyprland" "kde"];
+      type = lib.types.enum ["hyprland" "kde" "mango"];
       default = "hyprland";
       description = "The desktop environment to use.";
     };

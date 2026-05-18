@@ -15,9 +15,10 @@
       ssh = "kitten ssh";
       nrb = "sudo nixos-rebuild switch --flake .#${osConfig.myConfig.desktop}";
     };
-    loginShellInit = lib.mkIf (osConfig.myConfig.desktop == "hyprland") ''
+    loginShellInit = lib.mkIf (osConfig.myConfig.desktop != "kde") ''
       if test "$XDG_VTNR" -eq 1 && uwsm check may-start
-          exec uwsm start hyprland-uwsm.desktop
+        ${lib.optionalString (osConfig.myConfig.desktop == "hyprland") "exec uwsm start hyprland-uwsm.desktop"}
+        ${lib.optionalString (osConfig.myConfig.desktop == "mango") "exec mango"} # uwsm works but the .desktop file is broken for mango (mango flake issue)
       end
     '';
   };
