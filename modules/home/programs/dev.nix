@@ -35,6 +35,9 @@
       "toml"
       "zig"
       "sql"
+      "qml"
+      "make"
+      "neocmake"
     ];
     userSettings = {
       load_direnv = "shell_hook";
