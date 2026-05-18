@@ -4,7 +4,7 @@ my personal nixos config utilizing flakes & home-manager
 
 ## features
 
-- **WM**: [hyprland](https://hyprland.org/)
+- **WM/DE**: [hyprland](https://hyprland.org/), [mango](https://mangowm.github.io/) and [plasma](https://kde.org/)
 - **theme**: rose pine via [stylix](https://github.com/nix-community/stylix)
 - **formatting**: [alejandra](https://github.com/kamadorueda/alejandra)
 
@@ -30,9 +30,9 @@ my personal nixos config utilizing flakes & home-manager
    
 alot of stuff in this project is hardware-specfic, so you should generate a `hardware-configuration.nix` using the [nixos-generate](https://nixos.wiki/wiki/Nixos-generate-config) tool and place it in the root of the project.
 
-modify `/modules/system/hardware.nix` and `home/windowManager/hyprland/monitors.nix` to match your system.
+modify `/modules/system/hardware.nix` and `home/windowManager/(hyprland/mango)/monitors.nix` to match your system.
 
 3. **build and switch**:
    ```bash
-   nixos-rebuild switch --flake .#hyprland
+   nixos-rebuild switch --flake .#(hyprland/kde/kde)
    ```
