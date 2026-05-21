@@ -5,8 +5,5 @@
     ./desktop.nix
     ./services.nix
     ./users.nix
-    ./hyprland.nix
-    ./kde.nix
-    ./mango.nix
   ];
 }

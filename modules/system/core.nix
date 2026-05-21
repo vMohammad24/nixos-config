@@ -3,14 +3,6 @@
   lib,
   ...
 }: {
-  options = {
-    myConfig.desktop = lib.mkOption {
-      type = lib.types.enum ["hyprland" "kde" "mango"];
-      default = "hyprland";
-      description = "The desktop environment to use.";
-    };
-  };
-
   config = {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;

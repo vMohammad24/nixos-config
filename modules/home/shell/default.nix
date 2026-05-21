@@ -13,12 +13,12 @@
       ll = "eza -l -g --icons";
       la = "eza -a --icons";
       ssh = "kitten ssh";
-      nrb = "sudo nixos-rebuild switch --flake .#${osConfig.myConfig.desktop}";
+      nrb = "sudo nixos-rebuild switch --flake .#main-desktop";
     };
-    loginShellInit = lib.mkIf (osConfig.myConfig.desktop != "kde") ''
+    loginShellInit = lib.mkIf (!osConfig.myConfig.desktops.kde.enable) ''
       if test "$XDG_VTNR" -eq 1 && uwsm check may-start
-        ${lib.optionalString (osConfig.myConfig.desktop == "hyprland") "exec uwsm start hyprland-uwsm.desktop"}
-        ${lib.optionalString (osConfig.myConfig.desktop == "mango") "exec mango"} # uwsm works but the .desktop file is broken for mango (mango flake issue)
+        ${lib.optionalString osConfig.myConfig.desktops.hyprland.enable "exec uwsm start hyprland-uwsm.desktop"}
+        ${lib.optionalString osConfig.myConfig.desktops.mango.enable "exec mango"}
       end
     '';
   };

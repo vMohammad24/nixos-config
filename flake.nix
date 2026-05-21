@@ -37,38 +37,34 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: let
-    mkSystem = desktop:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs desktop;};
-        modules = [
-          ./configuration.nix
-          {
-            myConfig.desktop = desktop;
-          }
-          inputs.stylix.nixosModules.stylix
-          inputs.agenix.nixosModules.default
-          inputs.vicinae.nixosModules.default
-          inputs.mangowm.nixosModules.mango
-          ./modules/stylix.nix
-          {
-            nixpkgs.config.allowUnfree = true;
-          }
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {inherit inputs;};
-              users.vmohammad = ./home.nix;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-      };
-  in {
-    nixosConfigurations.hyprland = mkSystem "hyprland";
-    nixosConfigurations.kde = mkSystem "kde";
-    nixosConfigurations.mango = mkSystem "mango";
+  } @ inputs: {
+    nixosConfigurations.main-desktop = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/main-desktop/default.nix
+        ./modules/system
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit inputs;};
+            users.vmohammad = ./users/vmohammad/default.nix;
+            backupFileExtension = "backup";
+          };
+        }
+        inputs.stylix.nixosModules.stylix
+        inputs.agenix.nixosModules.default
+        inputs.vicinae.nixosModules.default
+        inputs.mangowm.nixosModules.mango
+        ./modules/stylix.nix
+        {
+          nixpkgs.config.allowUnfree = true;
+        }
+        ./modules/desktops/hyprland.nix
+        ./modules/desktops/kde.nix
+        ./modules/desktops/mango.nix
+      ];
+    };
   };
 }
