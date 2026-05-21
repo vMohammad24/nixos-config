@@ -1,4 +1,12 @@
 {pkgs, ...}: {
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+  };
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;

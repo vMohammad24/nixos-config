@@ -63,7 +63,7 @@
     };
   };
 
-  programs.framr = {
+      programs.framr = {
     enable = true;
     settings = {
       default_uploader = "nest.rip";
@@ -76,7 +76,7 @@
           request_method = "POST";
           request_url = "https://nest.rip/api/files/upload";
           parameters = [];
-          headers = [["Authorization" "file:${config.age.secrets.nest_api_key.path}"]];
+          headers = [["Authorization" "file:/run/agenix/nest_api_key"]];
           body_type = "FormData";
           arguments = [];
           file_form_name = "files";
