@@ -9,7 +9,6 @@
     boot.kernelModules = ["ntfs3"];
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
-    networking.hostName = "nixos";
     networking.networkmanager.enable = true;
     networking.hosts = {
       "0.0.0.0" = [
