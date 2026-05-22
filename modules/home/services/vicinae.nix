@@ -1,11 +1,6 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  programs.vicinae = {
+{...}: {
+  services.vicinae = {
     enable = true;
-    package = inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings = {
       close_on_focus_loss = false;
       activate_on_single_click = true;
@@ -89,8 +84,10 @@
         };
       };
     };
+
     systemd = {
-      enable = false;
+      enable = true;
+      autoStart = true;
     };
   };
 }
