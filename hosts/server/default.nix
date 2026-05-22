@@ -5,11 +5,12 @@
   ];
 
   networking.hostName = "server";
-  services.logind = {
-    lidSwitch = "ignore";
-    lidSwitchExternalPower = "ignore";
-    lidSwitchDocked = "ignore";
-    powerKey = "reboot";
+  services.logind.settings = {
+    Login = {
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
+    };
   };
   services.openssh = {
     enable = true;
