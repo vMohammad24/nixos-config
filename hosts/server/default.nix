@@ -1,11 +1,15 @@
-{lib, ...}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
     ./secrets.nix
   ];
 
   networking.hostName = "server";
-
+  services.logind = {
+    lidSwitch = "ignore";
+    lidSwitchDocked = "ignore";
+    lidSwitchExternalPower = "ignore";
+  };
   services.openssh = {
     enable = true;
     settings = {
