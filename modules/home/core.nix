@@ -1,6 +1,8 @@
 {
   pkgs,
   config,
+  lib,
+  osConfig,
   ...
 }: {
   home.username = "vmohammad";
@@ -9,7 +11,7 @@
 
   programs.home-manager.enable = true;
 
-  xdg.mimeApps = {
+  xdg.mimeApps = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
     enable = true;
     defaultApplications = {
       "text/*" = ["firefox.desktop"];
@@ -26,20 +28,20 @@
     };
   };
 
-  xdg.userDirs = {
+  xdg.userDirs = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
     enable = true;
     createDirectories = true;
     setSessionVariables = false;
   };
 
-  xdg.terminal-exec = {
+  xdg.terminal-exec = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
     enable = true;
     settings = {
       default = ["kitty.desktop"];
     };
   };
 
-  gtk = {
+  gtk = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
     enable = true;
     gtk3.bookmarks = let
       home = config.home.homeDirectory;
@@ -53,8 +55,9 @@
 
   programs.fastfetch.enable = true;
   programs.eza.enable = true;
-  programs.mpv.enable = true;
-  programs.mangohud = {
+
+  programs.mpv.enable = lib.mkDefault false;
+  programs.mangohud = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
     enable = true;
     enableSessionWide = true;
     settings = {
@@ -63,7 +66,7 @@
     };
   };
 
-  programs.framr = {
+  programs.framr = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
     enable = true;
     settings = {
       default_uploader = "nest.rip";
@@ -87,39 +90,42 @@
     };
   };
 
-  home.packages = with pkgs; [
-    # core
-    thunar
-    udiskie
+  home.packages = with pkgs;
+    [
+      rclone
+      rsrpc
+      watchexec
+      glib
+      glib-networking
+    ]
+    ++ lib.optionals (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) [
+      # core
+      thunar
+      udiskie
 
-    # apps
-    hyprpolkitagent
-    protonup-rs
-    wayland-utils
-    glib
-    glib-networking
-    bs-manager
-    teamspeak6-client
-    qview
-    bruno
-    feishin
-    mitmproxy
-    mullvad-vpn
-    prismlauncher
-    watchexec
-    jetbrains-toolbox
-    discord-canary
-    # utils/essentials
-    hyprpicker
-    libnotify
-    pavucontrol
-    brightnessctl
-    playerctl
-    rclone
-    rsrpc
-    #  screenshot & clipboard
-    grim
-    slurp
-    wl-clipboard
-  ];
+      # apps
+      hyprpolkitagent
+      protonup-rs
+      wayland-utils
+      bs-manager
+      teamspeak6-client
+      qview
+      bruno
+      feishin
+      mitmproxy
+      mullvad-vpn
+      prismlauncher
+      jetbrains-toolbox
+      discord-canary
+      # utils/essentials
+      hyprpicker
+      libnotify
+      pavucontrol
+      brightnessctl
+      playerctl
+      #  screenshot & clipboard
+      grim
+      slurp
+      wl-clipboard
+    ];
 }
