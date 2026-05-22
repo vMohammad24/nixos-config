@@ -34,10 +34,12 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     home-manager,
     ...
   } @ inputs: {
+    formatter.x86_64-linux = inputs.alejandra.packages.x86_64-linux.default;
     nixosConfigurations.main-desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
@@ -64,6 +66,27 @@
         ./modules/desktops/hyprland.nix
         ./modules/desktops/kde.nix
         ./modules/desktops/mango.nix
+      ];
+    };
+    nixosConfigurations.server = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/server/default.nix
+        ./modules/system
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit inputs;};
+            users.vmohammad = ./users/vmohammad/default.nix;
+            backupFileExtension = "backup";
+          };
+        }
+        inputs.agenix.nixosModules.default
+        {
+          nixpkgs.config.allowUnfree = true;
+        }
       ];
     };
   };
