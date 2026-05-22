@@ -8,13 +8,18 @@
     interactiveShellInit = ''
       set fish_greeting # disable greeting
     '';
-    shellAliases = {
-      ls = "eza --icons";
-      ll = "eza -l -g --icons";
-      la = "eza -a --icons";
-      ssh = "kitten ssh";
-      nrb = "sudo nixos-rebuild switch --flake .#main-desktop";
-    };
+    shellAliases =
+      {
+        ls = "eza --icons";
+        ll = "eza -l -g --icons";
+        la = "eza -a --icons";
+        ssh = "kitten ssh";
+        nrb = "sudo nixos-rebuild switch --flake .#server";
+      }
+      // lib.mkIf osConfig.myConfig.isDesktop {
+        nrbs = "nixos-rebuild switch --flake .#server --target-host vmohammad@192.168.0.209 --sudo";
+        nrb = "sudo nixos-rebuild switch --flake .#main-desktop";
+      };
     loginShellInit = lib.mkIf (!osConfig.myConfig.desktops.kde.enable or true) ''
       if test "$XDG_VTNR" -eq 1 && uwsm check may-start
         ${lib.optionalString (osConfig.myConfig.desktops.hyprland.enable or false) "exec uwsm start hyprland-uwsm.desktop"}
