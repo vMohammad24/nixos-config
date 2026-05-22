@@ -3,8 +3,11 @@
   inputs,
   config,
   lib,
+  osConfig,
   ...
-}: {
+}: let
+  isDesktop = osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false;
+in {
   services.getty.autologinUser = lib.mkIf (!config.myConfig.desktops.kde.enable or true) "vmohammad";
   nix.settings.trusted-users = ["root" "vmohammad"];
   users.users.vmohammad = {
@@ -23,15 +26,15 @@
   };
 
   programs.fish.enable = true;
-  programs.firefox.enable = true;
-  programs.gamemode.enable = true;
-  programs.steam = {
+  programs.firefox.enable = isDesktop;
+  programs.gamemode.enable = isDesktop;
+  programs.steam = lib.mkIf isDesktop {
     enable = true;
     gamescopeSession.enable = true;
     remotePlay.openFirewall = true;
   };
-  programs.localsend.enable = true;
-  programs.virt-manager.enable = true;
+  programs.localsend.enable = isDesktop;
+  programs.virt-manager.enable = isDesktop;
 
   environment.systemPackages = with pkgs; [
     vim

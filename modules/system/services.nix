@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  osConfig,
+  pkgs,
+  lib,
+  ...
+}: let
+  isDesktop = osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false;
+in {
   services.openssh = {
     enable = true;
     settings = {
@@ -6,8 +13,13 @@
       PasswordAuthentication = false;
     };
   };
+  virtualisation.libvirtd.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
-  services.pipewire = {
+  services.pipewire = lib.mkIf isDesktop {
     enable = true;
     pulse.enable = true;
     alsa.enable = true;
@@ -31,32 +43,26 @@
     };
   };
 
-  services.sunshine = {
+  services.sunshine = lib.mkIf isDesktop {
     enable = true;
     autoStart = false;
     capSysAdmin = true;
     openFirewall = true;
   };
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
-
-  services.wivrn = {
+  services.wivrn = lib.mkIf isDesktop {
     enable = true;
     openFirewall = true;
     autoStart = true;
     package = pkgs.wivrn.override {cudaSupport = true;};
   };
 
-  services.gnome.gnome-keyring.enable = true;
-  services.gvfs.enable = true;
-  services.gnome.tinysparql.enable = true;
-  services.gnome.localsearch.enable = true;
-  services.udisks2.enable = true;
-  services.devmon.enable = true;
-  services.mullvad-vpn.enable = true;
-  services.mullvad-vpn.package = pkgs.mullvad-vpn;
+  services.gnome.gnome-keyring.enable = isDesktop;
+  services.gvfs.enable = isDesktop;
+  services.gnome.tinysparql.enable = isDesktop;
+  services.gnome.localsearch.enable = isDesktop;
+  services.udisks2.enable = isDesktop;
+  services.devmon.enable = isDesktop;
+  services.mullvad-vpn.enable = isDesktop;
+  services.mullvad-vpn.package = lib.mkIf isDesktop pkgs.mullvad-vpn;
 }
