@@ -73,6 +73,7 @@
       modules = [
         ./hosts/server/default.nix
         ./modules/system
+        ./modules/stylix.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {

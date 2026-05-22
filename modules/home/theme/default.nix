@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  osConfig,
-  ...
-}: {
+{pkgs, ...}: {
   gtk = {
     enable = true;
     gtk4.theme = null;
@@ -13,7 +8,7 @@
     };
   };
 
-  stylix.targets = lib.mkIf osConfig.myConfig.isDesktop {
+  stylix.targets = {
     hyprlock.enable = false;
     waybar.enable = false;
   };
