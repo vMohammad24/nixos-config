@@ -84,6 +84,7 @@
           };
         }
         inputs.agenix.nixosModules.default
+        inputs.stylix.nixosModules.stylix
         {
           nixpkgs.config.allowUnfree = true;
         }
