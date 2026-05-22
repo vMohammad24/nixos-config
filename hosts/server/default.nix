@@ -6,8 +6,6 @@
 
   networking.hostName = "server";
 
-  myConfig.desktops.hyprland.enable = false;
-
   services.openssh = {
     enable = true;
     settings = {
