@@ -5,11 +5,7 @@
   ];
 
   networking.hostName = "server";
-  services.logind = {
-    lidSwitch = "ignore";
-    lidSwitchDocked = "ignore";
-    lidSwitchExternalPower = "ignore";
-  };
+  services.upower.ignoreLid = true;
   services.openssh = {
     enable = true;
     settings = {
