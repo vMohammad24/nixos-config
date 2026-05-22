@@ -65,7 +65,7 @@
                 confirm = false;
               };
             };
-            shutdown = {
+            "power-off" = {
               preferences = {
                 customProgram = "systemctl poweroff";
                 confirm = false;
