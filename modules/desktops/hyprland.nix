@@ -30,7 +30,7 @@ in {
         ../../modules/home/services/hypridle.nix
         ../../modules/home/services/hyprlock.nix
         ../../modules/home/services/mako.nix
-        ../../modules/home/programs/waybar
+        ../../modules/home/programs/bars
       ];
     };
   };
