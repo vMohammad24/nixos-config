@@ -5,7 +5,12 @@
   ];
 
   networking.hostName = "server";
-  services.upower.ignoreLid = true;
+  systemd.targets = {
+    sleep.enable = false;
+    suspend.enable = false;
+    hibernate.enable = false;
+    hybrid-sleep.enable = false;
+  };
   services.openssh = {
     enable = true;
     settings = {
