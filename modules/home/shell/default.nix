@@ -15,10 +15,10 @@
       ssh = "kitten ssh";
       nrb = "sudo nixos-rebuild switch --flake .#main-desktop";
     };
-    loginShellInit = lib.mkIf (!osConfig.myConfig.desktops.kde.enable) ''
+    loginShellInit = lib.mkIf (!osConfig.myConfig.desktops.kde.enable or true) ''
       if test "$XDG_VTNR" -eq 1 && uwsm check may-start
-        ${lib.optionalString osConfig.myConfig.desktops.hyprland.enable "exec uwsm start hyprland-uwsm.desktop"}
-        ${lib.optionalString osConfig.myConfig.desktops.mango.enable "exec mango"}
+        ${lib.optionalString (osConfig.myConfig.desktops.hyprland.enable or false) "exec uwsm start hyprland-uwsm.desktop"}
+        ${lib.optionalString (osConfig.myConfig.desktops.mango.enable or false) "exec mango"}
       end
     '';
   };

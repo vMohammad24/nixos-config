@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  stylix.targets = {
-    hyprlock.enable = false;
-    waybar.enable = false;
-  };
-
   gtk = {
     enable = true;
     gtk4.theme = null;

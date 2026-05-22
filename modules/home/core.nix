@@ -63,7 +63,7 @@
     };
   };
 
-      programs.framr = {
+  programs.framr = {
     enable = true;
     settings = {
       default_uploader = "nest.rip";
