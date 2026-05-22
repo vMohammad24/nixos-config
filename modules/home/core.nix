@@ -56,7 +56,7 @@
   programs.fastfetch.enable = true;
   programs.eza.enable = true;
 
-  programs.mpv.enable = lib.mkDefault false;
+  programs.mpv.enable = osConfig.myConfig.isDesktop;
   programs.mangohud = lib.mkIf osConfig.myConfig.isDesktop {
     enable = true;
     enableSessionWide = true;
