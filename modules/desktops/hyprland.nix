@@ -29,8 +29,8 @@ in {
         ../../modules/home/services/hyprpaper.nix
         ../../modules/home/services/hypridle.nix
         ../../modules/home/services/hyprlock.nix
+        ../../modules/home/programs/bars/waybar.nix
         ../../modules/home/services/mako.nix
-        ../../modules/home/programs/bars
       ];
     };
   };
