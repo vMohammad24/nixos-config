@@ -3,10 +3,9 @@
   inputs,
   config,
   lib,
-  osConfig,
   ...
 }: let
-  isDesktop = osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false;
+  isDesktop = config.myConfig.isDesktop;
 in {
   services.getty.autologinUser = lib.mkIf (!config.myConfig.desktops.kde.enable or true) "vmohammad";
   nix.settings.trusted-users = ["root" "vmohammad"];

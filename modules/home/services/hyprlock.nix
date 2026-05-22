@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   c = config.lib.stylix.colors;
 in {
   programs.hyprlock = {
@@ -8,7 +12,7 @@ in {
         hide_cursor = true;
       };
 
-      background = [
+      background = lib.mkForce [
         {
           path = "${config.stylix.image}";
           blur_passes = 3;

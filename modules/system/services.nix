@@ -1,10 +1,10 @@
 {
-  osConfig,
+  config,
   pkgs,
   lib,
   ...
 }: let
-  isDesktop = osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false;
+  isDesktop = config.myConfig.isDesktop;
 in {
   services.openssh = {
     enable = true;
@@ -61,7 +61,7 @@ in {
   services.gvfs.enable = isDesktop;
   services.gnome.tinysparql.enable = isDesktop;
   services.gnome.localsearch.enable = isDesktop;
-  services.udisks2.enable = isDesktop;
+  services.udisks2.enable = lib.mkForce isDesktop;
   services.devmon.enable = isDesktop;
   services.mullvad-vpn.enable = isDesktop;
   services.mullvad-vpn.package = lib.mkIf isDesktop pkgs.mullvad-vpn;

@@ -11,7 +11,7 @@
 
   programs.home-manager.enable = true;
 
-  xdg.mimeApps = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
+  xdg.mimeApps = lib.mkIf osConfig.myConfig.isDesktop {
     enable = true;
     defaultApplications = {
       "text/*" = ["firefox.desktop"];
@@ -28,20 +28,20 @@
     };
   };
 
-  xdg.userDirs = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
+  xdg.userDirs = lib.mkIf osConfig.myConfig.isDesktop {
     enable = true;
     createDirectories = true;
     setSessionVariables = false;
   };
 
-  xdg.terminal-exec = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
+  xdg.terminal-exec = lib.mkIf osConfig.myConfig.isDesktop {
     enable = true;
     settings = {
       default = ["kitty.desktop"];
     };
   };
 
-  gtk = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
+  gtk = lib.mkIf osConfig.myConfig.isDesktop {
     enable = true;
     gtk3.bookmarks = let
       home = config.home.homeDirectory;
@@ -57,7 +57,7 @@
   programs.eza.enable = true;
 
   programs.mpv.enable = lib.mkDefault false;
-  programs.mangohud = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
+  programs.mangohud = lib.mkIf osConfig.myConfig.isDesktop {
     enable = true;
     enableSessionWide = true;
     settings = {
@@ -66,7 +66,7 @@
     };
   };
 
-  programs.framr = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) {
+  programs.framr = lib.mkIf osConfig.myConfig.isDesktop {
     enable = true;
     settings = {
       default_uploader = "nest.rip";
@@ -98,7 +98,7 @@
       glib
       glib-networking
     ]
-    ++ lib.optionals (osConfig.myConfig.desktops.hyprland.enable or osConfig.myConfig.desktops.kde.enable or false) [
+    ++ lib.optionals osConfig.myConfig.isDesktop [
       # core
       thunar
       udiskie
