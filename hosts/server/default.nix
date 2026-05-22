@@ -9,6 +9,7 @@
     lidSwitch = "ignore";
     lidSwitchExternalPower = "ignore";
     lidSwitchDocked = "ignore";
+    powerKey = "reboot";
   };
   services.openssh = {
     enable = true;
