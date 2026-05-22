@@ -29,9 +29,4 @@
 
   programs.nix-index.enable = true;
   programs.nix-index-database.comma.enable = true;
-
-  stylix.targets = lib.mkIf (osConfig.myConfig.desktops.hyprland.enable or false) {
-    hyprlock.enable = false;
-    waybar.enable = false;
-  };
 }
