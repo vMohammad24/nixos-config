@@ -267,11 +267,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1778794495,
-        "narHash": "sha256-iCR79OOUQ4yUwTcAVE+cXt48NcP66lcdYTyE4fL66xk=",
+        "lastModified": 1779405901,
+        "narHash": "sha256-FhJwKiyhaJKwlqQqOUZHvynyg8AEEQhlSsH0eFn7oE8=",
         "owner": "vMohammad24",
         "repo": "framr",
-        "rev": "93ec0a3be28a3e5d5e322e5bc616039a0fa0e635",
+        "rev": "06ddc10da76ef19ee0b9d5a9a0420e5f9bceb0cc",
         "type": "github"
       },
       "original": {
@@ -382,11 +382,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1779374955,
-        "narHash": "sha256-+13OMQhxn3ST5A7UumIx+piClFSF4Skj1i4ze6rQ9K4=",
+        "lastModified": 1779418019,
+        "narHash": "sha256-8yKYgu903l8MSgOtSdJjjo/2hfGmp4bDv3l6zKQdbTw=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "da1e1cadf7030d9e5775c8717dbd27c409276704",
+        "rev": "33735a796f6dc325e51e3ea624d1e231140defda",
         "type": "github"
       },
       "original": {
@@ -806,11 +806,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1779380654,
-        "narHash": "sha256-7AKg1jbqH7G/+qHHgzSB/jbwMKJ57xtox5M9LNwNzD0=",
+        "lastModified": 1779412913,
+        "narHash": "sha256-/jruHpzwoHdksUVqx0b/JHhR4EA4siNKvnsKOBrAAJk=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "580b9f79d5c4c147e95dd1162561e2acb8efbce0",
+        "rev": "4abc6218ead0a162a325b14cbd185a10df53835f",
         "type": "github"
       },
       "original": {
