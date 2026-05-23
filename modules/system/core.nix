@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   config = {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
@@ -24,8 +20,10 @@
         3000
         1701
         8080
+        53
+        443
       ];
-      allowedUDPPorts = [25565];
+      allowedUDPPorts = [25565 53];
     };
 
     time.timeZone = "Asia/Amman";

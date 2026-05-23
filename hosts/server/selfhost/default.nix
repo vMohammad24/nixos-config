@@ -27,4 +27,25 @@
       };
     };
   };
+
+  services.pihole-ftl = {
+    enable = true;
+    settings = {
+      dns.upstreams = ["1.1.1.1" "1.0.0.1"];
+    };
+
+    lists = [
+      {
+        url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+        type = "block";
+        enabled = true;
+        description = "StevenBlack blocklist";
+      }
+    ];
+  };
+
+  services.pihole-web = {
+    enable = true;
+    ports = ["443s"];
+  };
 }
