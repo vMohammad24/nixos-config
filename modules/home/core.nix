@@ -66,6 +66,35 @@
     };
   };
 
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    settings = {
+      "github.com" = {
+        HostName = "github.com";
+        IdentityFile = "~/.ssh/id_rsa";
+        IdentitiesOnly = "yes";
+        AddKeysToAgent = "yes";
+      };
+
+      "server" = {
+        User = "vmohammad";
+        HostName = "192.168.0.209";
+        Port = 22;
+        IdentityFile = "~/.ssh/id_rsa";
+        IdentitiesOnly = "yes";
+      };
+
+      "rpi" = {
+        User = "vmohammad";
+        HostName = "192.168.0.236";
+        Port = 22;
+        IdentityFile = "~/.ssh/id_rsa";
+        IdentitiesOnly = "yes";
+      };
+    };
+  };
+
   programs.framr = lib.mkIf osConfig.myConfig.isDesktop {
     enable = true;
     settings = {
