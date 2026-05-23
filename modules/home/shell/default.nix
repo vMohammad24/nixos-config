@@ -16,7 +16,7 @@
         ssh = "kitten ssh";
         nrb = "sudo nixos-rebuild switch --flake .#server";
       }
-      // lib.mkIf osConfig.myConfig.isDesktop {
+      // lib.optionalAttrs osConfig.myConfig.isDesktop {
         nrbs = "nixos-rebuild switch --flake .#server --target-host vmohammad@192.168.0.209 --sudo";
         nrb = "sudo nixos-rebuild switch --flake .#main-desktop";
       };
