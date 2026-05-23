@@ -13,6 +13,7 @@
         "paradiseenhanced-s1.battleye.com"
       ];
     };
+    networking.nftables.enable = true;
     networking.firewall = {
       enable = true;
       allowedTCPPorts = [
