@@ -209,7 +209,7 @@
 
   home.packages = with pkgs; [
     bun
-    nodejs_25
+    nodejs_26
     cargo
     rustc
     gcc
