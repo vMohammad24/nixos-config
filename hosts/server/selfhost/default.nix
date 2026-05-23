@@ -20,7 +20,7 @@
         };
 
         ingress = {
-          "dev.vmohammad.dev" = "http://192.168.0.148:3000";
+          "dev.vmohammad.dev" = "http://192.168.1.30:3000";
           "vw.vmohammad.dev" = "http://127.0.0.1:8222";
         };
         default = "http_status:503";

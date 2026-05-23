@@ -79,7 +79,7 @@
 
       "server" = {
         User = "vmohammad";
-        HostName = "192.168.0.209";
+        HostName = "192.168.1.31";
         Port = 22;
         IdentityFile = "~/.ssh/id_rsa";
         IdentitiesOnly = "yes";
@@ -87,7 +87,7 @@
 
       "rpi" = {
         User = "vmohammad";
-        HostName = "192.168.0.236";
+        HostName = "192.168.1.32";
         Port = 22;
         IdentityFile = "~/.ssh/id_rsa";
         IdentitiesOnly = "yes";

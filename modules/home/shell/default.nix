@@ -17,7 +17,7 @@
         nrb = "sudo nixos-rebuild switch --flake .#server";
       }
       // lib.optionalAttrs osConfig.myConfig.isDesktop {
-        nrbs = "nixos-rebuild switch --flake .#server --target-host vmohammad@192.168.0.209 --sudo";
+        nrbs = "nixos-rebuild switch --flake .#server --target-host vmohammad@192.168.1.31 --sudo";
         nrb = "sudo nixos-rebuild switch --flake .#main-desktop";
       };
     loginShellInit = lib.mkIf (!osConfig.myConfig.desktops.kde.enable or true) ''
