@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./secrets.nix
+    ./selfhost
   ];
 
   networking.hostName = "server";
