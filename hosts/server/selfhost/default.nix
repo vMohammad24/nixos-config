@@ -13,7 +13,7 @@
     enable = true;
     tunnels = {
       "3d9a81e9-9dab-43a5-b910-2240006a90dc" = {
-        credentialsFile = "/run/agenix/cloudflared.age";
+        credentialsFile = "/run/agenix/cloudflared";
 
         "warp-routing" = {
           enabled = true;
