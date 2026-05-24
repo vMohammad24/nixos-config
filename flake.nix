@@ -20,6 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vicinae.url = "github:vicinaehq/vicinae";
+    tss.url = "github:vMohammad24/TidalSubSonic";
     framr.url = "github:vMohammad24/framr";
     agenix.url = "github:ryantm/agenix";
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -86,6 +87,7 @@
         }
         inputs.agenix.nixosModules.default
         inputs.stylix.nixosModules.stylix
+        inputs.tss.nixosModules.default
         {
           nixpkgs.config.allowUnfree = true;
         }
