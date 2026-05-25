@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./secrets.nix
     ./selfhost
+    ./nvidia-block.nix
   ];
 
   networking.hostName = "server";
