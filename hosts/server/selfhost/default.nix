@@ -34,8 +34,20 @@
 
   services.pihole-ftl = {
     enable = true;
+    privacyLevel = 3;
+
     settings = {
-      dns.upstreams = ["1.1.1.1" "1.0.0.1"];
+      dns = {
+        upstreams = ["1.1.1.1" "1.0.0.1"];
+        queryLogging = false;
+        dnssec = true;
+        EDNS0ECS = false;
+        ignoreLocalhost = true;
+      };
+
+      database.maxDBdays = 0;
+      misc.extraLogging = false;
+      webserver.api.cli_pw = true;
     };
 
     lists = [
@@ -50,6 +62,6 @@
 
   services.pihole-web = {
     enable = true;
-    ports = ["443s"];
+    ports = ["127.0.0.1:8080"];
   };
 }
