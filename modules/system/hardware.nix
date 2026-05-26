@@ -55,29 +55,4 @@ in {
       "x-gvfs-show"
     ];
   };
-
-  fileSystems."/mnt/eSSD" = {
-    device = "/dev/disk/by-uuid/9c35301d-c3e9-4982-8048-090861bab459";
-    fsType = "xfs";
-    options = [
-      "defaults"
-      "noatime"
-      "nofail"
-      "x-gvfs-show"
-    ];
-  };
-
-  fileSystems."/mnt/why" = {
-    device = "/dev/disk/by-uuid/2E783FBE783F841D";
-    fsType = "ntfs3";
-    options = [
-      "rw"
-      "uid=1000"
-      "gid=100"
-      "umask=000"
-      "exec"
-      "nofail"
-      "x-gvfs-show"
-    ];
-  };
 }
