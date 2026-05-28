@@ -7,6 +7,7 @@
   ];
 
   networking.hostName = "server";
+
   services.logind.settings = {
     Login = {
       HandleLidSwitch = "ignore";
@@ -14,7 +15,9 @@
       HandleLidSwitchDocked = "ignore";
     };
   };
+
   security.sudo.wheelNeedsPassword = false;
+
   services.openssh = {
     enable = true;
     settings = {
@@ -22,6 +25,17 @@
       PasswordAuthentication = false;
     };
     openFirewall = true;
+  };
+
+  fileSystems."/mnt/HDD" = {
+    device = "/dev/disk/by-uuid/a8a13d43-ce2d-43a6-b50d-34a1084722f4";
+    fsType = "xfs";
+    options = [
+      "defaults"
+      "noatime"
+      "nofail"
+      "x-gvfs-show"
+    ];
   };
 
   users.users.vmohammad.openssh.authorizedKeys.keys = [
