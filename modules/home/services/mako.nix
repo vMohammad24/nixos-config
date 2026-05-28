@@ -2,7 +2,7 @@
   services.mako = {
     enable = true;
     settings = {
-      output = "DP-2";
+      output = "DP-1";
       margin = 10;
       border-radius = 10;
       width = 400;
