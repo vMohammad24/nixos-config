@@ -1,4 +1,10 @@
-{...}: {
+{lib, ...}: let
+  serverIp = "192.168.1.31";
+
+  myServices = {
+    "home.local" = 8081;
+  };
+in {
   imports = [
     ./projects.nix
     ./glance.nix
@@ -44,6 +50,7 @@
         dnssec = true;
         EDNS0ECS = false;
         ignoreLocalhost = true;
+        hosts = lib.mapAttrsToList (domain: port: "${serverIp} ${domain}") myServices;
       };
 
       database.maxDBdays = 0;
@@ -64,5 +71,21 @@
   services.pihole-web = {
     enable = true;
     ports = ["127.0.0.1:8080"];
+  };
+
+  services.nginx = {
+    enable = true;
+
+    virtualHosts =
+      lib.mapAttrs (domain: port: {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:${toString port}";
+          extraConfig = ''
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+          '';
+        };
+      })
+      myServices;
   };
 }
