@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./projects.nix
+    ./glance.nix
   ];
   services.vaultwarden = {
     enable = true;
