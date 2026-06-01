@@ -54,7 +54,6 @@ in {
     enable = true;
     openFirewall = true;
     autoStart = true;
-    package = pkgs.wivrn.override {cudaSupport = true;};
   };
 
   services.gnome.gnome-keyring.enable = isDesktop;

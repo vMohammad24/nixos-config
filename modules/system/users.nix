@@ -43,7 +43,7 @@ in {
     git
     libsecret
     # change this if you have an AMD GPU (btop-rocm)
-    btop-cuda
+    btop-rocm
     p7zip
     fzf
     fd
