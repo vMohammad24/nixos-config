@@ -98,28 +98,26 @@ let
           }
         ];
       }
-      {
-        type = "reddit";
-        subreddit = "selfhosted";
-      }
+      # {
+      #   type = "reddit";
+      #   subreddit = "selfhosted";
+      # }
     ];
   };
 in {
-  home-manager.users.vmohammad = {
-    services.glance = {
-      enable = true;
-      settings = {
-        server = {
-          host = "0.0.0.0";
-          port = 8081;
-        };
-        pages = [
-          {
-            name = "Home";
-            columns = [leftColumn centerColumn rightColumn];
-          }
-        ];
+  services.glance = {
+    enable = true;
+    settings = {
+      server = {
+        host = "0.0.0.0";
+        port = 8081;
       };
+      pages = [
+        {
+          name = "Home";
+          columns = [leftColumn centerColumn rightColumn];
+        }
+      ];
     };
   };
 }
