@@ -27,11 +27,12 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.url = "github:nix-community/plasma-manager";
     mangowm.url = "github:mangowm/mango";
+    nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };
 
   nixConfig = {
-    extra-substituters = ["https://framr.cachix.org" "https://vicinae.cachix.org"];
-    extra-trusted-public-keys = ["framr.cachix.org-1:Nn6BXpOrE0I1sO89xW8l2WVcf2FD4UqU6PD30sgRLZk=" "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="];
+    extra-substituters = ["https://framr.cachix.org" "https://vicinae.cachix.org" "https://nix-amd-ai.cachix.org"];
+    extra-trusted-public-keys = ["framr.cachix.org-1:Nn6BXpOrE0I1sO89xW8l2WVcf2FD4UqU6PD30sgRLZk=" "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" "nix-amd-ai.cachix.org-1:F4OU4vw/lV2oiG6SBHZ+nqjl4EFJuqI4X9A7pvaBmhQ="];
   };
 
   outputs = {
@@ -47,6 +48,7 @@
         ./hosts/main-desktop/default.nix
         ./modules/system
         home-manager.nixosModules.home-manager
+        inputs.nix-amd-ai.nixosModules.default
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -76,6 +78,7 @@
         ./modules/system
         ./modules/stylix.nix
         home-manager.nixosModules.home-manager
+        inputs.nix-amd-ai.nixosModules.default
         {
           home-manager = {
             useGlobalPkgs = true;

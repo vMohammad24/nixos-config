@@ -8,6 +8,8 @@
 
   networking.hostName = "server";
 
+  myConfig.ai.enable = false;
+
   services.logind.settings = {
     Login = {
       HandleLidSwitch = "ignore";

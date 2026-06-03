@@ -6,6 +6,7 @@
 
   networking.hostName = "nixos";
 
+  myConfig.ai.enable = true;
   myConfig.desktops.hyprland.enable = true;
 
   specialisation = {
