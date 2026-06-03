@@ -5,6 +5,8 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     image = ../wallpaper.png;
 
+    targets.kmscon.enable = false;
+
     cursor = {
       package = pkgs.rose-pine-hyprcursor;
       name = "rose-pine-hyprcursor";
