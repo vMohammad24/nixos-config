@@ -10,13 +10,5 @@
         "match:title" = "^(Picture-in-Picture)$";
       }
     ];
-    layerrule = [
-      {
-        name = "vicinae-blur";
-        blur = true;
-        ignore_alpha = 0;
-        "match:namespace" = "vicinae";
-      }
-    ];
   };
 }
