@@ -144,7 +144,7 @@
       mitmproxy
       mullvad-vpn
       prismlauncher
-      jetbrains-toolbox
+      jetbrains.idea
       discord-canary
       # utils/essentials
       hyprpicker
