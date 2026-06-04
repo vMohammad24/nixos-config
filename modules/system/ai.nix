@@ -10,8 +10,8 @@
       enable = true;
       enableNPU = false;
       enableFastFlowLM = false;
-      enableLemonade = true;
-      enableROCm = true;
+      enableLemonade = false;
+      enableROCm = false;
       enableVulkan = true;
       enableImageGen = true;
       lemonade.user = "vmohammad";
