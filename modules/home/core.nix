@@ -102,6 +102,15 @@
       default_action = "UploadAndCopy";
       default_capture = "Area";
       default_screen = 1;
+
+      recording = {
+        encoder = "AV1";
+        bitrate = 4000;
+        keyframe_interval = 60;
+        tune = "Zerolatency";
+        speed = "Veryfast";
+      };
+
       uploaders = [
         {
           name = "nest.rip";
