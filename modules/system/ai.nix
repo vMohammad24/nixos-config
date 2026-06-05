@@ -10,7 +10,7 @@
       enable = true;
       enableNPU = false;
       enableFastFlowLM = false;
-      enableLemonade = false;
+      enableLemonade = true;
       enableROCm = false;
       enableVulkan = true;
       enableImageGen = true;
