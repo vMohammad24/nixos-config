@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  osConfig,
+  ...
+}: let
   c = config.lib.stylix.colors;
 in {
   programs.waybar = {
@@ -10,10 +14,16 @@ in {
         position = "top";
         height = 32;
         spacing = 4;
-        modules-left = [
-          "hyprland/workspaces"
-          "hyprland/window"
-        ];
+        modules-left =
+          if osConfig.myConfig.desktops.hyprland.enable
+          then [
+            "hyprland/workspaces"
+            "hyprland/window"
+          ]
+          else [
+            "ext/workspaces"
+            "dwl/window"
+          ];
         modules-center = ["clock"];
         modules-right = [
           "mpris"
@@ -22,6 +32,17 @@ in {
           "memory"
           "tray"
         ];
+
+        "ext/workspaces" = {
+          "format" = "{icon}";
+          "ignore-hidden" = true;
+          "on-click" = "activate";
+          "on-click-right" = "deactivate";
+          "sort-by-id" = true;
+        };
+        "dwl/window" = {
+          "format" = "[{layout}] {title}";
+        };
 
         "hyprland/workspaces" = {
           disable-scroll = true;
