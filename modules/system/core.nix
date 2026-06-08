@@ -42,6 +42,11 @@
     security.polkit.enable = true;
     programs.dconf.enable = true;
 
+    virtualisation.vmVariant = {
+      virtualisation.memorySize = 8192;
+      virtualisation.cores = 6;
+    };
+
     zramSwap = {
       enable = true;
       memoryPercent = 50;
