@@ -29,10 +29,11 @@ in {
         "${mainMod},Q,killclient"
         "${mainMod},M,reload_config"
         "${mainMod}+SHIFT,M,quit"
-        "${mainMod},space,togglefloating"
+        "${mainMod},space,spawn, vicinae toggle"
         "${mainMod},F,togglefullscreen"
         "${mainMod},D,togglemaximizescreen"
         "${mainMod}+ALT,F,togglefakefullscreen"
+        "${mainMod}+SHIFT,F,togglefloating"
         "ALT,Tab,focusstack,next"
         "CTRL+${mainMod},backslash,resizewin,640,480"
 
@@ -70,10 +71,6 @@ in {
       "NONE,XF86AudioPlay,spawn,playerctl play-pause"
       "NONE,XF86AudioPrev,spawn,playerctl previous"
       "NONE,XF86AudioNext,spawn,playerctl next"
-    ];
-
-    bindr = [
-      "Super,Super_L,spawn,vicinae toggle"
     ];
 
     mousebind = [
