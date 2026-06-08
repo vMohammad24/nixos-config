@@ -5,7 +5,10 @@
 }: {
   options.myConfig.isDesktop = lib.mkOption {
     type = lib.types.bool;
-    default = config.myConfig.desktops.hyprland.enable or config.myConfig.desktops.kde.enable or false;
+    default =
+      lib.any
+      (desktop: config.myConfig.desktops.${desktop}.enable or false)
+      ["hyprland" "kde" "mango"];
     description = "Whether the system is a desktop system.";
   };
 }
