@@ -1,14 +1,18 @@
-{...}: {
+{lib, ...}: let
+  h = import ./helpers.nix {inherit lib;};
+in {
   wayland.windowManager.hyprland.settings = {
-    windowrule = [
-      {
-        name = "firefox-pip";
-        float = true;
-        pin = true;
-        suppress_event = ["fullscreen" "maximize"];
-        "match:class" = "^(firefox)$";
-        "match:title" = "^(Picture-in-Picture)$";
-      }
+    window_rule = [
+      (h.windowRule "firefox-pip"
+        {
+          class = "^(firefox)$";
+          title = "^(Picture-in-Picture)$";
+        }
+        {
+          float = true;
+          pin = true;
+          suppress_event = "fullscreen maximize";
+        })
     ];
   };
 }

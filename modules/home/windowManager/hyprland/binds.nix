@@ -1,88 +1,97 @@
-{...}: let
+{lib, ...}: let
   mainMod = "SUPER";
+  h = import ./helpers.nix {inherit lib;};
 in {
   wayland.windowManager.hyprland.settings = {
+    mainMod = {
+      _var = mainMod;
+    };
+
     bind =
       [
         # apps
-        "${mainMod}, T, exec, uwsm app -- kitty"
-        "${mainMod}, W, exec, uwsm app -- firefox"
-        "${mainMod}, E, exec, uwsm app -- thunar"
-        "${mainMod} SHIFT, Z, exec, uwsm app -- zeditor"
-        "${mainMod} SHIFT, S, exec, uwsm app -- steam"
-        "${mainMod} SHIFT, P, exec, uwsm app -- prismlauncher"
-        "${mainMod} SHIFT, T, exec, uwsm app -- feishin"
-        "${mainMod} SHIFT, E, exec, uwsm app -- discordcanary"
+        (h.bindExec "T" "uwsm app -- kitty")
+        (h.bindExec "W" "uwsm app -- firefox")
+        (h.bindExec "E" "uwsm app -- thunar")
+        (h.bindExec "SHIFT + Z" "uwsm app -- zeditor")
+        (h.bindExec "SHIFT + S" "uwsm app -- steam")
+        (h.bindExec "SHIFT + P" "uwsm app -- prismlauncher")
+        (h.bindExec "SHIFT + T" "uwsm app -- feishin")
+        (h.bindExec "SHIFT + E" "uwsm app -- discordcanary")
 
         # power management
-        "CTRL ALT, delete, exec, vicinae deeplink vicinae://launch/power"
+        (h.bind "\"CTRL + ALT + delete\"" "hl.dsp.exec_cmd(\"vicinae deeplink vicinae://launch/power\")")
 
         # utils
-        "${mainMod}, P, exec, hyprpicker -a"
-        "${mainMod}, V, exec, vicinae vicinae://launch/clipboard/history"
-        "${mainMod}, S, exec, grim -g \"$(slurp)\" - | wl-copy"
-        "${mainMod}, comma, exec, vicinae vicinae://launch/core/search-emojis"
-        ", Print, exec, framr -u -c -a"
-        "${mainMod}, Print, exec, framr --record -u -c -a"
+        (h.bindExec "P" "hyprpicker -a")
+        (h.bindExec "V" "vicinae vicinae://launch/clipboard/history")
+        (h.bindExec "S" "grim -g \\\"$(slurp)\\\" - | wl-copy")
+        (h.bindExec "comma" "vicinae vicinae://launch/core/search-emojis")
+        (h.bind "\"Print\"" "hl.dsp.exec_cmd(\"framr -u -c -a\")")
+        (h.bindExec "Print" "framr --record -u -c -a")
+
         # window management
-        "${mainMod}, Q, killactive,"
-        "${mainMod} ALT, Q, exec, hyprctl kill"
-        "${mainMod}, M, exit,"
-        "${mainMod}, SPACE, togglefloating,"
-        "${mainMod}, F, fullscreen, 0"
-        "${mainMod}, D, fullscreen, 1"
-        "${mainMod} ALT, F, fullscreenstate, 0 3"
-        "ALT, Tab, cyclenext,"
-        "ALT, Tab, bringactivetotop,"
-        "Ctrl ${mainMod}, Backslash, resizeactive, exact 640 480"
+        (h.bindWindow "Q" "close")
+        (h.bindMod "ALT + Q" "hl.dsp.exec_cmd(\"hyprctl kill\")")
+        (h.bindWindow "M" "exit")
+        (h.bindWindow "SPACE" "float")
+        (h.bindWindow "F" "fullscreen")
+        (h.bindWindow "D" "maximize")
+        (h.bindMod "ALT + F" "hl.dsp.window.fullscreen_state({ internal = 0, client = 3, action = \"toggle\" })")
+        (h.bind "\"ALT + Tab\"" "hl.dsp.window.cycle_next()")
+        (h.bind "\"ALT + Tab\"" "hl.dsp.window.alter_zorder({ mode = \"top\" })")
+        (h.bind "\"CTRL + \" .. mainMod .. \" + Backslash\"" "hl.dsp.window.resize({ x = 640, y = 480, exact = true })")
 
         # focus
-        "${mainMod}, left, movefocus, l"
-        "${mainMod}, right, movefocus, r"
-        "${mainMod}, up, movefocus, u"
-        "${mainMod}, down, movefocus, d"
+        (h.bindFocus "left" "l")
+        (h.bindFocus "right" "r")
+        (h.bindFocus "up" "u")
+        (h.bindFocus "down" "d")
       ]
       ++ (
-        # workspaces (from https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#usage)
-        # binds $mod + [alt +] {1..9} to [move to] workspace {1..9}
         builtins.concatLists (
           builtins.genList (
             i: let
               ws = i + 1;
             in [
-              "${mainMod}, code:1${toString i}, workspace, ${toString ws}"
-              "${mainMod} ALT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              (h.bindWorkspace "code:1${toString i}" ws)
+              (h.bindMoveToWorkspace "ALT + code:1${toString i}" ws)
             ]
           )
           9
         )
-      );
+      )
+      ++ [
+        # super (app launcher)
+        (h.bindModFlags "SUPER_L" "hl.dsp.exec_cmd(\"vicinae toggle\")" {release = true;})
 
-    # super (app launcher)
-    bindr = [
-      "SUPER, SUPER_L, exec, vicinae toggle"
-    ];
+        # mouse
+        (h.bindModFlags "mouse:272" "hl.dsp.window.drag()" {mouse = true;})
+        (h.bindModFlags "mouse:273" "hl.dsp.window.resize()" {mouse = true;})
 
-    # mouse
-    bindm = [
-      "${mainMod}, mouse:272, movewindow"
-      "${mainMod}, mouse:273, resizewindow"
-    ];
+        # volume & brightness
+        (h.bindFlags "\"XF86AudioRaiseVolume\"" "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+\")" {
+          repeating = true;
+          locked = true;
+        })
+        (h.bindFlags "\"XF86AudioLowerVolume\"" "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-\")" {
+          repeating = true;
+          locked = true;
+        })
+        (h.bindFlags "\"XF86MonBrightnessUp\"" "hl.dsp.exec_cmd(\"brightnessctl s 10%+\")" {
+          repeating = true;
+          locked = true;
+        })
+        (h.bindFlags "\"XF86MonBrightnessDown\"" "hl.dsp.exec_cmd(\"brightnessctl s 10%-\")" {
+          repeating = true;
+          locked = true;
+        })
 
-    # volume & brightness (repeat on hold)
-    bindel = [
-      ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-      ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-      ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-    ];
-
-    # media controls (locked, no repeat)
-    bindl = [
-      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ",XF86AudioPlay, exec, playerctl play-pause"
-      ",XF86AudioPrev, exec, playerctl previous"
-      ",XF86AudioNext, exec, playerctl next"
-    ];
+        # media controls
+        (h.bindFlags "\"XF86AudioMute\"" "hl.dsp.exec_cmd(\"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\")" {locked = true;})
+        (h.bindFlags "\"XF86AudioPlay\"" "hl.dsp.exec_cmd(\"playerctl play-pause\")" {locked = true;})
+        (h.bindFlags "\"XF86AudioPrev\"" "hl.dsp.exec_cmd(\"playerctl previous\")" {locked = true;})
+        (h.bindFlags "\"XF86AudioNext\"" "hl.dsp.exec_cmd(\"playerctl next\")" {locked = true;})
+      ];
   };
 }
