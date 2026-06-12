@@ -155,6 +155,7 @@
       prismlauncher
       jetbrains.idea
       discord-canary
+      labymod-launcher
       # utils/essentials
       hyprpicker
       libnotify
