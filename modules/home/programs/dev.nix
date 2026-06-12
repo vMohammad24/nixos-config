@@ -217,5 +217,6 @@
     gnumake
     go
     zig
+    ghidra
   ];
 }
