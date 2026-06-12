@@ -19,14 +19,28 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tss = {
+      url = "github:vMohammad24/TidalSubSonic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     vicinae.url = "github:vicinaehq/vicinae";
-    tss.url = "github:vMohammad24/TidalSubSonic";
     framr.url = "github:vMohammad24/framr";
-    agenix.url = "github:ryantm/agenix";
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.url = "github:nix-community/plasma-manager";
-    mangowm.url = "github:mangowm/mango";
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };
 
