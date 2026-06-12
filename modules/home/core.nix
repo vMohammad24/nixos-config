@@ -156,6 +156,7 @@
       jetbrains.idea
       discord-canary
       labymod-launcher
+      blender
       # utils/essentials
       hyprpicker
       libnotify
