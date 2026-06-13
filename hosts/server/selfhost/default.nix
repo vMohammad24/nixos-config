@@ -14,6 +14,7 @@ in {
     config = {
       ROCKET_ADDRESS = "0.0.0.0";
       ROCKET_PORT = 8222;
+      SIGNUPS_ALLOWED = false;
     };
     dbBackend = "sqlite";
     domain = "vw.vmohammad.dev";
