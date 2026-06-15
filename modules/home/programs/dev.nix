@@ -4,11 +4,33 @@
     lfs.enable = true;
     settings = {
       user = {
-        name = "vMohammad24";
-        email = "62218284+vMohammad24@users.noreply.github.com";
+        name = "vMohammad";
+        email = "git@vmohammad.dev";
+        signingkey = "2BCEA4D1380380B8";
       };
       init.defaultBranch = "main";
+      commit.gpgsign = true;
+      tag.gpgSign = true;
+      gpg.program = "${pkgs.gnupg}/bin/gpg";
     };
+    includes = [
+      {
+        condition = "hasconfig:remote.*.url:https://github.com/**";
+        contents.user.name = "vMohammad24";
+      }
+      {
+        condition = "hasconfig:remote.*.url:git@github.com:*/**";
+        contents.user.name = "vMohammad24";
+      }
+    ];
+  };
+
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry-curses;
+    defaultCacheTtl = 86400;
+    maxCacheTtl = 86400;
   };
 
   programs.zed-editor = {
