@@ -8,6 +8,7 @@ in {
   imports = [
     ./projects.nix
     ./glance.nix
+    ./forgejo
   ];
   services.vaultwarden = {
     enable = true;

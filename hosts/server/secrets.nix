@@ -11,6 +11,12 @@
         file = ../../secrets/tss.age;
         mode = "0400";
       };
+      heliopolis-runner-token = {
+        file = ../../secrets/heliopolis-runner-token.age;
+        mode = "0400";
+        owner = "forgejo-runner";
+        group = "forgejo-runner";
+      };
     };
   };
 }

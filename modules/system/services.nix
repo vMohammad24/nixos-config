@@ -14,7 +14,7 @@ in {
     };
   };
   virtualisation.libvirtd.enable = true;
-  virtualisation.docker.rootless = {
+  virtualisation.docker.rootless = lib.mkIf isDesktop {
     enable = true;
     setSocketVariable = true;
   };
