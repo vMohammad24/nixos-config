@@ -47,7 +47,7 @@
             uuid = "6c3af0fb-c67e-410d-af39-a3cfb7d33dbf";
             labels = [
               "vmo-host:host"
-              "vmo-ubuntu:docker://node:26-bullseye"
+              "vmo-ubuntu:docker://catthehacker/ubuntu:act-latest"
             ];
           };
         };
