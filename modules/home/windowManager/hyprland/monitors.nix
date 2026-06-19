@@ -24,33 +24,5 @@ in {
       (h.workspaceRule "1" "DP-1")
       (h.workspaceRule "2" "DP-2")
     ];
-
-    # this is required for sunshine to be accurate with its passthrough
-    device = [
-      (h.monitor {
-        name = "pen-passthrough";
-        output = "DP-1";
-      })
-      (h.monitor {
-        name = "touch-passthrough-1";
-        output = "DP-1";
-      })
-      (h.monitor {
-        name = "touch-passthrough";
-        output = "DP-1";
-      })
-      (h.monitor {
-        name = "keyboard-passthrough";
-        output = "DP-1";
-      })
-      (h.monitor {
-        name = "mouse-passthrough";
-        output = "DP-1";
-      })
-      (h.monitor {
-        name = "mouse-passthrough-(absolute)";
-        output = "DP-1";
-      })
-    ];
   };
 }
