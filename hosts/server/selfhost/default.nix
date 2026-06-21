@@ -49,8 +49,6 @@ in {
       dns = {
         upstreams = ["1.1.1.1" "1.0.0.1"];
         queryLogging = false;
-        dnssec = true;
-        EDNS0ECS = false;
         ignoreLocalhost = true;
         hosts = lib.mapAttrsToList (domain: port: "${serverIp} ${domain}") myServices;
       };
