@@ -2,7 +2,6 @@
   inputs,
   lib,
   osConfig,
-  pkgs,
   ...
 }: {
   imports =
