@@ -60,10 +60,22 @@ in {
 
     lists = [
       {
-        url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
         type = "block";
         enabled = true;
-        description = "StevenBlack blocklist";
+        description = "HaGeZi Pro";
+      }
+      {
+        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt";
+        type = "block";
+        enabled = true;
+        description = "HaGeZi Threat Intelligence Feed";
+      }
+      {
+        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral.txt";
+        type = "allow";
+        enabled = true;
+        description = "HaGeZi referral allowlist";
       }
     ];
   };
