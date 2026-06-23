@@ -1,5 +1,5 @@
 {...}: {
-  services.vicinae = {
+  programs.vicinae = {
     enable = true;
     settings = {
       close_on_focus_loss = false;
