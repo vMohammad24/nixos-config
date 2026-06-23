@@ -17,6 +17,40 @@
         owner = "forgejo-runner";
         group = "forgejo-runner";
       };
+      mullvad-wg = {
+        file = ../../secrets/mullvad-wg.age;
+        mode = "0400";
+      };
+      prowlarr-milkie-apikey = {
+        file = ../../secrets/prowlarr-milkie-apikey.age;
+        mode = "0400";
+        owner = "prowlarr";
+        group = "prowlarr";
+      };
+      prowlarr-torrentleech-password = {
+        file = ../../secrets/prowlarr-torrentleech-password.age;
+        mode = "0400";
+        owner = "prowlarr";
+        group = "prowlarr";
+      };
+      prowlarr-torrentleech-2fa = {
+        file = ../../secrets/prowlarr-torrentleech-2fa.age;
+        mode = "0400";
+        owner = "prowlarr";
+        group = "prowlarr";
+      };
+      prowlarr-seedpool-apikey = {
+        file = ../../secrets/prowlarr-seedpool-apikey.age;
+        mode = "0400";
+        owner = "prowlarr";
+        group = "prowlarr";
+      };
+      grafana-secret-key = {
+        file = ../../secrets/grafana-secret-key.age;
+        mode = "0400";
+        owner = "grafana";
+        group = "grafana";
+      };
     };
   };
 }

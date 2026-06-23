@@ -42,6 +42,10 @@
     vicinae.url = "github:vicinaehq/vicinae";
     framr.url = "github:vMohammad24/framr";
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
+    nixarr = {
+      url = "github:nix-media-server/nixarr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -105,6 +109,7 @@
         inputs.agenix.nixosModules.default
         inputs.stylix.nixosModules.stylix
         inputs.tss.nixosModules.default
+        inputs.nixarr.nixosModules.default
         {
           nixpkgs.config.allowUnfree = true;
         }
