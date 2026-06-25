@@ -1,9 +1,21 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
+  isDesktop = config.myConfig.isDesktop;
+in {
   config = {
+    nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
+
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelModules = ["ntfs3"];
-    boot.kernelPackages = pkgs.linuxPackages_zen;
+    boot.kernelPackages =
+      if isDesktop
+      then pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3
+      else pkgs.cachyosKernels.linuxPackages-cachyos-server;
 
     networking.networkmanager.enable = true;
     networking.hosts = {
