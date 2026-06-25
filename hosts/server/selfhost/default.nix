@@ -88,6 +88,12 @@ in {
         enabled = true;
         description = "HaGeZi referral allowlist";
       }
+      {
+        url = "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt";
+        type = "block";
+        enabled = true;
+        description = "WindowsSpyBlocker";
+      }
     ];
   };
 
