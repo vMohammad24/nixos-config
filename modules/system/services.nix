@@ -13,7 +13,7 @@ in {
       PasswordAuthentication = false;
     };
   };
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.enable = isDesktop;
   virtualisation.docker.rootless = lib.mkIf isDesktop {
     enable = true;
     setSocketVariable = true;
