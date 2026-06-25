@@ -18,7 +18,6 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -32,7 +31,6 @@
     mangowm = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     tss = {
       url = "github:vMohammad24/TidalSubSonic";
@@ -47,10 +45,8 @@
       url = "github:xddxdd/nix-cachyos-kernel/release";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vicinae = {
-      url = "github:vicinaehq/vicinae";
-      inputs.home-manager.follows = "home-manager";
-    };
+    vicinae.url = "github:vicinaehq/vicinae";
+
     framr.url = "github:vMohammad24/framr";
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
     nixarr = {
