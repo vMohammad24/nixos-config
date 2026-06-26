@@ -16,13 +16,15 @@
           file = ../../secrets/tss.age;
           mode = "0400";
         };
+      }
+      (lib.mkIf config.myConfig.forgejo-runner.enable {
         heliopolis-runner-token = {
           file = ../../secrets/heliopolis-runner-token.age;
           mode = "0400";
           owner = "forgejo-runner";
           group = "forgejo-runner";
         };
-      }
+      })
       (lib.mkIf config.myConfig.rr.enable {
         grafana-secret-key = {
           file = ../../secrets/grafana-secret-key.age;
