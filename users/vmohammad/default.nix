@@ -6,13 +6,15 @@
 }: {
   imports =
     [
-      inputs.vicinae.homeManagerModules.default
-      inputs.framr.homeManagerModules.default
       inputs.nix-index-database.homeModules.default
+      inputs.framr.homeManagerModules.default
       ../../modules/home/core.nix
       ../../modules/home/shell
-      ../../modules/home/theme
       ../../modules/home/programs/dev.nix
+    ]
+    ++ lib.optionals osConfig.myConfig.isDesktop [
+      inputs.vicinae.homeManagerModules.default
+      ../../modules/home/theme
     ]
     ++ lib.optionals (osConfig.myConfig.desktops.hyprland.enable or false) [
       ../../modules/home/terminal/kitty.nix
