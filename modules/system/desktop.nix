@@ -15,7 +15,7 @@
       noto-fonts
       noto-fonts-lgc-plus
       ibm-plex
-      vazir-fonts
+      vazirmatn
     ];
 
     fontconfig = {
