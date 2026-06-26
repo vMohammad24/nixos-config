@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./secrets.nix
@@ -11,7 +11,7 @@
   myConfig.ai.enable = false;
   myConfig.rr.enable = false;
   myConfig.forgejo-runner.enable = false;
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = config.myConfig.forgejo-runner.enable;
 
   services.logind.settings = {
     Login = {
