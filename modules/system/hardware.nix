@@ -1,8 +1,10 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
+  config = lib.mkIf config.myConfig.isDesktop {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -43,5 +45,6 @@
       "nofail"
       "x-gvfs-show"
     ];
+  };
   };
 }
