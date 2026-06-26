@@ -22,14 +22,14 @@
           owner = "forgejo-runner";
           group = "forgejo-runner";
         };
+      }
+      (lib.mkIf config.myConfig.rr.enable {
         grafana-secret-key = {
           file = ../../secrets/grafana-secret-key.age;
           mode = "0400";
           owner = "grafana";
           group = "grafana";
         };
-      }
-      (lib.mkIf config.myConfig.rr.enable {
         mullvad-wg = {
           file = ../../secrets/mullvad-wg.age;
           mode = "0400";
