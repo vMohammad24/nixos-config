@@ -9,6 +9,7 @@
   networking.hostName = "server";
 
   myConfig.ai.enable = false;
+  myConfig.rr.enable = false;
   virtualisation.docker.enable = true;
 
   services.logind.settings = {
