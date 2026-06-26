@@ -1,4 +1,6 @@
-{...}: {
+{inputs, ...}: {
+  imports = [inputs.tss.nixosModules.default];
+
   services.postgresql = {
     enable = true;
     ensureDatabases = ["tss"];

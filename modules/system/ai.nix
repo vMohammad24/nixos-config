@@ -1,8 +1,11 @@
 {
   config,
   lib,
+  inputs,
   ...
 }: {
+  imports = [inputs.nix-amd-ai.nixosModules.default];
+
   options.myConfig.ai.enable = lib.mkEnableOption "AMD AI stuff";
 
   config = lib.mkIf config.myConfig.ai.enable {

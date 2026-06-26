@@ -1,7 +1,13 @@
-{lib, ...}: let
+{
+  lib,
+  inputs,
+  ...
+}: let
   mediaDir = "/mnt/HDD/media";
   stateDir = "/mnt/HDD/.state/nixarr";
 in {
+  imports = [inputs.nixarr.nixosModules.default];
+
   nixarr = {
     enable = true;
     inherit mediaDir stateDir;

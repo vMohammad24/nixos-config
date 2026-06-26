@@ -73,7 +73,6 @@
         ./hosts/main-desktop/default.nix
         ./modules/system
         home-manager.nixosModules.home-manager
-        inputs.nix-amd-ai.nixosModules.default
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -83,10 +82,8 @@
             backupFileExtension = "backup";
           };
         }
-        inputs.stylix.nixosModules.stylix
         inputs.agenix.nixosModules.default
         inputs.vicinae.nixosModules.default
-        inputs.mangowm.nixosModules.mango
         ./modules/stylix.nix
         {
           nixpkgs.config.allowUnfree = true;
@@ -103,7 +100,6 @@
         ./modules/system
         ./modules/stylix.nix
         home-manager.nixosModules.home-manager
-        inputs.nix-amd-ai.nixosModules.default
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -114,9 +110,6 @@
           };
         }
         inputs.agenix.nixosModules.default
-        inputs.stylix.nixosModules.stylix
-        inputs.tss.nixosModules.default
-        inputs.nixarr.nixosModules.default
         {
           nixpkgs.config.allowUnfree = true;
         }
