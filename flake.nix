@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/pull/2375/merge";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {

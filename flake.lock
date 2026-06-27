@@ -874,15 +874,16 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1782310521,
-        "narHash": "sha256-vsxcG0i8e4EPfdnhMTKMVzD1825H2vG1BBslzom9wxg=",
+        "lastModified": 1782586186,
+        "narHash": "sha256-Xl8lEHrFslTv4RuIscxZzU6xZ16i8Yrwm3pv+HNaSyk=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "e084d011e7ee9302aceaaf6c1fc28a9ace09e16a",
+        "rev": "81ef288ae0d5c1f40aaae3d819102083fc93c297",
         "type": "github"
       },
       "original": {
         "owner": "danth",
+        "ref": "pull/2375/merge",
         "repo": "stylix",
         "type": "github"
       }
