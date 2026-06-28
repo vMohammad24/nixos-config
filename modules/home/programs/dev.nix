@@ -61,6 +61,8 @@
       "neocmake"
     ];
     userSettings = {
+      disable_ai = true;
+      cli_default_open_behavior = "new_window";
       load_direnv = "shell_hook";
       telemetry = {
         metrics = false;
@@ -222,6 +224,11 @@
               ];
             };
           };
+          language_servers = [
+            "nixd"
+            "!nil"
+            "..."
+          ];
           format_on_save = "on";
         };
       };
