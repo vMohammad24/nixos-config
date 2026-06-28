@@ -25,12 +25,12 @@
         name = "JetBrainsMono Nerd Font";
       };
       sansSerif = {
-        package = pkgs.noto-fonts;
-        name = "Noto Sans";
+        package = pkgs.google-fonts;
+        name = "Outfit";
       };
       serif = {
-        package = pkgs.noto-fonts;
-        name = "Noto Serif";
+        package = pkgs.google-fonts;
+        name = "Inter";
       };
       sizes = {
         applications = 11;
