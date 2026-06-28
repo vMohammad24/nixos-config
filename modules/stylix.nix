@@ -25,12 +25,12 @@
         name = "JetBrainsMono Nerd Font";
       };
       sansSerif = {
-        package = pkgs.google-fonts;
-        name = "Outfit";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
       };
       serif = {
-        package = pkgs.google-fonts;
-        name = "Inter";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
       };
       sizes = {
         applications = 11;
