@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.myConfig.desktops.hyprland;
@@ -15,12 +14,6 @@ in {
       enable = true;
       xwayland.enable = true;
       withUWSM = true;
-    };
-
-    xdg.portal = {
-      extraPortals = [
-        pkgs.xdg-desktop-portal-hyprland
-      ];
     };
 
     home-manager.users.vmohammad = {
