@@ -20,7 +20,7 @@
           else "sudo nixos-rebuild switch --flake .#server";
       }
       // lib.optionalAttrs osConfig.myConfig.isDesktop {
-        nrbs = "nixos-rebuild switch --flake .#server --target-host vmohammad@192.168.1.31 --sudo";
+        nrbs = "nixos-rebuild switch --flake .#server --target-host vmohammad@192.168.1.31 --build-host localhost --sudo";
       };
     loginShellInit = lib.mkIf (!osConfig.myConfig.desktops.kde.enable or true) ''
       if set -q XDG_VTNR && test "$XDG_VTNR" -eq 1 && uwsm check may-start
