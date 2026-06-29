@@ -15,4 +15,6 @@ in {
   "prowlarr-torrentleech-2fa.age".publicKeys = [vmohammad server];
   "prowlarr-seedpool-apikey.age".publicKeys = [vmohammad server];
   "grafana-secret-key.age".publicKeys = [vmohammad server];
+  "miniflux-admin.age".publicKeys = [vmohammad server];
+  "speedtest-tracker-key.age".publicKeys = [vmohammad server];
 }

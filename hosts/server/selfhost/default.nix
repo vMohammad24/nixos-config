@@ -20,6 +20,7 @@ in {
     ./media.nix
     ./monitoring.nix
     ./forgejo
+    ./misc.nix
   ];
   services.vaultwarden = {
     enable = true;
@@ -61,7 +62,9 @@ in {
         upstreams = ["1.1.1.1" "1.0.0.1"];
         queryLogging = false;
         ignoreLocalhost = true;
-        hosts = lib.mapAttrsToList (domain: port: "${serverIp} ${domain}") myServices;
+        hosts =
+          lib.mapAttrsToList (domain: port: "${serverIp} ${domain}") myServices
+          ++ ["${serverIp} speedtest.local"];
       };
 
       database.maxDBdays = 0;

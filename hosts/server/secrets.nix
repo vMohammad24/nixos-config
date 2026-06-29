@@ -16,6 +16,10 @@
           file = ../../secrets/tss.age;
           mode = "0400";
         };
+        speedtest-tracker-key = {
+          file = ../../secrets/speedtest-tracker-key.age;
+          mode = "0444";
+        };
       }
       (lib.mkIf config.myConfig.forgejo-runner.enable {
         heliopolis-runner-token = {
