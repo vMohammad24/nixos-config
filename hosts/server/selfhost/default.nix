@@ -1,5 +1,17 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   serverIp = "192.168.1.31";
+
+  tlsCert = pkgs.runCommand "local-selfsigned-cert" {buildInputs = [pkgs.openssl];} ''
+    mkdir -p $out
+    openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 \
+      -keyout $out/key.pem -out $out/cert.pem \
+      -days 3650 -nodes -subj "/CN=*.local" \
+      -addext "subjectAltName=DNS:*.local"
+  '';
 
   myServices = {
     "home.local" = 8081;
@@ -105,11 +117,16 @@ in {
     ports = ["127.0.0.1:8080"];
   };
 
+  networking.firewall.allowedTCPPorts = [443];
+
   services.nginx = {
     enable = true;
 
     virtualHosts =
       lib.mapAttrs (domain: port: {
+        sslCertificate = "${tlsCert}/cert.pem";
+        sslCertificateKey = "${tlsCert}/key.pem";
+        forceSSL = true;
         locations."/" = {
           proxyPass = "http://${serverIp}:${toString port}";
           extraConfig = ''
