@@ -3,6 +3,12 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "github:nix-systems/default";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +24,8 @@
     stylix = {
       url = "github:danth/stylix/pull/2375/merge";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -31,20 +39,37 @@
     mangowm = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     tss = {
       url = "github:vMohammad24/TidalSubSonic";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+      inputs.systems.follows = "systems";
+      inputs.darwin.follows = "";
     };
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    nix-amd-ai.url = "github:noamsto/nix-amd-ai";
-    framr.url = "github:vMohammad24/framr";
-    vicinae.url = "github:vicinaehq/vicinae";
+    nix-cachyos-kernel = {
+      url = "github:xddxdd/nix-cachyos-kernel/release";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+    nix-amd-ai = {
+      url = "github:noamsto/nix-amd-ai";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nix-darwin.follows = "";
+    };
+    framr = {
+      url = "github:vMohammad24/framr";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+      inputs.systems.follows = "systems";
+    };
     nixarr = {
       url = "github:nix-media-server/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +79,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+      inputs.flake-parts.follows = "flake-parts";
     };
   };
 
