@@ -47,7 +47,7 @@ in {
     fzf
     fd
     killall
-    inputs.alejandra.packages.${pkgs.stdenv.hostPlatform.system}.default
+    alejandra
     inputs.wl-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

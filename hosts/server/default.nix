@@ -44,5 +44,4 @@
   };
 
   systemd.tmpfiles.rules = ["d /mnt/HDD 0755 root root - -"];
-
 }

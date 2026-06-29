@@ -13,10 +13,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    alejandra = {
-      url = "github:kamadorueda/alejandra/4.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     wl-mouse = {
       url = "git+https://heliopolis.live/creations/wl-mouse.git";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -94,7 +90,12 @@
     home-manager,
     ...
   } @ inputs: {
-    formatter.x86_64-linux = inputs.alejandra.packages.x86_64-linux.default;
+    formatter.x86_64-linux = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in
+      pkgs.writeShellScriptBin "alejandra" ''
+        exec ${pkgs.alejandra}/bin/alejandra "''${@:-.}"
+      '';
     nixosConfigurations.main-desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
