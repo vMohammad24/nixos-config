@@ -11,7 +11,6 @@ in {
   nix.settings.trusted-users = ["root" "vmohammad"];
   users.users.vmohammad = {
     isNormalUser = true;
-    initialPassword = "nixos";
     extraGroups = [
       "wheel"
       "gamemode"
