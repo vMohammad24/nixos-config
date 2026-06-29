@@ -14,11 +14,13 @@
         ll = "eza -l -g --icons";
         la = "eza -a --icons";
         ssh = "kitten ssh";
-        nrb = "sudo nixos-rebuild switch --flake .#server";
+        nrb =
+          if osConfig.myConfig.isDesktop
+          then "sudo nixos-rebuild switch --flake .#main-desktop"
+          else "sudo nixos-rebuild switch --flake .#server";
       }
       // lib.optionalAttrs osConfig.myConfig.isDesktop {
         nrbs = "nixos-rebuild switch --flake .#server --target-host vmohammad@192.168.1.31 --sudo";
-        nrb = "sudo nixos-rebuild switch --flake .#main-desktop";
       };
     loginShellInit = lib.mkIf (!osConfig.myConfig.desktops.kde.enable or true) ''
       if test "$XDG_VTNR" -eq 1 && uwsm check may-start
