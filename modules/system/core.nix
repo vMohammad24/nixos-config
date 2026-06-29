@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
 }: let
@@ -11,14 +12,14 @@ in {
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-    boot.kernelModules = ["ntfs3"];
+
     boot.kernelPackages =
       if isDesktop
       then pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3
       else pkgs.cachyosKernels.linuxPackages-cachyos-server;
 
     networking.networkmanager.enable = true;
-    networking.hosts = {
+    networking.hosts = lib.mkIf isDesktop {
       "0.0.0.0" = [
         "paradise-s1.battleye.com"
         "test-s1.battleye.com"
@@ -31,7 +32,6 @@ in {
       allowedTCPPorts = [
         25565
         3000
-        1701
         53
         80
       ];
@@ -52,7 +52,7 @@ in {
     };
 
     security.polkit.enable = true;
-    programs.dconf.enable = true;
+    programs.dconf.enable = isDesktop;
 
     virtualisation.vmVariant = {
       virtualisation.memorySize = 8192;
