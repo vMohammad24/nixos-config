@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: let
@@ -64,5 +63,4 @@ in {
   services.udisks2.enable = lib.mkForce isDesktop;
   services.devmon.enable = isDesktop;
   services.mullvad-vpn.enable = isDesktop;
-  services.mullvad-vpn.package = lib.mkIf isDesktop pkgs.mullvad-vpn;
 }
