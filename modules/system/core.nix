@@ -52,7 +52,6 @@ in {
     };
 
     security.polkit.enable = true;
-    programs.dconf.enable = isDesktop;
 
     virtualisation.vmVariant = {
       virtualisation.memorySize = 8192;
