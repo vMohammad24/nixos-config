@@ -18,6 +18,7 @@
       ../../modules/home/services/mako.nix
       ../../modules/home/services/vicinae.nix
       ../../modules/home/terminal/kitty.nix
+      ../../modules/home/programs/jellyfin-desktop.nix
     ]
     ++ lib.optionals (osConfig.myConfig.desktops.hyprland.enable or false) [
       ../../modules/home/services/hyprpaper.nix

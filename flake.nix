@@ -49,6 +49,12 @@
       url = "github:nix-media-server/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jellyfin-desktop = {
+      url = "github:xaltsc/jellyfin-desktop";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   nixConfig = {
