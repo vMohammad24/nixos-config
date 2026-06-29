@@ -28,7 +28,7 @@ in {
   networking.nftables.enable = true;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [25565 3000 53 80];
+    allowedTCPPorts = [25565 3000 53];
     allowedUDPPorts = [25565 53];
   };
 
