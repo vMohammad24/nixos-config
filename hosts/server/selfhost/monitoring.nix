@@ -14,7 +14,7 @@ in {
   config = lib.mkIf config.myConfig.rr.enable {
     services.prometheus = {
       enable = true;
-      listenAddress = "0.0.0.0";
+      listenAddress = "127.0.0.1";
       port = promPort;
       retentionTime = "30d";
 
