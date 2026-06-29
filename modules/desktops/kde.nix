@@ -13,8 +13,10 @@ in {
 
   config = lib.mkIf cfg.enable {
     services.xserver.enable = true;
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
     services.desktopManager.plasma6.enable = true;
 
     stylix.targets.qt.enable = false;

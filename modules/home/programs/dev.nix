@@ -4,7 +4,17 @@
   inputs,
   osConfig,
   ...
-}: {
+}: let
+  biomeFmt = {formatter.language_server.name = "biome";};
+  biomeWithActions =
+    biomeFmt
+    // {
+      code_actions_on_format = {
+        "source.fixAll.biome" = true;
+        "source.organizeImports.biome" = true;
+      };
+    };
+in {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -125,101 +135,18 @@
         };
       };
       languages = {
-        Astro = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-        };
-        CSS = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-        };
-        GraphQL = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-        };
-        HTML = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-        };
-        JSON = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-        };
-        JSONC = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-        };
-        JSX = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-        };
-        JavaScript = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-          code_actions_on_format = {
-            "source.fixAll.biome" = true;
-            "source.organizeImports.biome" = true;
-          };
-        };
-        Svelte = {
-          language_servers = [
-            "!biome"
-            "..."
-          ];
-        };
-        TSX = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-          code_actions_on_format = {
-            "source.fixAll.biome" = true;
-            "source.organizeImports.biome" = true;
-          };
-        };
-        TypeScript = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-          code_actions_on_format = {
-            "source.fixAll.biome" = true;
-            "source.organizeImports.biome" = true;
-          };
-        };
-        "Vue.js" = {
-          formatter = {
-            language_server = {
-              name = "biome";
-            };
-          };
-        };
+        Astro = biomeFmt;
+        CSS = biomeFmt;
+        GraphQL = biomeFmt;
+        HTML = biomeFmt;
+        JSON = biomeFmt;
+        JSONC = biomeFmt;
+        JSX = biomeFmt;
+        JavaScript = biomeWithActions;
+        TypeScript = biomeWithActions;
+        TSX = biomeWithActions;
+        "Vue.js" = biomeFmt;
+        Svelte = {language_servers = ["!biome" "..."];};
         "Nix" = {
           formatter = {
             external = {

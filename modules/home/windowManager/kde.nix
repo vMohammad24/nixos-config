@@ -1,4 +1,9 @@
-{config, ...}: {
+{config, ...}: let
+  launch = name: key: command: {
+    inherit key command;
+    name = "Launch ${name}";
+  };
+in {
   programs.plasma = {
     enable = true;
     overrideConfig = true;
@@ -9,46 +14,14 @@
     };
 
     hotkeys.commands = {
-      "launch-kitty" = {
-        name = "Launch Kitty";
-        key = "Meta+T";
-        command = "kitty";
-      };
-      "launch-firefox" = {
-        name = "Launch Firefox";
-        key = "Meta+W";
-        command = "firefox";
-      };
-      "launch-thunar" = {
-        name = "Launch Thunar";
-        key = "Meta+E";
-        command = "thunar";
-      };
-      "launch-zed" = {
-        name = "Launch Zed";
-        key = "Meta+Shift+Z";
-        command = "zeditor";
-      };
-      "launch-steam" = {
-        name = "Launch Steam";
-        key = "Meta+Shift+S";
-        command = "steam";
-      };
-      "launch-prismlauncher" = {
-        name = "Launch Prism Launcher";
-        key = "Meta+Shift+P";
-        command = "prismlauncher";
-      };
-      "launch-feishin" = {
-        name = "Launch Feishin";
-        key = "Meta+Shift+T";
-        command = "feishin";
-      };
-      "launch-discord" = {
-        name = "Launch Discord";
-        key = "Meta+Shift+E";
-        command = "discordcanary";
-      };
+      "launch-kitty" = launch "Kitty" "Meta+T" "kitty";
+      "launch-firefox" = launch "Firefox" "Meta+W" "firefox";
+      "launch-thunar" = launch "Thunar" "Meta+E" "thunar";
+      "launch-zed" = launch "Zed" "Meta+Shift+Z" "zeditor";
+      "launch-steam" = launch "Steam" "Meta+Shift+S" "steam";
+      "launch-prismlauncher" = launch "Prism Launcher" "Meta+Shift+P" "prismlauncher";
+      "launch-feishin" = launch "Feishin" "Meta+Shift+T" "feishin";
+      "launch-discord" = launch "Discord" "Meta+Shift+E" "discordcanary";
       "vicinae-toggle" = {
         name = "Vicinae Toggle";
         key = "Meta";

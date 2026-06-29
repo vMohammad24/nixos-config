@@ -1,4 +1,11 @@
-{...}: {
+{...}: let
+  powerCmd = cmd: {
+    preferences = {
+      customProgram = cmd;
+      confirm = false;
+    };
+  };
+in {
   programs.vicinae = {
     enable = true;
     settings = {
@@ -53,30 +60,10 @@
             "soft-reboot" = {
               enabled = false;
             };
-            logout = {
-              preferences = {
-                customProgram = "uwsm stop";
-                confirm = false;
-              };
-            };
-            lock = {
-              preferences = {
-                customProgram = "pidof hyprlock || hyprlock";
-                confirm = false;
-              };
-            };
-            "power-off" = {
-              preferences = {
-                customProgram = "systemctl poweroff";
-                confirm = false;
-              };
-            };
-            reboot = {
-              preferences = {
-                customProgram = "systemctl reboot";
-                confirm = false;
-              };
-            };
+            logout = powerCmd "uwsm stop";
+            lock = powerCmd "pidof hyprlock || hyprlock";
+            "power-off" = powerCmd "systemctl poweroff";
+            reboot = powerCmd "systemctl reboot";
           };
         };
         system = {

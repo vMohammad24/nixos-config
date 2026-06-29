@@ -4,6 +4,7 @@
   ...
 }: let
   c = config.lib.stylix.colors;
+  font = config.stylix.fonts.monospace.name;
 in {
   programs.hyprlock = {
     enable = true;
@@ -55,7 +56,7 @@ in {
           text = "cmd[update:1000] date +\"%H:%M\"";
           color = "rgb(${c.base05})";
           font_size = 90;
-          font_family = config.stylix.fonts.monospace.name;
+          font_family = font;
           position = "0, 200";
           halign = "center";
           valign = "center";
@@ -68,7 +69,7 @@ in {
           text = "cmd[update:60000] date +\"%A, %d %B\"";
           color = "rgb(${c.base04})";
           font_size = 20;
-          font_family = config.stylix.fonts.monospace.name;
+          font_family = font;
           position = "0, 130";
           halign = "center";
           valign = "center";
@@ -78,7 +79,7 @@ in {
           text = "Hi, $USER";
           color = "rgb(${c.base0A})";
           font_size = 16;
-          font_family = config.stylix.fonts.monospace.name;
+          font_family = font;
           position = "0, 40";
           halign = "center";
           valign = "center";

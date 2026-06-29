@@ -4,14 +4,20 @@
   lib,
   osConfig,
   ...
-}: {
+}: let
+  isDesktop = osConfig.myConfig.isDesktop;
+  sshKey = {
+    IdentityFile = "~/.ssh/id_rsa";
+    IdentitiesOnly = "yes";
+  };
+in {
   home.username = "vmohammad";
   home.homeDirectory = "/home/vmohammad";
   home.stateVersion = "25.11";
 
   programs.home-manager.enable = true;
 
-  xdg.mimeApps = lib.mkIf osConfig.myConfig.isDesktop {
+  xdg.mimeApps = lib.mkIf isDesktop {
     enable = true;
     defaultApplications = {
       "text/*" = ["firefox.desktop"];
@@ -28,20 +34,20 @@
     };
   };
 
-  xdg.userDirs = lib.mkIf osConfig.myConfig.isDesktop {
+  xdg.userDirs = lib.mkIf isDesktop {
     enable = true;
     createDirectories = true;
     setSessionVariables = false;
   };
 
-  xdg.terminal-exec = lib.mkIf osConfig.myConfig.isDesktop {
+  xdg.terminal-exec = lib.mkIf isDesktop {
     enable = true;
     settings = {
       default = ["kitty.desktop"];
     };
   };
 
-  gtk = lib.mkIf osConfig.myConfig.isDesktop {
+  gtk = lib.mkIf isDesktop {
     enable = true;
     gtk3.bookmarks = let
       home = config.home.homeDirectory;
@@ -56,8 +62,8 @@
   programs.fastfetch.enable = true;
   programs.eza.enable = true;
 
-  programs.mpv.enable = osConfig.myConfig.isDesktop;
-  programs.mangohud = lib.mkIf osConfig.myConfig.isDesktop {
+  programs.mpv.enable = isDesktop;
+  programs.mangohud = lib.mkIf isDesktop {
     enable = true;
     enableSessionWide = true;
     settings = {
@@ -70,32 +76,30 @@
     enable = true;
     enableDefaultConfig = false;
     settings = {
-      "github.com" = {
-        HostName = "github.com";
-        IdentityFile = "~/.ssh/id_rsa";
-        IdentitiesOnly = "yes";
-        AddKeysToAgent = "yes";
-      };
-
-      "server" = {
-        User = "vmohammad";
-        HostName = "192.168.1.31";
-        Port = 22;
-        IdentityFile = "~/.ssh/id_rsa";
-        IdentitiesOnly = "yes";
-      };
-
-      "rpi" = {
-        User = "vmohammad";
-        HostName = "192.168.1.32";
-        Port = 22;
-        IdentityFile = "~/.ssh/id_rsa";
-        IdentitiesOnly = "yes";
-      };
+      "github.com" =
+        sshKey
+        // {
+          HostName = "github.com";
+          AddKeysToAgent = "yes";
+        };
+      "server" =
+        sshKey
+        // {
+          User = "vmohammad";
+          HostName = "192.168.1.31";
+          Port = 22;
+        };
+      "rpi" =
+        sshKey
+        // {
+          User = "vmohammad";
+          HostName = "192.168.1.32";
+          Port = 22;
+        };
     };
   };
 
-  programs.framr = lib.mkIf osConfig.myConfig.isDesktop {
+  programs.framr = lib.mkIf isDesktop {
     enable = true;
     settings = {
       default_uploader = "nest.rip";
@@ -136,7 +140,7 @@
       glib
       glib-networking
     ]
-    ++ lib.optionals osConfig.myConfig.isDesktop [
+    ++ lib.optionals isDesktop [
       # core
       thunar
       udiskie

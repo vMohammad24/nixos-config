@@ -1,6 +1,11 @@
 {lib, ...}: let
   mainMod = "SUPER";
   h = import ./helpers.nix {inherit lib;};
+  repeatLocked = {
+    repeating = true;
+    locked = true;
+  };
+  locked = {locked = true;};
 in {
   wayland.windowManager.hyprland.settings = {
     mainMod = {
@@ -70,28 +75,16 @@ in {
         (h.bindModFlags "mouse:273" "hl.dsp.window.resize()" {mouse = true;})
 
         # volume & brightness
-        (h.bindFlags "\"XF86AudioRaiseVolume\"" "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+\")" {
-          repeating = true;
-          locked = true;
-        })
-        (h.bindFlags "\"XF86AudioLowerVolume\"" "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-\")" {
-          repeating = true;
-          locked = true;
-        })
-        (h.bindFlags "\"XF86MonBrightnessUp\"" "hl.dsp.exec_cmd(\"brightnessctl s 10%+\")" {
-          repeating = true;
-          locked = true;
-        })
-        (h.bindFlags "\"XF86MonBrightnessDown\"" "hl.dsp.exec_cmd(\"brightnessctl s 10%-\")" {
-          repeating = true;
-          locked = true;
-        })
+        (h.bindFlags "\"XF86AudioRaiseVolume\"" "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+\")" repeatLocked)
+        (h.bindFlags "\"XF86AudioLowerVolume\"" "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-\")" repeatLocked)
+        (h.bindFlags "\"XF86MonBrightnessUp\"" "hl.dsp.exec_cmd(\"brightnessctl s 10%+\")" repeatLocked)
+        (h.bindFlags "\"XF86MonBrightnessDown\"" "hl.dsp.exec_cmd(\"brightnessctl s 10%-\")" repeatLocked)
 
         # media controls
-        (h.bindFlags "\"XF86AudioMute\"" "hl.dsp.exec_cmd(\"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\")" {locked = true;})
-        (h.bindFlags "\"XF86AudioPlay\"" "hl.dsp.exec_cmd(\"playerctl play-pause\")" {locked = true;})
-        (h.bindFlags "\"XF86AudioPrev\"" "hl.dsp.exec_cmd(\"playerctl previous\")" {locked = true;})
-        (h.bindFlags "\"XF86AudioNext\"" "hl.dsp.exec_cmd(\"playerctl next\")" {locked = true;})
+        (h.bindFlags "\"XF86AudioMute\"" "hl.dsp.exec_cmd(\"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\")" locked)
+        (h.bindFlags "\"XF86AudioPlay\"" "hl.dsp.exec_cmd(\"playerctl play-pause\")" locked)
+        (h.bindFlags "\"XF86AudioPrev\"" "hl.dsp.exec_cmd(\"playerctl previous\")" locked)
+        (h.bindFlags "\"XF86AudioNext\"" "hl.dsp.exec_cmd(\"playerctl next\")" locked)
       ];
   };
 }
