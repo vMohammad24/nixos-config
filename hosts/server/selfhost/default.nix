@@ -32,7 +32,6 @@ in {
     ./media.nix
     ./monitoring.nix
     ./forgejo
-    ./misc.nix
   ];
   services.vaultwarden = {
     enable = true;
@@ -119,22 +118,39 @@ in {
 
   networking.firewall.allowedTCPPorts = [443];
 
+  services.speedtest-tracker = {
+    enable = true;
+    enableNginx = true;
+    virtualHost = "speedtest.local";
+    settings = {
+      APP_KEY_FILE = "/run/agenix/speedtest-tracker-key";
+      APP_URL = "https://speedtest.local";
+    };
+  };
+
   services.nginx = {
     enable = true;
 
     virtualHosts =
-      lib.mapAttrs (domain: port: {
-        sslCertificate = "${tlsCert}/cert.pem";
-        sslCertificateKey = "${tlsCert}/key.pem";
-        forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://${serverIp}:${toString port}";
-          extraConfig = ''
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-          '';
+      (lib.mapAttrs (domain: port: {
+          sslCertificate = "${tlsCert}/cert.pem";
+          sslCertificateKey = "${tlsCert}/key.pem";
+          forceSSL = true;
+          locations."/" = {
+            proxyPass = "http://${serverIp}:${toString port}";
+            extraConfig = ''
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+            '';
+          };
+        })
+        myServices)
+      // {
+        "speedtest.local" = {
+          sslCertificate = "${tlsCert}/cert.pem";
+          sslCertificateKey = "${tlsCert}/key.pem";
+          forceSSL = true;
         };
-      })
-      myServices;
+      };
   };
 }
