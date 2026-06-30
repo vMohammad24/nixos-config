@@ -6,7 +6,7 @@
     settings = {
       serverUrl = "https://media.creations.works/";
       transparentTitlebar = true;
-      deviceName = "vMohammad's PC";
+      deviceName = "vmohammad nixos";
     };
   };
 }
