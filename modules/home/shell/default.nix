@@ -56,4 +56,8 @@
     nix-direnv.enable = true;
     enableFishIntegration = true;
   };
+
+  programs.eza.enable = true;
+
+  programs.fastfetch.enable = true;
 }

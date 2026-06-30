@@ -59,9 +59,6 @@ in {
       ];
   };
 
-  programs.fastfetch.enable = true;
-  programs.eza.enable = true;
-
   programs.mpv.enable = isDesktop;
   programs.mangohud = lib.mkIf isDesktop {
     enable = true;
