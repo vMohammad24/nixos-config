@@ -31,6 +31,10 @@ in {
     gamescopeSession.enable = true;
     remotePlay.openFirewall = true;
   };
+  programs.gamescope = lib.mkIf isDesktop {
+    enable = true;
+    capSysNice = true;
+  };
   programs.localsend.enable = isDesktop;
   programs.virt-manager.enable = isDesktop;
 
