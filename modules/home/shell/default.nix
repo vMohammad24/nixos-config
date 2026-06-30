@@ -59,5 +59,35 @@
 
   programs.eza.enable = true;
 
-  programs.fastfetch.enable = true;
+  programs.fastfetch = {
+    enable = true;
+    settings = {
+      modules = [
+        "title"
+        "separator"
+        "os"
+        "host"
+        "kernel"
+        "uptime"
+        "shell"
+        "display"
+        "de"
+        "wm"
+        "cursor"
+        "terminal"
+        "cpu"
+        "gpu"
+        {
+          "type" = "command";
+          "key" = "Mouse";
+          "text" = "wl-mouse -j info | jq -r '\"\\(.name) @ \\(.battery_percent)%\"' | sed 's/ (dongle)//; s/ (wired)//'";
+        }
+        "memory"
+        "swap"
+        "disk"
+        "break"
+        "colors"
+      ];
+    };
+  };
 }
