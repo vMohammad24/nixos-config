@@ -1,6 +1,8 @@
 {
   config,
   lib,
+  inputs,
+  pkgs,
   ...
 }: let
   c = config.lib.stylix.colors;
@@ -17,6 +19,7 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; # for uwsm
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     configType = "lua";
     settings = {
       config = {
