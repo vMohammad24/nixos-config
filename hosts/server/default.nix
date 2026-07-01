@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./secrets.nix
@@ -12,6 +16,23 @@
   myConfig.rr.enable = false;
   myConfig.forgejo-runner.enable = false;
   virtualisation.docker.enable = config.myConfig.forgejo-runner.enable;
+
+  powerManagement.cpuFreqGovernor = "powersave";
+  powerManagement.powertop.enable = true;
+  services.thermald.enable = true;
+  boot.kernelParams = ["intel_pstate=no_turbo"];
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="cpu", ACTION=="add", ATTR{cpufreq/energy_performance_preference}="power"
+  '';
+
+  systemd.services.rfkill-block-wifi = {
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.util-linux}/bin/rfkill block wifi";
+    };
+  };
 
   services.logind.settings = {
     Login = {
