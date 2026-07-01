@@ -16,6 +16,7 @@ in {
       "gamemode"
       "libvirtd"
       "docker"
+      "wireshark"
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
@@ -37,6 +38,11 @@ in {
   };
   programs.localsend.enable = isDesktop;
   programs.virt-manager.enable = isDesktop;
+  programs.wireshark = lib.mkIf isDesktop {
+    enable = true;
+    package = pkgs.wireshark;
+    usbmon.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     vim
