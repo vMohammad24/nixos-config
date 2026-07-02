@@ -35,10 +35,8 @@
 
     services.udev.extraRules = ''
       # WlMouse (beast) 8k dongle
-      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="36a7", ATTRS{idProduct}=="a868", MODE="0666", TAG+="uaccess"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="36a7", ATTRS{idProduct}=="a868", MODE="0666", TAG+="uaccess"
-      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="36a7", ATTRS{idProduct}=="a869", MODE="0666", TAG+="uaccess"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="36a7", ATTRS{idProduct}=="a869", MODE="0666", TAG+="uaccess"
+      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="36a7", MODE="0666", TAG+="uaccess"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="36a7", MODE="0666", TAG+="uaccess"
 
       # Razer Huntsman TKL V2 (1532:026B) - force 8kHz polling rate
       SUBSYSTEM=="hid", KERNEL=="0003:1532:026B.*", ATTR{poll_rate}="8000"
