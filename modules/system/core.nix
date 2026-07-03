@@ -9,8 +9,11 @@
 in {
   nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
 
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.limine = {
+    enable = true;
+    resolution = "2560x1440";
+  };
 
   boot.kernelPackages =
     if isDesktop
