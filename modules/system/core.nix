@@ -13,6 +13,12 @@ in {
   boot.loader.limine = {
     enable = true;
     resolution = "2560x1440";
+    maxGenerations = 10;
+    extraEntries = ''
+      /ShittyOS
+        protocol: efi
+        path: guid(0aaef0fc-c912-430b-a081-e3578f5c8ff8):/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
   };
 
   boot.kernelPackages =
