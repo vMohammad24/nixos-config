@@ -49,15 +49,8 @@
       inputs.systems.follows = "systems";
       inputs.darwin.follows = "";
     };
-    nix-cachyos-kernel = {
-      url = "github:xddxdd/nix-cachyos-kernel/release";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-    nix-amd-ai = {
-      url = "github:noamsto/nix-amd-ai";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.nix-darwin.follows = "";
-    };
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    nix-amd-ai.url = "github:noamsto/nix-amd-ai";
     framr = {
       url = "github:vMohammad24/framr";
       inputs.flake-utils.follows = "flake-utils";
