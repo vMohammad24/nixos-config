@@ -44,5 +44,16 @@
     '';
 
     boot.supportedFilesystems = ["ntfs3"];
+
+    fileSystems."/mnt/SSSD" = {
+      device = "/dev/disk/by-uuid/e18c8ef6-e3e8-42d8-be39-0fa459c4f94c";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "noatime"
+        "nofail"
+        "x-gvfs-show"
+      ];
+    };
   };
 }
