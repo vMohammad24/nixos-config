@@ -58,6 +58,9 @@ in {
     fd
     killall
     alejandra
+    podman
+    podman-compose
+    distrobox
     inputs.wl-mouse.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

@@ -14,9 +14,10 @@ in {
   };
   virtualisation.libvirtd.enable = isDesktop;
   virtualisation.waydroid.enable = isDesktop;
-  virtualisation.docker.rootless = lib.mkIf isDesktop {
+  virtualisation.podman = lib.mkIf isDesktop {
     enable = true;
-    setSocketVariable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
   };
 
   services.pipewire = lib.mkIf isDesktop {
