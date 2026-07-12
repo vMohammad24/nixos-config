@@ -36,7 +36,7 @@ in {
   services.vaultwarden = {
     enable = true;
     config = {
-      ROCKET_ADDRESS = "0.0.0.0";
+      ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8222;
       SIGNUPS_ALLOWED = false;
     };
@@ -116,7 +116,7 @@ in {
     ports = ["127.0.0.1:8080"];
   };
 
-  networking.firewall.allowedTCPPorts = [443];
+  networking.firewall.allowedTCPPorts = [443 80];
 
   services.speedtest-tracker = {
     enable = true;
@@ -137,10 +137,12 @@ in {
           sslCertificateKey = "${tlsCert}/key.pem";
           forceSSL = true;
           locations."/" = {
-            proxyPass = "http://${serverIp}:${toString port}";
+            proxyPass = "http://127.0.0.1:${toString port}";
             extraConfig = ''
               proxy_set_header Host $host;
-              proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
             '';
           };
         })
