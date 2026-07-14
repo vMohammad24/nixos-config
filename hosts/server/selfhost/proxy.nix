@@ -10,6 +10,9 @@
     "tiktokv.com"
     "tiktokcdn.com"
     "byteoversea.com"
+    "ibyteimg.com"
+    "ibytedtos.com"
+    "musical.ly"
     "mullvad.net"
   ];
 in {
