@@ -2,10 +2,10 @@
   pkgs,
   lib,
   inputs,
-  osConfig,
   ...
 }: let
   biomeFmt = {formatter.language_server.name = "biome";};
+  hostName = "main-desktop";
   biomeWithActions =
     biomeFmt
     // {
@@ -133,6 +133,16 @@ in {
             };
           };
         };
+        nixd = {
+          binary.path = lib.getExe pkgs.nixd;
+          settings = {
+            nixpkgs.expr = "(builtins.getFlake (builtins.toString ${inputs.self})).inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}";
+            options = {
+              nixos.expr = "(builtins.getFlake (builtins.toString ${inputs.self})).nixosConfigurations.${hostName}.options";
+              home-manager.expr = "(builtins.getFlake (builtins.toString ${inputs.self})).nixosConfigurations.${hostName}.options.home-manager.users.type.getSubOptions [ ]";
+            };
+          };
+        };
       };
       languages = {
         Astro = biomeFmt;
@@ -162,16 +172,6 @@ in {
             "!nil"
             "..."
           ];
-          lsp.nixd = {
-            binary.path = lib.getExe pkgs.nixd;
-            settings = {
-              nixpkgs.expr = "(builtins.getFlake (builtins.toString ${inputs.self})).inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}";
-              options = {
-                nixos.expr = "(builtins.getFlake (builtins.toString ${inputs.self})).nixosConfigurations.${osConfig.networking.hostName}.options";
-                home-manager.expr = "(builtins.getFlake (builtins.toString ${inputs.self})).nixosConfigurations.${osConfig.networking.hostName}.options.home-manager.users.type.getSubOptions [ ]";
-              };
-            };
-          };
           format_on_save = "on";
         };
       };
