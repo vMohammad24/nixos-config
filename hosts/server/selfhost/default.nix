@@ -4,6 +4,8 @@
   ...
 }: let
   serverIp = "192.168.1.31";
+  virtualIp = "192.168.1.200";
+  interface = "eno2";
 
   tlsCert = pkgs.runCommand "local-selfsigned-cert" {buildInputs = [pkgs.openssl];} ''
     mkdir -p $out
@@ -31,8 +33,32 @@ in {
     ./glance.nix
     ./media.nix
     ./monitoring.nix
+    ./proxy.nix
     ./forgejo
   ];
+
+  networking.interfaces.${interface} = {
+    useDHCP = false;
+    ipv4.addresses = [
+      {
+        address = serverIp;
+        prefixLength = 24;
+      }
+      {
+        address = virtualIp;
+        prefixLength = 24;
+      }
+    ];
+  };
+  networking.defaultGateway = "192.168.1.1";
+  networking.nameservers = ["127.0.0.1" "1.1.1.1"];
+
+  vpnNamespaces.wg = {
+    enable = true;
+    wireguardConfigFile = "/run/agenix/mullvad-wg";
+    accessibleFrom = ["192.168.1.0/24"];
+  };
+
   services.vaultwarden = {
     enable = true;
     config = {
@@ -67,6 +93,7 @@ in {
   services.pihole-ftl = {
     enable = true;
     privacyLevel = 3;
+    useDnsmasqConfig = true;
 
     settings = {
       dns = {
@@ -130,6 +157,18 @@ in {
 
   services.nginx = {
     enable = true;
+    defaultListenAddresses = [serverIp "127.0.0.1"];
+
+    streamConfig = ''
+      server {
+        listen ${virtualIp}:443;
+        proxy_pass 192.168.15.1:443;
+      }
+      server {
+        listen ${virtualIp}:80;
+        proxy_pass 192.168.15.1:80;
+      }
+    '';
 
     virtualHosts =
       (lib.mapAttrs (domain: port: {

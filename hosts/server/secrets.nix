@@ -20,6 +20,10 @@
           file = ../../secrets/speedtest-tracker-key.age;
           mode = "0444";
         };
+        mullvad-wg = {
+          file = ../../secrets/mullvad-wg.age;
+          mode = "0400";
+        };
       }
       (lib.mkIf config.myConfig.forgejo-runner.enable {
         heliopolis-runner-token = {
@@ -35,10 +39,6 @@
           mode = "0400";
           owner = "grafana";
           group = "grafana";
-        };
-        mullvad-wg = {
-          file = ../../secrets/mullvad-wg.age;
-          mode = "0400";
         };
         prowlarr-milkie-apikey = {
           file = ../../secrets/prowlarr-milkie-apikey.age;
