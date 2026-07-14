@@ -70,6 +70,8 @@ in {
     enable = true;
     libraries = with pkgs; [
       stdenv.cc.cc
+      stdenv.cc.cc.lib
+      vulkan-loader
       zlib
       fuse3
       icu
