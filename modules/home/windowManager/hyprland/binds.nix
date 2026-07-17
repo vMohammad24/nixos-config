@@ -33,7 +33,7 @@ in {
         (h.bindExec "S" "grim -g \\\"$(slurp)\\\" - | wl-copy")
         (h.bindExec "comma" "vicinae vicinae://launch/core/search-emojis")
         (h.bind "\"Print\"" "hl.dsp.exec_cmd(\"framr -u -c -a\")")
-        (h.bindExec "Print" "framr --record -u -c -a")
+        (h.bindExec "Print" "framr --record -u -c -a --container webm")
 
         # window management
         (h.bindWindow "Q" "close")

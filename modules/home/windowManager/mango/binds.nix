@@ -23,7 +23,8 @@ in {
         "${mainMod},S,spawn,grim -g \"$(slurp)\" - | wl-copy"
         "${mainMod},comma,spawn,vicinae vicinae://launch/core/search-emojis"
         "NONE,Print,spawn,framr -u -c -a"
-        "${mainMod},Print,spawn,framr --record -u -c -a"
+        "CTRL,Print,spawn,framr -u -c --last"
+        "${mainMod},Print,spawn,framr --record -u -c -a --container webm"
 
         # window management
         "${mainMod},Q,killclient"
