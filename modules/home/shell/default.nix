@@ -10,9 +10,9 @@
     '';
     shellAliases =
       {
-        ls = "eza --icons";
-        ll = "eza -l -g --icons";
-        la = "eza -a --icons";
+        ls = "eza --icons auto";
+        ll = "eza -l -g --icons auto";
+        la = "eza -a --icons auto";
         ssh = "kitten ssh";
         nrb =
           if osConfig.myConfig.isDesktop
