@@ -43,6 +43,15 @@ in {
     package = pkgs.wireshark;
     usbmon.enable = true;
   };
+  programs.nh = {
+    enable = true;
+    flake = "/home/vmohammad/nixos-config";
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--no-gcroots --optimise --keep-since=3d --keep=5";
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     vim
