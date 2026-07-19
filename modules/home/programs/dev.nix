@@ -53,6 +53,7 @@ in {
     enable = true;
     extraPackages = with pkgs; [
       nixd
+      ols
       biome
       rust-analyzer
       rustfmt
@@ -71,6 +72,7 @@ in {
       "nix"
       "toml"
       "zig"
+      "odin"
       "sql"
       "qml"
       "make"
@@ -188,6 +190,7 @@ in {
     gnumake
     go
     zig
+    odin
     ghidra
   ];
 }
