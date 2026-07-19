@@ -57,6 +57,11 @@
     enableFishIntegration = true;
   };
 
+  programs.devenv = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   programs.eza.enable = true;
 
   programs.fastfetch = {
