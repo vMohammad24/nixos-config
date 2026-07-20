@@ -8,7 +8,7 @@
   isDesktop = config.myConfig.isDesktop;
 in {
   nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
-
+  nixpkgs.config.rocmSupport = isDesktop;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.limine = {
     enable = true;
