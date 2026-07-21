@@ -193,5 +193,6 @@ in {
     zig
     odin
     ghidra
+    kdePackages.qtdeclarative
   ];
 }
