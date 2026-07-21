@@ -65,6 +65,7 @@ in {
     ];
     extensions = [
       "biome"
+      "dockerfile"
       "ini"
       "rainbow-csv"
       "svelte"
