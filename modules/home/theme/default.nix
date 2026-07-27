@@ -11,4 +11,7 @@
     hyprlock.enable = false;
     waybar.enable = false;
   };
+
+  # leave this here until #2407 is merged
+  home.pointerCursor.enable = true;
 }
