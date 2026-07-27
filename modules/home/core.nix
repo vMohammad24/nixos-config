@@ -72,7 +72,7 @@ in {
       gpu-api = "vulkan";
       profile = "high-quality";
       deband = "yes";
-      video-sync = "display-resmaple";
+      video-sync = "display-resample";
       interpolation = "yes";
     };
   };
