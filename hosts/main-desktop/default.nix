@@ -4,7 +4,7 @@
     ./secrets.nix
   ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "main-desktop";
 
   myConfig.ai.enable = true;
   myConfig.desktops.hyprland.enable = true;
