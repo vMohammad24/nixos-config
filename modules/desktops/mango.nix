@@ -2,13 +2,10 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: let
   cfg = config.myConfig.desktops.mango;
 in {
-  imports = [inputs.mangowm.nixosModules.mango];
-
   options.myConfig.desktops.mango = {
     enable = lib.mkEnableOption "Mango WM environment";
   };
