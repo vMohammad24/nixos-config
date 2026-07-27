@@ -13,12 +13,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wl-mouse = {
-      url = "git+https://heliopolis.live/creations/wl-mouse.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     stylix = {
-      url = "github:danth/stylix/pull/2407/merge";
+      url = "github:nix-community/stylix/pull/2407/merge";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
       inputs.systems.follows = "systems";
@@ -31,6 +27,10 @@
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+    };
+    wl-mouse = {
+      url = "git+https://heliopolis.live/creations/wl-mouse.git";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     mangowm = {
       url = "github:mangowm/mango";
