@@ -59,7 +59,23 @@ in {
       ];
   };
 
-  programs.mpv.enable = isDesktop;
+  programs.mpv = lib.mkIf isDesktop {
+    enable = true;
+    config = {
+      ao = "pipewire";
+      audio-samplerate = 0;
+      audio-format = "auto";
+      audio-swresample-o = "dither_method=triangular";
+      volume = 100;
+      volume-max = 100;
+      vo = "gpu-next";
+      gpu-api = "vulkan";
+      profile = "high-quality";
+      deband = "yes";
+      video-sync = "display-resmaple";
+      interpolation = "yes";
+    };
+  };
   programs.mangohud = lib.mkIf isDesktop {
     enable = true;
     enableSessionWide = true;
