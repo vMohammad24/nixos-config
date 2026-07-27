@@ -96,6 +96,9 @@ in {
         dock = "right";
       };
       lsp = {
+        qmlls = {
+          binary.path = "qmlls";
+        };
         biome = {
           settings = {
             require_config_file = true;
