@@ -26,6 +26,7 @@ in {
 
         # power management
         (h.bind "\"CTRL + ALT + delete\"" "hl.dsp.exec_cmd(\"vicinae deeplink vicinae://launch/power\")")
+        (h.bindExec "L" "pidof hyprlock || hyprlock")
 
         # utils
         (h.bindExec "P" "hyprpicker -a")
