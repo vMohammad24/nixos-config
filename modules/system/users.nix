@@ -8,7 +8,6 @@
   isDesktop = config.myConfig.isDesktop;
 in {
   services.getty.autologinUser = lib.mkIf (!config.myConfig.desktops.kde.enable or true) "vmohammad";
-  nix.settings.trusted-users = ["root" "vmohammad"];
   users.users.vmohammad = {
     isNormalUser = true;
     extraGroups = [
