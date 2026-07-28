@@ -148,7 +148,6 @@ in {
   home.packages = with pkgs;
     [
       rclone
-      rsrpc
       watchexec
       glib
       glib-networking
