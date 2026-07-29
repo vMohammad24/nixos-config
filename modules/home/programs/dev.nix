@@ -78,6 +78,7 @@ in {
       "qml"
       "make"
       "neocmake"
+      "superhtml"
     ];
     userSettings = {
       disable_ai = true;
@@ -149,12 +150,14 @@ in {
             };
           };
         };
+        superhtml = {
+          binary.path = lib.getExe pkgs.superhtml;
+        };
       };
       languages = {
         Astro = biomeFmt;
         CSS = biomeFmt;
         GraphQL = biomeFmt;
-        HTML = biomeFmt;
         JSON = biomeFmt;
         JSONC = biomeFmt;
         JSX = biomeFmt;
@@ -163,6 +166,12 @@ in {
         TSX = biomeWithActions;
         "Vue.js" = biomeFmt;
         Svelte = {language_servers = ["!biome" "..."];};
+        HTML = {
+          language_server = ["superhtml"];
+          formatter = {
+            language_server = ["superhtml"];
+          };
+        };
         "Nix" = {
           formatter = {
             external = {
