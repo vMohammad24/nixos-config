@@ -14,10 +14,7 @@
         ll = "eza -l -g --icons auto";
         la = "eza -a --icons auto";
         ssh = "kitten ssh";
-        nrb =
-          if osConfig.myConfig.isDesktop
-          then "sudo nixos-rebuild switch --flake .#main-desktop"
-          else "sudo nixos-rebuild switch --flake .#server";
+        nrb = "nh os switch";
       }
       // lib.optionalAttrs osConfig.myConfig.isDesktop {
         nrbs = "nh os switch . -H server --target-host vmohammad@192.168.1.31 --build-host localhost --elevation-strategy passwordless";
