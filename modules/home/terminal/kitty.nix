@@ -19,6 +19,7 @@
       "ctrl+0" = "change_font_size all 0";
       "ctrl+kp_0" = "change_font_size all 0";
       "ctrl+l" = "clear_terminal scroll active";
+      "ctrl+k" = "command_palette";
     };
   };
 }
