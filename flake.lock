@@ -1428,11 +1428,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1785356833,
-        "narHash": "sha256-pV0C5GVnPvujIlUhwDuzMT7EcWLqmyQsHW7sauskIZM=",
+        "lastModified": 1785362993,
+        "narHash": "sha256-DGgkln0Vp/IhEkroE/2PJuKlmUJYozAuA4Y+nawYNuE=",
         "owner": "vMohammad24",
         "repo": "TidalSubSonic",
-        "rev": "ee5af35f30b29b54dacf2e1f4c5a1bdc2b637364",
+        "rev": "f5ddfc4030dd883626f9d5b331be6e883e55360a",
         "type": "github"
       },
       "original": {
