@@ -98,7 +98,7 @@ in {
       };
       lsp = {
         qmlls = {
-          binary.path = "qmlls";
+          binary.path = "${pkgs.kdePackages.qtdeclarative.dev}/bin/qmlls";
         };
         biome = {
           settings = {
@@ -205,6 +205,13 @@ in {
     zig
     odin
     ghidra
+    qtcreator
+    cmake
+    ninja
+    gdb
+    pkg-config
+    qt6.qtbase
+    qt6.qtsvg
     kdePackages.qtdeclarative
   ];
 }
