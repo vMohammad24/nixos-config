@@ -7,9 +7,16 @@
     };
   };
 
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+  };
+
+  stylix.polarity = "dark";
   stylix.targets = {
     hyprlock.enable = false;
     waybar.enable = false;
+    qt.enable = true;
   };
 
   # leave this here until #2407 is merged
