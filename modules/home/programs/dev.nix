@@ -151,7 +151,10 @@ in {
           };
         };
         superhtml = {
-          binary.path = lib.getExe pkgs.superhtml;
+          binary = {
+            path = lib.getExe pkgs.superhtml;
+            arguments = ["lsp"];
+          };
         };
       };
       languages = {
@@ -167,9 +170,9 @@ in {
         "Vue.js" = biomeFmt;
         Svelte = {language_servers = ["!biome" "..."];};
         HTML = {
-          language_server = ["superhtml"];
+          language_servers = ["superhtml" "!biome"];
           formatter = {
-            language_server = ["superhtml"];
+            language_servers = ["superhtml" "!biome"];
           };
         };
         "Nix" = {
