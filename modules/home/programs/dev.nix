@@ -165,7 +165,7 @@ in {
         TypeScript = biomeWithActions;
         TSX = biomeWithActions;
         "Vue.js" = biomeFmt;
-        Svelte = {language_server = ["!biome" "..."];};
+        Svelte = {language_servers = ["!biome" "..."];};
         HTML = {
           language_server = ["superhtml"];
           formatter = {
