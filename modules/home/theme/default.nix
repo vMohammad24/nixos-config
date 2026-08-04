@@ -18,7 +18,4 @@
     waybar.enable = false;
     qt.enable = true;
   };
-
-  # leave this here until #2407 is merged
-  home.pointerCursor.enable = true;
 }
