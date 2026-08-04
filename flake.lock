@@ -469,11 +469,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1785753310,
-        "narHash": "sha256-jAmsP9iHn18sEN/yxduanGVNGIHxoJCEMCjKBdM2vjk=",
+        "lastModified": 1785836486,
+        "narHash": "sha256-pa2ROfqS4ifXKfnGjPgdgW61tULmZhWahuU/rIFGdxw=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "5c6f0aa2df6d1698ee7174c69d3123cb236c6fde",
+        "rev": "275e27704a36d956fbdc28cec6399b8e298b06ca",
         "type": "github"
       },
       "original": {
@@ -770,11 +770,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1785728346,
-        "narHash": "sha256-DWa1m7y8iYGQ5sm8oCE9GkiWs63KI4G0gdQ2qpbh6Ks=",
+        "lastModified": 1785837256,
+        "narHash": "sha256-A+PWEr0qIWywkGbiOaZGwe+Od4dhgRiGvlBE+hjM2P0=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "de9ee83756207790c171a6f8bccd2a6f62a08b9f",
+        "rev": "82806f7e9739512247090c69dbb67224db12767e",
         "type": "github"
       },
       "original": {
@@ -811,11 +811,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1785695781,
-        "narHash": "sha256-bh1OUi/3AMR7hytDwhQL+FMr/MklvjcJrlp5ijJKtJw=",
+        "lastModified": 1785784274,
+        "narHash": "sha256-EfQnFhRC9hwkHx6x/hQPs5jbGBiW9NanbUi3iwG4qm0=",
         "owner": "xddxdd",
         "repo": "nix-cachyos-kernel",
-        "rev": "e2c327cc00fd5243685fee69e90e4c7eb2f6e8ba",
+        "rev": "0c30753ac307cd4656848c367a1c188374d892c0",
         "type": "github"
       },
       "original": {
@@ -1000,11 +1000,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1785672624,
-        "narHash": "sha256-TWz27RiQZf38j17BYGN/V4U2SQVtOE2pFc9u2cy3H3g=",
+        "lastModified": 1785759394,
+        "narHash": "sha256-WYP7h3gNv9qLjMu5iCxlOFZX+BIcJv+kVXiNcFuFw/U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8205539d1c589daf91e3c192fc10fa534acc5326",
+        "rev": "04b6fa9fd2d8c742f4472dcb25e4a39e9be2b301",
         "type": "github"
       },
       "original": {
@@ -1473,17 +1473,18 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1783016171,
-        "narHash": "sha256-1lOW7LCAkf0GjQe4Pk8gsL4J/V7nmIg8V2V6e+UazYo=",
-        "ref": "refs/heads/main",
-        "rev": "6bafea88fb8cd3e80abd94d0b73971d60c06318c",
-        "revCount": 20,
+        "lastModified": 1783019483,
+        "narHash": "sha256-abQiu8XTTnzDENCSxIbUlEDctWSxTvlR+PpNkvFJkuw=",
+        "ref": "feat/updates",
+        "rev": "dbe6e62c7f8b4b3a44c2eda5a42c29a474bb5679",
+        "revCount": 22,
         "type": "git",
-        "url": "https://heliopolis.live/creations/wl-mouse.git"
+        "url": "https://heliopolis.live/vmohammad/wl-mouse.git"
       },
       "original": {
+        "ref": "feat/updates",
         "type": "git",
-        "url": "https://heliopolis.live/creations/wl-mouse.git"
+        "url": "https://heliopolis.live/vmohammad/wl-mouse.git"
       }
     },
     "xdph": {
