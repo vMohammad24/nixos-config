@@ -29,7 +29,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     wl-mouse = {
-      url = "git+https://heliopolis.live/creations/wl-mouse.git";
+      url = "git+https://heliopolis.live/vmohammad/wl-mouse.git?ref=feat/updates";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mangowm = {
