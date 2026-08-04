@@ -97,8 +97,11 @@ in {
         dock = "right";
       };
       lsp = {
-        qmlls = {
-          binary.path = "${pkgs.kdePackages.qtdeclarative.dev}/bin/qmlls";
+        qmljs = {
+          binary = {
+            path = lib.getExe' pkgs.kdePackages.qtdeclarative "qmlls";
+            arguments = ["-E"];
+          };
         };
         biome = {
           settings = {
@@ -213,8 +216,18 @@ in {
     ninja
     gdb
     pkg-config
+    ccache
+    clang-tools
+    ripgrep
+    jq
     qt6.qtbase
     qt6.qtsvg
+    qt6.qttools
+    qt6.qtwayland
     kdePackages.qtdeclarative
   ];
+
+  home.sessionVariables = {
+    QMLLS_BUILD_DIRS = "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml/";
+  };
 }
