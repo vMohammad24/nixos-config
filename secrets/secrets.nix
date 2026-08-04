@@ -17,4 +17,5 @@ in {
   "grafana-secret-key.age".publicKeys = [vmohammad server];
   "miniflux-admin.age".publicKeys = [vmohammad server];
   "speedtest-tracker-key.age".publicKeys = [vmohammad server];
+  "nix_conf.age".publicKeys = [vmohammad main-desktop];
 }

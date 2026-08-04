@@ -9,6 +9,12 @@
         owner = "vmohammad";
         group = "users";
       };
+      nix_conf = {
+        file = ../../secrets/nix_conf.age;
+        mode = "0400";
+        owner = "vmohammad";
+        group = "users";
+      };
     };
   };
 }
