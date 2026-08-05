@@ -70,7 +70,7 @@ in {
       )
       ++ [
         # super (app launcher)
-        (h.bindModFlags "SUPER_L" "hl.dsp.exec_cmd(\"vicinae toggle\")" {release = true;})
+        (h.bindExec "ALT + Space" "vicinae toggle")
 
         # mouse
         (h.bindModFlags "mouse:272" "hl.dsp.window.drag()" {mouse = true;})
