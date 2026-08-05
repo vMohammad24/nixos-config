@@ -100,7 +100,11 @@ in {
         qmljs = {
           binary = {
             path = lib.getExe' pkgs.kdePackages.qtdeclarative "qmlls";
-            arguments = ["-E"];
+            arguments = [
+              "-E"
+              "-I"
+              "${pkgs.kdePackages.layer-shell-qt}/lib/qt-6/qml"
+            ];
           };
         };
         biome = {
