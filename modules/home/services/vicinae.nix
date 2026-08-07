@@ -42,9 +42,8 @@ in {
         files = {
           preferences = {
             autoIndexing = true;
-            excludedPaths = "/nix/store";
-            paths = "~/";
-            watcherPaths = "";
+            excludedIndexingPaths = ["/nix/store" "/mnt"];
+            indexingPaths = "/home/vmohammad";
           };
         };
         font = {
