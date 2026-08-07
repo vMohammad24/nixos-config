@@ -45,14 +45,25 @@
 
     boot.supportedFilesystems = ["ntfs3"];
 
-    fileSystems."/mnt/SSSD" = {
-      device = "/dev/disk/by-uuid/e18c8ef6-e3e8-42d8-be39-0fa459c4f94c";
-      fsType = "ext4";
+    fileSystems."/mnt/sam" = {
+      device = "/dev/disk/by-uuid/d0dcdc59-c697-4040-a0dd-3b1fe339a184";
+      fsType = "xfs";
       options = [
         "defaults"
         "noatime"
         "nofail"
-        "x-gvfs-show"
+        "logbsize=256k"
+      ];
+    };
+
+    fileSystems."/mnt/king" = {
+      device = "/dev/disk/by-uuid/69b503ae-a141-44f9-ad71-ba3051ca6a59";
+      fsType = "xfs";
+      options = [
+        "defaults"
+        "noatime"
+        "nofail"
+        "logbsize=256k"
       ];
     };
 
