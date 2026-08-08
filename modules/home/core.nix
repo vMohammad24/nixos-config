@@ -64,7 +64,6 @@ in {
     config = {
       ao = "pipewire";
       audio-samplerate = 0;
-      audio-format = "auto";
       audio-swresample-o = "dither_method=triangular";
       volume = 100;
       volume-max = 100;
