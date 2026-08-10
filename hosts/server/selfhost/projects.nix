@@ -1,8 +1,13 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [inputs.tss.nixosModules.default];
 
   services.postgresql = {
     enable = true;
+    package = pkgs.postgresql_18;
     ensureDatabases = ["tss"];
     ensureUsers = [
       {
