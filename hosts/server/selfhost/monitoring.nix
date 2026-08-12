@@ -11,7 +11,9 @@
     static_configs = [{targets = ["127.0.0.1:${toString port}"];}];
   };
 in {
-  config = lib.mkIf config.myConfig.rr.enable {
+  options.myConfig.monitoring.enable = lib.mkEnableOption "Prometheus and Grafana monitoring";
+
+  config = lib.mkIf config.myConfig.monitoring.enable {
     services.prometheus = {
       enable = true;
       listenAddress = "127.0.0.1";
@@ -34,10 +36,10 @@ in {
       enable = true;
       settings = {
         server = {
-          http_addr = "0.0.0.0";
+          http_addr = "127.0.0.1";
           http_port = grafanaPort;
           domain = "grafana.local";
-          root_url = "http://grafana.local/";
+          root_url = "https://grafana.local/";
         };
         security.secret_key = "$__file{/run/agenix/grafana-secret-key}";
       };

@@ -13,6 +13,7 @@
   networking.hostName = "server";
 
   myConfig.ai.enable = false;
+  myConfig.monitoring.enable = true;
   myConfig.rr.enable = false;
   myConfig.forgejo-runner.enable = false;
   virtualisation.docker.enable = config.myConfig.forgejo-runner.enable;

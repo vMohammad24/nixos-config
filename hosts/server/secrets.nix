@@ -33,13 +33,15 @@
           group = "forgejo-runner";
         };
       })
-      (lib.mkIf config.myConfig.rr.enable {
+      (lib.mkIf config.myConfig.monitoring.enable {
         grafana-secret-key = {
           file = ../../secrets/grafana-secret-key.age;
           mode = "0400";
           owner = "grafana";
           group = "grafana";
         };
+      })
+      (lib.mkIf config.myConfig.rr.enable {
         prowlarr-milkie-apikey = {
           file = ../../secrets/prowlarr-milkie-apikey.age;
           mode = "0400";
