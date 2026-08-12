@@ -5,7 +5,7 @@ my personal nixos config utilizing flakes & home-manager
 ## features
 
 - **hosts**: main-desktop (gaming/dev) and server (self-hosted services)
-- **WM/DE**: [hyprland](https://hyprland.org/), [mango](https://mangowm.github.io/) and [plasma](https://kde.org/) via boot specialisations (only hyprland is maintained as it is my main)
+- **WM/DE**: [hyprland](https://hyprland.org/) and [mango](https://mangowm.github.io/) via boot specialisations (only hyprland is maintained as it is my main)
 - **theme**: rose pine via [stylix](https://github.com/nix-community/stylix)
 - **secrets**: managed via [agenix](https://github.com/ryantm/agenix)
 - **formatting**: [alejandra](https://github.com/kamadorueda/alejandra)
@@ -19,7 +19,7 @@ my personal nixos config utilizing flakes & home-manager
 - `modules/`:
   - `system/`: system-wide modules (core, hardware, users).
   - `home/`: home manager config (shell, dev, programs, window managers).
-  - `desktops/`: base configurations for hyprland, kde, and mango.
+  - `desktops/`: base configurations for hyprland and mango.
   - `stylix.nix`: themeing config.
 
 ## installation

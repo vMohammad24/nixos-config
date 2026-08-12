@@ -10,12 +10,6 @@
   myConfig.desktops.hyprland.enable = true;
 
   specialisation = {
-    kde.configuration = {
-      system.nixos.tags = ["kde"];
-      myConfig.desktops.hyprland.enable = lib.mkForce false;
-      myConfig.desktops.kde.enable = true;
-    };
-
     mango.configuration = {
       system.nixos.tags = ["mango"];
       myConfig.desktops.hyprland.enable = lib.mkForce false;

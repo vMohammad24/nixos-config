@@ -25,9 +25,6 @@
       ../../modules/home/services/hypridle.nix
       ../../modules/home/services/hyprlock.nix
       ../../modules/home/programs/bars/waybar.nix
-    ]
-    ++ lib.optionals (osConfig.myConfig.desktops.kde.enable or false) [
-      inputs.plasma-manager.homeModules.plasma-manager
     ];
 
   programs.nix-index.enable = true;

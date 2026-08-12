@@ -8,7 +8,7 @@
     default =
       lib.any
       (desktop: config.myConfig.desktops.${desktop}.enable or false)
-      ["hyprland" "kde" "mango"];
+      ["hyprland" "mango"];
     description = "Whether the system is a desktop system.";
   };
 }

@@ -23,11 +23,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     wl-mouse = {
       url = "git+https://heliopolis.live/vmohammad/wl-mouse.git?ref=feat/updates";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -116,7 +111,6 @@
         }
         inputs.hyprland.nixosModules.default
         ./modules/desktops/hyprland.nix
-        ./modules/desktops/kde.nix
         ./modules/desktops/mango.nix
       ];
     };

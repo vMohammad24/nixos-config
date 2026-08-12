@@ -7,7 +7,7 @@
 }: let
   isDesktop = config.myConfig.isDesktop;
 in {
-  services.getty.autologinUser = lib.mkIf (!config.myConfig.desktops.kde.enable or true) "vmohammad";
+  services.getty.autologinUser = "vmohammad";
   users.users.vmohammad = {
     isNormalUser = true;
     extraGroups = [
