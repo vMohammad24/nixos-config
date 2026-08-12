@@ -14,22 +14,29 @@ in {
   options.myConfig.monitoring.enable = lib.mkEnableOption "Prometheus and Grafana monitoring";
 
   config = lib.mkIf config.myConfig.monitoring.enable {
+    services.prometheus.exporters.node.enable = true;
+    services.prometheus.exporters.systemd.enable = true;
+    services.prometheus.exporters.wireguard.enable = true;
+
     services.prometheus = {
       enable = true;
       listenAddress = "127.0.0.1";
       port = promPort;
       retentionTime = "30d";
 
-      scrapeConfigs = [
-        (scrape "node" 9100)
-        (scrape "systemd" 9558)
-        (scrape "sonarr" 9707)
-        (scrape "radarr" 9708)
-        (scrape "prowlarr" 9711)
-        (scrape "qbittorrent" 9713)
-        (scrape "wireguard" 9586)
-        (scrape "prometheus" promPort)
-      ];
+      scrapeConfigs =
+        [
+          (scrape "node" 9100)
+          (scrape "systemd" 9558)
+          (scrape "wireguard" 9586)
+          (scrape "prometheus" promPort)
+        ]
+        ++ lib.optionals config.myConfig.rr.enable [
+          (scrape "sonarr" 9707)
+          (scrape "radarr" 9708)
+          (scrape "prowlarr" 9711)
+          (scrape "qbittorrent" 9713)
+        ];
     };
 
     services.grafana = {
