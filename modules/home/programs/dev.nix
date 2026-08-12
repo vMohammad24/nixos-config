@@ -215,7 +215,6 @@ in {
     zig
     odin
     ghidra
-    qtcreator
     cmake
     ninja
     gdb

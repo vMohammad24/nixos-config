@@ -168,7 +168,6 @@ in {
       mitmproxy
       mullvad-vpn
       prismlauncher
-      jetbrains.idea
       discord-canary
       labymod-launcher
       blender
