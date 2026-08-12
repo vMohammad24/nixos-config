@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   grafanaPort = 3001;
@@ -14,9 +15,19 @@ in {
   options.myConfig.monitoring.enable = lib.mkEnableOption "Prometheus and Grafana monitoring";
 
   config = lib.mkIf config.myConfig.monitoring.enable {
-    services.prometheus.exporters.node.enable = true;
+    services.prometheus.exporters.node = {
+      enable = true;
+      listenAddress = "127.0.0.1";
+      enabledCollectors = ["rapl"];
+    };
     services.prometheus.exporters.systemd.enable = true;
     services.prometheus.exporters.wireguard.enable = true;
+
+    services.udev.extraRules = ''
+      SUBSYSTEM=="powercap", ACTION=="add", RUN+="${pkgs.coreutils}/bin/chgrp node-exporter /sys/%p/energy_uj", RUN+="${pkgs.coreutils}/bin/chmod 0440 /sys/%p/energy_uj"
+    '';
+
+    boot.kernelModules = ["intel_rapl_common"];
 
     services.prometheus = {
       enable = true;
