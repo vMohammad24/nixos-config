@@ -3,19 +3,57 @@
   pkgs,
   ...
 }: let
+  interface = "eno2";
   virtualIp = "192.168.1.200";
+  proxiedDevices = ["192.168.1.53"];
 
   proxiedDomains = [
     "tiktok.com"
     "tiktokv.com"
     "tiktokcdn.com"
+    "tiktokcdn-eu.com"
+    "tiktokw.eu"
     "byteoversea.com"
     "ibyteimg.com"
     "ibytedtos.com"
     "musical.ly"
     "mullvad.net"
   ];
+
+  proxiedDeviceSet = lib.concatStringsSep ", " proxiedDevices;
 in {
+  networking.firewall.filterForward = true;
+  networking.nat = {
+    enable = true;
+    externalInterface = interface;
+    internalIPs = ["192.168.1.0/24"];
+  };
+
+  networking.nftables.tables = lib.mkIf (proxiedDevices != []) {
+    sniproxy = {
+      family = "ip";
+      content = ''
+        set proxied_devices {
+          type ipv4_addr
+          flags interval
+          elements = { ${proxiedDeviceSet} }
+        }
+
+        chain prerouting {
+          type nat hook prerouting priority dstnat; policy accept;
+
+          iifname "${interface}" ip saddr @proxied_devices tcp dport 443 dnat to ${virtualIp}:443
+        }
+
+        chain forward {
+          type filter hook forward priority filter; policy accept;
+
+          iifname "${interface}" ip saddr @proxied_devices udp dport 443 reject with icmp type admin-prohibited
+        }
+      '';
+    };
+  };
+
   systemd.services.nginx-vpn-proxy = {
     description = "Nginx stream proxy confined to wg VPN namespace";
     after = ["wg.service" "network-online.target"];
@@ -56,6 +94,7 @@ in {
       map $ssl_preread_server_name $upstream {
         hostnames;
         ${mapEntries}
+        default $ssl_preread_server_name;
       }
 
       server {
@@ -68,5 +107,11 @@ in {
     }
   '';
 
-  services.dnsmasq.settings.address = map (domain: "/${domain}/${virtualIp}") proxiedDomains;
+  services.dnsmasq.settings.address =
+    (map (domain: "/${domain}/${virtualIp}") proxiedDomains)
+    ++ (map (domain: "/*.${domain}/${virtualIp}") proxiedDomains);
+
+  services.dnsmasq.settings.cname =
+    (map (domain: "*.${domain},${domain}") proxiedDomains)
+    ++ ["www.tiktok.com,tiktok.com"];
 }
