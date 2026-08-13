@@ -7,7 +7,7 @@
 }: let
   isDesktop = config.myConfig.isDesktop;
 in {
-  services.getty.autologinUser = "vmohammad";
+  services.getty.autologinUser = lib.mkIf isDesktop "vmohammad";
   users.users.vmohammad = {
     isNormalUser = true;
     extraGroups = [
