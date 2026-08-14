@@ -92,6 +92,7 @@ in {
 
   services.pihole-ftl = {
     enable = true;
+    openFirewallDNS = true;
     privacyLevel = 3;
     useDnsmasqConfig = true;
 

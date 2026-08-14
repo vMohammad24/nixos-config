@@ -1,4 +1,10 @@
 {pkgs, ...}: {
+  networking.firewall.allowedTCPPorts = [
+    3000
+    25565
+  ];
+  networking.firewall.allowedUDPPorts = [25565];
+
   xdg.portal = {
     enable = true;
     extraPortals = [
