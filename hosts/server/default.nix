@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./backups.nix
     ./secrets.nix
     ./selfhost
     ./nvidia-block.nix
@@ -13,6 +14,7 @@
   networking.hostName = "server";
 
   myConfig.ai.enable = false;
+  myConfig.backups.enable = true;
   myConfig.monitoring.enable = true;
   myConfig.rr.enable = false;
   myConfig.forgejo-runner.enable = false;

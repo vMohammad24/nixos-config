@@ -41,6 +41,16 @@
           group = "grafana";
         };
       })
+      (lib.mkIf config.myConfig.backups.enable {
+        restic-local-password = {
+          file = ../../secrets/restic-local-password.age;
+          mode = "0400";
+        };
+        restic-s3-env = {
+          file = ../../secrets/restic-s3-env.age;
+          mode = "0400";
+        };
+      })
       (lib.mkIf config.myConfig.rr.enable {
         prowlarr-milkie-apikey = {
           file = ../../secrets/prowlarr-milkie-apikey.age;

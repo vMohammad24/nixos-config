@@ -18,4 +18,6 @@ in {
   "miniflux-admin.age".publicKeys = [vmohammad server];
   "speedtest-tracker-key.age".publicKeys = [vmohammad server];
   "nix_conf.age".publicKeys = [vmohammad main-desktop];
+  "restic-local-password.age".publicKeys = [vmohammad server];
+  "restic-s3-env.age".publicKeys = [vmohammad server];
 }
