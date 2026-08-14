@@ -34,6 +34,10 @@
         };
       })
       (lib.mkIf config.myConfig.monitoring.enable {
+        alertmanager-discord-env = {
+          file = ../../secrets/alertmanager-discord-env.age;
+          mode = "0400";
+        };
         grafana-secret-key = {
           file = ../../secrets/grafana-secret-key.age;
           mode = "0400";

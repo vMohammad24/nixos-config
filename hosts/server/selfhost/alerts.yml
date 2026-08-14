@@ -1,0 +1,74 @@
+groups:
+  - name: server
+    rules:
+      - alert: PrometheusTargetDown
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Prometheus target {{ $labels.job }} is down'
+          description: 'Prometheus has not been able to scrape {{ $labels.instance }} for five minutes.'
+
+      - alert: HDDNearlyFull
+        expr: 100 * (1 - node_filesystem_avail_bytes{mountpoint="/mnt/HDD"} / node_filesystem_size_bytes{mountpoint="/mnt/HDD"}) > 90
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: '/mnt/HDD is over 90% full'
+          description: '{{ $value | printf "%.1f" }}% of the filesystem is used.'
+
+      - alert: FilesystemReadOnly
+        expr: node_filesystem_readonly{fstype!~"tmpfs|overlay", mountpoint!="/nix/store"} == 1
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Filesystem {{ $labels.mountpoint }} is read-only'
+          description: '{{ $labels.device }} has been read-only for five minutes.'
+
+      - alert: SystemdUnitFailed
+        expr: node_systemd_unit_state{state="failed", name!~"restic-backups-(local|s3).service"} == 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'systemd unit {{ $labels.name }} failed'
+          description: '{{ $labels.name }} has remained failed for five minutes.'
+
+      - alert: ResticBackupFailed
+        expr: node_systemd_unit_state{state="failed", name=~"restic-backups-(local|s3).service"} == 1
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Backup job {{ $labels.name }} failed'
+          description: 'The Restic backup must be investigated; one backup destination is stale.'
+
+      - alert: SMARTHealthCheckFailed
+        expr: smartctl_device_smart_status == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'SMART health check failed for {{ $labels.device }}'
+          description: 'The disk reports a failing overall SMART health status.'
+
+      - alert: SMARTCriticalWarning
+        expr: smartctl_device_critical_warning > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'SMART critical warning for {{ $labels.device }}'
+          description: 'The disk reports a non-zero NVMe critical warning value.'
+
+      - alert: HostLoadHigh
+        expr: node_load15 / count without (cpu, mode) (node_cpu_seconds_total{mode="idle"}) > 2
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Sustained high load on {{ $labels.instance }}'
+          description: 'The 15-minute load average has exceeded twice the CPU count for 30 minutes.'

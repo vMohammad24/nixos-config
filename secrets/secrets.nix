@@ -20,4 +20,5 @@ in {
   "nix_conf.age".publicKeys = [vmohammad main-desktop];
   "restic-local-password.age".publicKeys = [vmohammad server];
   "restic-s3-env.age".publicKeys = [vmohammad server];
+  "alertmanager-discord-env.age".publicKeys = [vmohammad server];
 }
