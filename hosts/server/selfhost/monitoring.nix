@@ -8,6 +8,7 @@
   promPort = 9090;
   alertmanagerPort = 9093;
   lokiPort = 3100;
+  tidalSubsonicMetricsPort = 9464;
 
   scrape = job: port: {
     job_name = job;
@@ -133,7 +134,7 @@ in {
           (scrape "qbittorrent" 9713)
         ]
         ++ lib.optionals config.services.tss.enable [
-          (scrape "tidal-subsonic" config.services.tss.port)
+          (scrape "tidal-subsonic" tidalSubsonicMetricsPort)
         ];
     };
 
