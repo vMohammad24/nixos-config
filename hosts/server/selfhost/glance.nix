@@ -98,10 +98,13 @@ let
           }
         ];
       }
-      # {
-      #   type = "reddit";
-      #   subreddit = "selfhosted";
-      # }
+      {
+        type = "reddit";
+        subreddit = "selfhosted";
+        show-thumbsnail = true;
+        sort-by = "top";
+        top-period = "day";
+      }
     ];
   };
 in {
