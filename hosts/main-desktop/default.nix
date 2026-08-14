@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./secrets.nix
+    ../../modules/system/desktop.nix
   ];
 
   networking.hostName = "main-desktop";
