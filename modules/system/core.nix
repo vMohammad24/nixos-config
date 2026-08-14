@@ -21,7 +21,7 @@ in {
     then pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3
     else pkgs.cachyosKernels.linuxPackages-cachyos-server;
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = isDesktop;
   networking.hosts = lib.mkIf isDesktop {
     "0.0.0.0" = [
       "paradise-s1.battleye.com"
