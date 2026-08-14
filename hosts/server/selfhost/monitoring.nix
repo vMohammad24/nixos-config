@@ -131,6 +131,9 @@ in {
           (scrape "radarr" 9708)
           (scrape "prowlarr" 9711)
           (scrape "qbittorrent" 9713)
+        ]
+        ++ lib.optionals config.services.tss.enable [
+          (scrape "tidal-subsonic" config.services.tss.port)
         ];
     };
 

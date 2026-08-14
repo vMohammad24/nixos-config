@@ -1,0 +1,251 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "graphTooltip": 1,
+  "schemaVersion": 39,
+  "tags": ["tidal-subsonic", "application"],
+  "time": { "from": "now-6h", "to": "now" },
+  "timezone": "browser",
+  "title": "Tidal Subsonic",
+  "uid": "tidal-subsonic",
+  "refresh": "30s",
+  "templating": {
+    "list": [
+      {
+        "type": "datasource",
+        "name": "datasource",
+        "label": "Data source",
+        "query": "prometheus",
+        "current": {},
+        "refresh": 1
+      }
+    ]
+  },
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Service Up",
+      "id": 1,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 4, "x": 0, "y": 0 },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            { "type": "value", "options": { "0": { "text": "Down", "color": "red" }, "1": { "text": "Up", "color": "green" } } }
+          ],
+          "thresholds": { "mode": "absolute", "steps": [{ "color": "red", "value": null }, { "color": "green", "value": 1 }] }
+        },
+        "overrides": []
+      },
+      "options": { "colorMode": "background", "graphMode": "none", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "refId": "A", "expr": "up{job=\"tidal-subsonic\"}" }]
+    },
+    {
+      "type": "stat",
+      "title": "Uptime",
+      "id": 2,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 4, "x": 4, "y": 0 },
+      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] },
+      "options": { "colorMode": "value", "graphMode": "area", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "refId": "A", "expr": "time() - process_start_time_seconds{job=\"tidal-subsonic\"}" }]
+    },
+    {
+      "type": "stat",
+      "title": "Active Streams",
+      "id": 3,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 4, "x": 8, "y": 0 },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": { "colorMode": "value", "graphMode": "area", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "refId": "A", "expr": "tss_playback_active_streams{job=\"tidal-subsonic\"}" }]
+    },
+    {
+      "type": "stat",
+      "title": "Request Rate",
+      "id": 4,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 4, "x": 12, "y": 0 },
+      "fieldConfig": { "defaults": { "unit": "reqps" }, "overrides": [] },
+      "options": { "colorMode": "value", "graphMode": "area", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "refId": "A", "expr": "sum(rate(tss_http_requests_total{job=\"tidal-subsonic\",endpoint!=\"/metrics\"}[5m]))" }]
+    },
+    {
+      "type": "stat",
+      "title": "5xx Rate",
+      "id": 5,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 4, "x": 16, "y": 0 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }, { "color": "yellow", "value": 0.01 }, { "color": "red", "value": 0.05 }] }
+        },
+        "overrides": []
+      },
+      "options": { "colorMode": "background", "graphMode": "area", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "refId": "A", "expr": "(sum(rate(tss_http_requests_total{job=\"tidal-subsonic\",status=~\"5..\"}[5m])) / clamp_min(sum(rate(tss_http_requests_total{job=\"tidal-subsonic\",endpoint!=\"/metrics\"}[5m])), 1e-9)) or vector(0)" }]
+    },
+    {
+      "type": "stat",
+      "title": "Resident Memory",
+      "id": 6,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 4, "w": 4, "x": 20, "y": 0 },
+      "fieldConfig": { "defaults": { "unit": "bytes" }, "overrides": [] },
+      "options": { "colorMode": "value", "graphMode": "area", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "refId": "A", "expr": "process_resident_memory_bytes{job=\"tidal-subsonic\"}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "HTTP Requests by Endpoint and Status",
+      "id": 7,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
+      "fieldConfig": { "defaults": { "unit": "reqps" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "sum by (endpoint, status) (rate(tss_http_requests_total{job=\"tidal-subsonic\",endpoint!=\"/metrics\"}[5m]))", "legendFormat": "{{endpoint}} [{{status}}]" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "HTTP Latency p50 / p95 / p99",
+      "id": 8,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
+      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        { "refId": "A", "expr": "histogram_quantile(0.50, sum by (le) (rate(tss_http_requests_duration_seconds_bucket{job=\"tidal-subsonic\",endpoint!=\"/metrics\"}[5m])))", "legendFormat": "p50" },
+        { "refId": "B", "expr": "histogram_quantile(0.95, sum by (le) (rate(tss_http_requests_duration_seconds_bucket{job=\"tidal-subsonic\",endpoint!=\"/metrics\"}[5m])))", "legendFormat": "p95" },
+        { "refId": "C", "expr": "histogram_quantile(0.99, sum by (le) (rate(tss_http_requests_duration_seconds_bucket{job=\"tidal-subsonic\",endpoint!=\"/metrics\"}[5m])))", "legendFormat": "p99" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Tidal API Latency p95",
+      "id": 9,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 12 },
+      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "histogram_quantile(0.95, sum by (le, api_version) (rate(tss_tidal_request_duration_seconds_bucket{job=\"tidal-subsonic\"}[5m])))", "legendFormat": "{{api_version}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Tidal Requests by Outcome",
+      "id": 10,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 12 },
+      "fieldConfig": { "defaults": { "unit": "reqps" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "sum by (api_version, outcome) (rate(tss_tidal_requests_total{job=\"tidal-subsonic\"}[5m]))", "legendFormat": "{{api_version}} {{outcome}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Tidal Requests in Flight",
+      "id": 11,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 12 },
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0 }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "tss_tidal_requests_in_flight{job=\"tidal-subsonic\"}", "legendFormat": "{{api_version}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Cache Hit Ratio",
+      "id": 12,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 20 },
+      "fieldConfig": { "defaults": { "unit": "percentunit", "min": 0, "max": 1 }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "sum by (cache) (rate(tss_cache_accesses_total{job=\"tidal-subsonic\",result=\"hit\"}[5m])) / clamp_min(sum by (cache) (rate(tss_cache_accesses_total{job=\"tidal-subsonic\"}[5m])), 1e-9)", "legendFormat": "{{cache}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Cache Entries",
+      "id": 13,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 20 },
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0 }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "tss_cache_entries{job=\"tidal-subsonic\"}", "legendFormat": "{{cache}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Cache Evictions",
+      "id": 14,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 20 },
+      "fieldConfig": { "defaults": { "unit": "ops" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "sum by (cache, cause) (rate(tss_cache_evictions_total{job=\"tidal-subsonic\"}[5m]))", "legendFormat": "{{cache}} {{cause}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Playback Requests",
+      "id": 15,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 28 },
+      "fieldConfig": { "defaults": { "unit": "reqps" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "sum by (outcome) (rate(tss_playback_requests_total{job=\"tidal-subsonic\"}[5m]))", "legendFormat": "{{outcome}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Playback Startup Latency p95",
+      "id": 16,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 28 },
+      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "histogram_quantile(0.95, sum by (le, delivery) (rate(tss_playback_startup_duration_seconds_bucket{job=\"tidal-subsonic\"}[5m])))", "legendFormat": "{{delivery}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Authentication Attempts",
+      "id": 17,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 28 },
+      "fieldConfig": { "defaults": { "unit": "ops" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "sum by (outcome) (rate(tss_subsonic_auth_attempts_total{job=\"tidal-subsonic\"}[5m]))", "legendFormat": "{{outcome}}" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Process CPU",
+      "id": 18,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 36 },
+      "fieldConfig": { "defaults": { "unit": "percentunit", "min": 0 }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [{ "refId": "A", "expr": "rate(process_cpu_seconds_total{job=\"tidal-subsonic\"}[5m])", "legendFormat": "CPU" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Process Memory",
+      "id": 19,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 36 },
+      "fieldConfig": { "defaults": { "unit": "bytes" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        { "refId": "A", "expr": "process_resident_memory_bytes{job=\"tidal-subsonic\"}", "legendFormat": "resident" },
+        { "refId": "B", "expr": "process_virtual_memory_bytes{job=\"tidal-subsonic\"}", "legendFormat": "virtual" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Threads and File Descriptors",
+      "id": 20,
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 36 },
+      "fieldConfig": { "defaults": { "unit": "short", "min": 0 }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        { "refId": "A", "expr": "process_threads{job=\"tidal-subsonic\"}", "legendFormat": "threads" },
+        { "refId": "B", "expr": "process_open_fds{job=\"tidal-subsonic\"}", "legendFormat": "open fds" },
+        { "refId": "C", "expr": "process_max_fds{job=\"tidal-subsonic\"}", "legendFormat": "max fds" }
+      ]
+    }
+  ]
+}
