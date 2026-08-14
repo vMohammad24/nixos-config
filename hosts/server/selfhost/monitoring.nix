@@ -78,6 +78,16 @@ in {
         };
         limits_config.retention_period = "720h";
         analytics.reporting_enabled = false;
+        ruler = {
+          storage = {
+            type = "local";
+            local.directory = ./loki-rules;
+          };
+          rule_path = "/var/lib/loki/ruler-tmp";
+          alertmanager_url = "http://127.0.0.1:${toString alertmanagerPort}";
+          enable_api = true;
+          ring.kvstore.store = "inmemory";
+        };
       };
     };
 

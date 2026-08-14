@@ -82,6 +82,31 @@
     home-manager,
     ...
   } @ inputs: {
+    checks.x86_64-linux.monitoring-configs = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in
+      pkgs.runCommand "monitoring-configs-check" {
+        nativeBuildInputs = [
+          pkgs.grafana-alloy
+          pkgs.grafana-loki
+          pkgs.jq
+          pkgs.prometheus.cli
+        ];
+      } ''
+        promtool check rules ${./hosts/server/selfhost/alerts.yml}
+        lokitool rules lint --dry-run ${./hosts/server/selfhost/loki-rules/fake/server.yml}
+        alloy fmt --test ${./hosts/server/selfhost/loki.alloy}
+        alloy validate ${./hosts/server/selfhost/loki.alloy}
+        jq empty \
+          ${./hosts/server/selfhost/dashboards/infrastructure.json} \
+          ${./hosts/server/selfhost/dashboards/server-logs.json} \
+          ${./hosts/server/selfhost/dashboards/server-overview.json}
+
+        grep -F 'transport="kernel"' ${./hosts/server/selfhost/loki-rules/fake/server.yml}
+        grep -F '| __error__=""' ${./hosts/server/selfhost/loki-rules/fake/server.yml}
+        touch $out
+      '';
+
     formatter.x86_64-linux = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in

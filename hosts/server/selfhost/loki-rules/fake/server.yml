@@ -1,0 +1,39 @@
+groups:
+  - name: server-log-alerts
+    interval: 1m
+    rules:
+      - alert: RepeatedSSHAuthenticationFailures
+        expr: sum(count_over_time({job="systemd-journal", service_name=~"ssh(d)?\\.service"} |~ "(?i)failed password|invalid user|authentication failure" [5m])) >= 5
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Repeated SSH authentication failures'
+          description: 'At least five SSH authentication failures were logged during the last five minutes.'
+
+      - alert: KernelStorageErrorLogged
+        expr: 'sum(count_over_time({job="systemd-journal", transport="kernel"} |~ "(?i)blk_update_request|buffer i/o error|critical medium error|end_request: i/o error|remounting filesystem read-only|xfs.*(corruption|shutdown)|nvme.*(critical warning|media error)|ata[0-9].*(failed command|unc error)" [5m])) > 0'
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Kernel or storage error logged'
+          description: 'A log message indicates an I/O, filesystem, NVMe, ATA, or corruption problem.'
+
+      - alert: ResticErrorLogged
+        expr: sum(count_over_time({job="systemd-journal", service_name=~"restic-backups-(local|s3)\\.service"} |~ "(?i)fatal|error|failed" [10m])) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Restic reported an error'
+          description: 'A local or S3 Restic job logged a fatal error or failure.'
+
+      - alert: RepeatedServiceRestarts
+        expr: 'sum by (unit) (count_over_time({job="systemd-journal", syslog_identifier="systemd"} | pattern `<unit>: Scheduled restart job, restart counter is at <_>.` | __error__="" | unit=~".+\\.service" [10m])) >= 3'
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Service {{ $labels.unit }} is repeatedly restarting'
+          description: 'systemd scheduled at least three restarts during the last ten minutes.'

@@ -1,6 +1,31 @@
+loki.relabel "journal" {
+	forward_to = []
+
+	rule {
+		source_labels = ["__journal__systemd_unit"]
+		target_label  = "service_name"
+	}
+
+	rule {
+		source_labels = ["__journal_priority_keyword"]
+		target_label  = "level"
+	}
+
+	rule {
+		source_labels = ["__journal__transport"]
+		target_label  = "transport"
+	}
+
+	rule {
+		source_labels = ["__journal_syslog_identifier"]
+		target_label  = "syslog_identifier"
+	}
+}
+
 loki.source.journal "system" {
-	forward_to = [loki.write.local.receiver]
-	labels     = {
+	forward_to    = [loki.write.local.receiver]
+	relabel_rules = loki.relabel.journal.rules
+	labels        = {
 		job  = "systemd-journal",
 		host = "server",
 	}
