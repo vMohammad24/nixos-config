@@ -5,7 +5,7 @@
 }: let
   isDesktop = config.myConfig.isDesktop;
 in {
-  services.openssh = {
+  services.openssh = lib.mkIf isDesktop {
     enable = true;
     settings = {
       PermitRootLogin = "no";
