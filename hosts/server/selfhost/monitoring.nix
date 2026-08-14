@@ -7,6 +7,7 @@
   grafanaPort = 3001;
   promPort = 9090;
   alertmanagerPort = 9093;
+  lokiPort = 3100;
 
   scrape = job: port: {
     job_name = job;
@@ -39,6 +40,60 @@ in {
 
     boot.kernelModules = ["intel_rapl_common"];
 
+    services.loki = {
+      enable = true;
+      configuration = {
+        auth_enabled = false;
+        server = {
+          http_listen_address = "127.0.0.1";
+          http_listen_port = lokiPort;
+          grpc_listen_address = "127.0.0.1";
+        };
+        common = {
+          instance_addr = "127.0.0.1";
+          path_prefix = "/var/lib/loki";
+          replication_factor = 1;
+          ring.kvstore.store = "inmemory";
+          storage.filesystem = {
+            chunks_directory = "/var/lib/loki/chunks";
+            rules_directory = "/var/lib/loki/rules";
+          };
+        };
+        schema_config.configs = [
+          {
+            from = "2024-01-01";
+            store = "tsdb";
+            object_store = "filesystem";
+            schema = "v13";
+            index = {
+              prefix = "index_";
+              period = "24h";
+            };
+          }
+        ];
+        compactor = {
+          working_directory = "/var/lib/loki/compactor";
+          retention_enabled = true;
+          delete_request_store = "filesystem";
+        };
+        limits_config.retention_period = "720h";
+        analytics.reporting_enabled = false;
+      };
+    };
+
+    services.alloy = {
+      enable = true;
+      configPath = ./loki.alloy;
+      extraFlags = [
+        "--server.http.listen-addr=127.0.0.1:12345"
+        "--disable-reporting"
+      ];
+    };
+    systemd.services.alloy = {
+      requires = ["loki.service"];
+      after = ["loki.service"];
+    };
+
     services.prometheus = {
       enable = true;
       listenAddress = "127.0.0.1";
@@ -59,6 +114,7 @@ in {
           (scrape "smartctl" 9633)
           (scrape "prometheus" promPort)
           (scrape "alertmanager" alertmanagerPort)
+          (scrape "loki" lokiPort)
         ]
         ++ lib.optionals config.myConfig.rr.enable [
           (scrape "sonarr" 9707)
@@ -117,6 +173,14 @@ in {
             type = "prometheus";
             url = "http://127.0.0.1:${toString promPort}";
             isDefault = true;
+          }
+          {
+            name = "Loki";
+            uid = "loki";
+            type = "loki";
+            url = "http://127.0.0.1:${toString lokiPort}";
+            access = "proxy";
+            jsonData.maxLines = 1000;
           }
         ];
         dashboards.settings.providers = [
