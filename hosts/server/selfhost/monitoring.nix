@@ -9,6 +9,7 @@
   alertmanagerPort = 9093;
   lokiPort = 3100;
   tidalSubsonicMetricsPort = 9464;
+  unboundMetricsPort = 9167;
 
   scrape = job: port: {
     job_name = job;
@@ -28,6 +29,22 @@ in {
     services.prometheus.exporters.smartctl = {
       enable = true;
       listenAddress = "127.0.0.1";
+    };
+    services.prometheus.exporters.unbound = {
+      enable = true;
+      listenAddress = "127.0.0.1";
+      port = unboundMetricsPort;
+      unbound = {
+        host = "unix:///run/unbound/unbound.ctl";
+        ca = null;
+        certificate = null;
+        key = null;
+      };
+    };
+
+    services.unbound = {
+      localControlSocketPath = "/run/unbound/unbound.ctl";
+      settings.server.extended-statistics = true;
     };
 
     services.smartd = {
@@ -123,6 +140,7 @@ in {
           (scrape "systemd" 9558)
           (scrape "wireguard" 9586)
           (scrape "smartctl" 9633)
+          (scrape "unbound" unboundMetricsPort)
           (scrape "prometheus" promPort)
           (scrape "alertmanager" alertmanagerPort)
           (scrape "loki" lokiPort)
@@ -187,6 +205,7 @@ in {
             type = "prometheus";
             url = "http://127.0.0.1:${toString promPort}";
             isDefault = true;
+            jsonData.timeInterval = "1m";
           }
           {
             name = "Loki";

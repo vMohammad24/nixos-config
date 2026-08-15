@@ -108,7 +108,8 @@
         jq empty \
           ${./hosts/server/selfhost/dashboards/infrastructure.json} \
           ${./hosts/server/selfhost/dashboards/server-logs.json} \
-          ${./hosts/server/selfhost/dashboards/server-overview.json}
+          ${./hosts/server/selfhost/dashboards/server-overview.json} \
+          ${./hosts/server/selfhost/dashboards/unbound.json}
 
         grep -F 'transport="kernel"' ${./hosts/server/selfhost/loki-rules/fake/server.yml}
         grep -F '| __error__=""' ${./hosts/server/selfhost/loki-rules/fake/server.yml}
