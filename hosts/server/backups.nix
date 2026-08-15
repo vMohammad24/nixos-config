@@ -34,7 +34,6 @@ in {
       type = lib.types.listOf lib.types.str;
       default = [
         "/var/lib/grafana"
-        "/var/lib/pihole"
         "/var/lib/speedtest-tracker"
         vaultwardenBackup
       ];
