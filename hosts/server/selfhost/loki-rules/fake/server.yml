@@ -21,7 +21,7 @@ groups:
           description: 'A log message indicates an I/O, filesystem, NVMe, ATA, or corruption problem.'
 
       - alert: ResticErrorLogged
-        expr: sum(count_over_time({job="systemd-journal", service_name=~"restic-backups-(local|s3)\\.service"} |~ "(?i)fatal|error|failed" [10m])) > 0
+        expr: sum(count_over_time({job="systemd-journal", service_name=~"restic-backups-(local|s3)\\.service", level=~"emerg|alert|crit|error"} [10m])) > 0
         for: 1m
         labels:
           severity: critical
