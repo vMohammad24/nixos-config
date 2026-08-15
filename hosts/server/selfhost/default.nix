@@ -19,6 +19,7 @@ in {
     ./media.nix
     ./monitoring.nix
     ./proxy.nix
+    ./unbound.nix
     ./forgejo
   ];
 

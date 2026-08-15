@@ -91,12 +91,4 @@ in {
       }
     }
   '';
-
-  services.dnsmasq.settings.address =
-    (map (domain: "/${domain}/${virtualIp}") proxiedDomains)
-    ++ (map (domain: "/*.${domain}/${virtualIp}") proxiedDomains);
-
-  services.dnsmasq.settings.cname =
-    (map (domain: "*.${domain},${domain}") proxiedDomains)
-    ++ ["www.tiktok.com,tiktok.com"];
 }

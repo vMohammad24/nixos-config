@@ -374,6 +374,22 @@
         "type": "gitlab"
       }
     },
+    "hagezi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786726992,
+        "narHash": "sha256-Nbu2w3p2NtwLF9ZFpp1trJ5QBMZ1TYZsb9VY34TnNN0=",
+        "owner": "hagezi",
+        "repo": "dns-blocklists",
+        "rev": "4b652c6ef8a3b2439c20479dbd4415b50fbd8e6d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hagezi",
+        "repo": "dns-blocklists",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1091,6 +1107,7 @@
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "framr": "framr",
+        "hagezi": "hagezi",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "jellyfin-desktop": "jellyfin-desktop",
@@ -1104,6 +1121,7 @@
         "systems": "systems_3",
         "tss": "tss",
         "vicinae": "vicinae",
+        "windows-spy-blocker": "windows-spy-blocker",
         "wl-mouse": "wl-mouse"
       }
     },
@@ -1438,6 +1456,22 @@
       "original": {
         "owner": "rasmus-kirk",
         "repo": "website-builder",
+        "type": "github"
+      }
+    },
+    "windows-spy-blocker": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783769540,
+        "narHash": "sha256-fvvudhox0PSKA6+oRFxXV61XZxH5RzGm4a+ZNDA9FBg=",
+        "owner": "crazy-max",
+        "repo": "WindowsSpyBlocker",
+        "rev": "c5cd021c47445d9aa4b6b250ccc3ed84dfc6dad9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crazy-max",
+        "repo": "WindowsSpyBlocker",
         "type": "github"
       }
     },

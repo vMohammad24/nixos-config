@@ -46,6 +46,14 @@
     };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
+    hagezi = {
+      url = "github:hagezi/dns-blocklists";
+      flake = false;
+    };
+    windows-spy-blocker = {
+      url = "github:crazy-max/WindowsSpyBlocker";
+      flake = false;
+    };
     framr = {
       url = "github:vMohammad24/framr";
       inputs.flake-utils.follows = "flake-utils";
