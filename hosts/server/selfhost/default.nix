@@ -3,9 +3,7 @@
   pkgs,
   ...
 }: let
-  serverIp = "192.168.1.31";
-  virtualIp = "192.168.1.200";
-  interface = "eno2";
+  inherit (import ./constants.nix) serverIp virtualIp interface myServices;
 
   tlsCert = pkgs.runCommand "local-selfsigned-cert" {buildInputs = [pkgs.openssl];} ''
     mkdir -p $out
@@ -14,19 +12,6 @@
       -days 3650 -nodes -subj "/CN=*.local" \
       -addext "subjectAltName=DNS:*.local"
   '';
-
-  myServices = {
-    "home.local" = 8081;
-    "media.local" = 8096;
-    "sonarr.local" = 8989;
-    "radarr.local" = 7878;
-    "prowlarr.local" = 9696;
-    "bazarr.local" = 6767;
-    "seerr.local" = 5055;
-    "qui.local" = 5252;
-    "grafana.local" = 3001;
-    "prometheus.local" = 9090;
-  };
 in {
   imports = [
     ./projects.nix

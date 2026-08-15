@@ -3,22 +3,7 @@
   pkgs,
   ...
 }: let
-  interface = "eno2";
-  virtualIp = "192.168.1.200";
-  proxiedDevices = ["192.168.1.53"];
-
-  proxiedDomains = [
-    "tiktok.com"
-    "tiktokv.com"
-    "tiktokcdn.com"
-    "tiktokcdn-eu.com"
-    "tiktokw.eu"
-    "byteoversea.com"
-    "ibyteimg.com"
-    "ibytedtos.com"
-    "musical.ly"
-    "mullvad.net"
-  ];
+  inherit (import ./constants.nix) interface virtualIp proxiedDevices proxiedDomains;
 
   proxiedDeviceSet = lib.concatStringsSep ", " proxiedDevices;
 in {
