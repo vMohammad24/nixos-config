@@ -51,7 +51,6 @@ in {
     ];
   };
   networking.defaultGateway = "192.168.1.1";
-  networking.nameservers = ["127.0.0.1" "1.1.1.1"];
 
   vpnNamespaces.wg = {
     enable = true;
@@ -89,62 +88,6 @@ in {
       };
     };
   };
-
-  services.pihole-ftl = {
-    enable = true;
-    openFirewallDNS = true;
-    privacyLevel = 3;
-    useDnsmasqConfig = true;
-
-    settings = {
-      dns = {
-        upstreams = ["1.1.1.1" "1.0.0.1"];
-        queryLogging = false;
-        ignoreLocalhost = true;
-        hosts =
-          lib.mapAttrsToList (domain: port: "${serverIp} ${domain}") myServices
-          ++ ["${serverIp} speedtest.local"];
-      };
-
-      database.maxDBdays = 0;
-      misc.extraLogging = false;
-      webserver.api.cli_pw = true;
-    };
-
-    lists = [
-      {
-        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
-        type = "block";
-        enabled = true;
-        description = "HaGeZi Pro";
-      }
-      {
-        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt";
-        type = "block";
-        enabled = true;
-        description = "HaGeZi Threat Intelligence Feed";
-      }
-      {
-        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral.txt";
-        type = "allow";
-        enabled = true;
-        description = "HaGeZi referral allowlist";
-      }
-      {
-        url = "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt";
-        type = "block";
-        enabled = true;
-        description = "WindowsSpyBlocker";
-      }
-    ];
-  };
-
-  services.pihole-web = {
-    enable = true;
-    ports = ["127.0.0.1:8080"];
-  };
-
-  networking.firewall.allowedTCPPorts = [443 80];
 
   services.speedtest-tracker = {
     enable = true;
