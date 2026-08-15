@@ -1,15 +1,13 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":disableDependencyDashboard"
-  ],
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:recommended", ":disableDependencyDashboard"],
 
-  "nix": {
-    "enabled": true
-  },
+	"nix": {
+		"enabled": true
+	},
 
-  "lockFileMaintenance": {
-    "enabled": true
-  }
+	"lockFileMaintenance": {
+		"enabled": true,
+		"schedule": ["at any time"]
+	}
 }
