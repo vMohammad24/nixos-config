@@ -29,11 +29,20 @@ groups:
           summary: 'Restic reported an error'
           description: 'A local or S3 Restic job logged a fatal error or failure.'
 
-      - alert: RepeatedServiceRestarts
-        expr: 'sum by (unit) (count_over_time({job="systemd-journal", syslog_identifier="systemd"} | pattern `<unit>: Scheduled restart job, restart counter is at <_>.` | __error__="" | unit=~".+\\.service" [10m])) >= 3'
+      - alert: RepeatedServiceFailures
+        expr: |
+          sum by (unit) (
+            count_over_time(
+              {job="systemd-journal", syslog_identifier="systemd"}
+              | pattern `<unit>: Failed with result '<_>'.`
+              | __error__=""
+              | unit=~".+\\.service"
+              [10m]
+            )
+          ) >= 3
         for: 1m
         labels:
           severity: warning
         annotations:
-          summary: 'Service {{ $labels.unit }} is repeatedly restarting'
-          description: 'systemd scheduled at least three restarts during the last ten minutes.'
+          summary: 'Service {{ $labels.unit }} is repeatedly failing'
+          description: 'The service entered a failed state at least three times during the last ten minutes.'
