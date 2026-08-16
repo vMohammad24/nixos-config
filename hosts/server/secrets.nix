@@ -16,10 +16,6 @@
           file = ../../secrets/tss.age;
           mode = "0400";
         };
-        speedtest-tracker-key = {
-          file = ../../secrets/speedtest-tracker-key.age;
-          mode = "0444";
-        };
         mullvad-wg = {
           file = ../../secrets/mullvad-wg.age;
           mode = "0400";

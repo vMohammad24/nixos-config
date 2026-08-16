@@ -34,7 +34,6 @@ in {
       type = lib.types.listOf lib.types.str;
       default = [
         "/var/lib/grafana"
-        "/var/lib/speedtest-tracker"
         vaultwardenBackup
       ];
       description = "Server state paths to include.";

@@ -59,7 +59,6 @@ in {
           ++ map (domain: ''"${domain}." redirect'') proxiedDomains;
         local-data =
           lib.mapAttrsToList (domain: _: ''"${domain}. IN A ${serverIp}"'') myServices
-          ++ [''"speedtest.local. IN A ${serverIp}"'']
           ++ map (domain: ''"${domain}. IN A ${virtualIp}"'') proxiedDomains;
         include = "${blocklist}";
         hide-identity = true;
