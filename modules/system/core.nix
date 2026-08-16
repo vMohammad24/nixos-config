@@ -21,16 +21,42 @@ in {
     then pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3
     else pkgs.cachyosKernels.linuxPackages-cachyos-server;
 
-  networking.networkmanager.enable = isDesktop;
-  networking.hosts = lib.mkIf isDesktop {
-    "0.0.0.0" = [
-      "paradise-s1.battleye.com"
-      "test-s1.battleye.com"
-      "paradiseenhanced-s1.battleye.com"
-    ];
+  networking = {
+    networkmanager.enable = false;
+    useNetworkd = isDesktop;
+
+    hosts = lib.mkIf isDesktop {
+      "0.0.0.0" = [
+        "paradise-s1.battleye.com"
+        "test-s1.battleye.com"
+        "paradiseenhanced-s1.battleye.com"
+      ];
+    };
+
+    nftables.enable = true;
+    firewall.enable = true;
   };
-  networking.nftables.enable = true;
-  networking.firewall.enable = true;
+
+  systemd.network.networks."10-enp5s0" = lib.mkIf isDesktop {
+    matchConfig.Name = "enp5s0";
+
+    dns = [
+      "192.168.1.31"
+    ];
+
+    domains = [
+      "~local"
+    ];
+
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = true;
+    };
+
+    dhcpV4Config.UseDNS = false;
+    dhcpV6Config.UseDNS = false;
+    ipv6AcceptRAConfig.UseDNS = false;
+  };
 
   time.timeZone = "Asia/Amman";
 
