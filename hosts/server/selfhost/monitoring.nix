@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -10,6 +11,26 @@
   lokiPort = 3100;
   tidalSubsonicMetricsPort = 9464;
   unboundMetricsPort = 9167;
+  speedtestExporterPort = 9516;
+
+  speedtestExporter = pkgs.buildGoModule {
+    pname = "speedtest-exporter";
+    version = "1.6.3";
+    src = inputs.speedtest-exporter;
+    vendorHash = null;
+    subPackages = ["cmd"];
+    postInstall = ''
+      mv $out/bin/cmd $out/bin/speedtest-exporter
+    '';
+  };
+
+  speedtestExporterConfig = (pkgs.formats.yaml {}).generate "speedtest-exporter.yaml" {
+    logLevel = "info";
+    port = speedtestExporterPort;
+    instance = "server";
+    cache = "15m";
+    persistCache = false;
+  };
 
   scrape = job: port: {
     job_name = job;
@@ -57,6 +78,23 @@ in {
     '';
 
     boot.kernelModules = ["intel_rapl_common"];
+
+    systemd.services.speedtest-exporter = {
+      description = "internet speed test exporter";
+      wantedBy = ["multi-user.target"];
+      wants = ["network-online.target"];
+      after = ["network-online.target"];
+      serviceConfig = {
+        DynamicUser = true;
+        ExecStart = "${speedtestExporter}/bin/speedtest-exporter -config ${speedtestExporterConfig}";
+        Restart = "on-failure";
+        RestartSec = "5s";
+        NoNewPrivileges = true;
+        PrivateTmp = true;
+        ProtectHome = true;
+        ProtectSystem = "strict";
+      };
+    };
 
     services.loki = {
       enable = true;
@@ -144,6 +182,11 @@ in {
           (scrape "prometheus" promPort)
           (scrape "alertmanager" alertmanagerPort)
           (scrape "loki" lokiPort)
+          ((scrape "speedtest-exporter" speedtestExporterPort)
+            // {
+              scrape_interval = "1m";
+              scrape_timeout = "1m";
+            })
         ]
         ++ lib.optionals config.myConfig.rr.enable [
           (scrape "sonarr" 9707)

@@ -54,6 +54,10 @@
       url = "github:crazy-max/WindowsSpyBlocker";
       flake = false;
     };
+    speedtest-exporter = {
+      url = "github:heathcliff26/speedtest-exporter/v1.6.3";
+      flake = false;
+    };
     framr = {
       url = "github:vMohammad24/framr";
       inputs.flake-utils.follows = "flake-utils";
@@ -109,6 +113,7 @@
           ${./hosts/server/selfhost/dashboards/infrastructure.json} \
           ${./hosts/server/selfhost/dashboards/server-logs.json} \
           ${./hosts/server/selfhost/dashboards/server-overview.json} \
+          ${./hosts/server/selfhost/dashboards/speedtest.json} \
           ${./hosts/server/selfhost/dashboards/unbound.json}
 
         grep -F 'transport="kernel"' ${./hosts/server/selfhost/loki-rules/fake/server.yml}

@@ -1117,6 +1117,7 @@
         "nix-index-database": "nix-index-database",
         "nixarr": "nixarr",
         "nixpkgs": "nixpkgs_5",
+        "speedtest-exporter": "speedtest-exporter",
         "stylix": "stylix",
         "systems": "systems_3",
         "tss": "tss",
@@ -1206,6 +1207,23 @@
       "original": {
         "owner": "vicinaehq",
         "repo": "soulver-cpp",
+        "type": "github"
+      }
+    },
+    "speedtest-exporter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786595414,
+        "narHash": "sha256-jWPvz+WIdRtE+qMez6chJtN+/xyTQ9hmZARDuYl4x3A=",
+        "owner": "heathcliff26",
+        "repo": "speedtest-exporter",
+        "rev": "57a2856b3e24cca00789c4f3c677916bdada3444",
+        "type": "github"
+      },
+      "original": {
+        "owner": "heathcliff26",
+        "ref": "v1.6.3",
+        "repo": "speedtest-exporter",
         "type": "github"
       }
     },
