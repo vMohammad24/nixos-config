@@ -15,9 +15,9 @@
       $1 ~ /^(0\.0\.0\.0|127\.0\.0\.1)$/ && $2 ~ /^[[:alnum:]_.-]+$/ {
         print tolower($2)
       }
-    ' ${inputs.hagezi}/adblock/pro.txt \
-      ${inputs.hagezi}/adblock/tif.txt \
-      ${inputs.windows-spy-blocker}/data/hosts/spy.txt \
+    ' ${inputs.hagezi-pro} \
+      ${inputs.hagezi-tif} \
+      ${inputs.windows-spy-blocker-hosts} \
       | sort -u >blocked
 
     awk '
@@ -26,7 +26,7 @@
         sub(/\^.*/, "", domain)
         print tolower(domain)
       }
-    ' ${inputs.hagezi}/adblock/whitelist-referral.txt | sort -u >allowed
+    ' ${inputs.hagezi-whitelist-referral} | sort -u >allowed
 
     if [ "$(wc -l <blocked)" -lt 100000 ]; then
       echo "Refusing to build an unexpectedly small Unbound blocklist" >&2

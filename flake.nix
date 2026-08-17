@@ -46,12 +46,20 @@
     };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
-    hagezi = {
-      url = "github:hagezi/dns-blocklists";
+    hagezi-pro = {
+      url = "file+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
       flake = false;
     };
-    windows-spy-blocker = {
-      url = "github:crazy-max/WindowsSpyBlocker";
+    hagezi-tif = {
+      url = "file+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt";
+      flake = false;
+    };
+    hagezi-whitelist-referral = {
+      url = "file+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral.txt";
+      flake = false;
+    };
+    windows-spy-blocker-hosts = {
+      url = "file+https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt";
       flake = false;
     };
     speedtest-exporter = {
