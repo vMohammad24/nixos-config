@@ -34,7 +34,11 @@ in {
     };
 
     nftables.enable = true;
-    firewall.enable = true;
+
+    firewall = {
+      enable = true;
+      trustedInterfaces = ["virbr0"];
+    };
   };
 
   systemd.network.networks."10-enp5s0" = lib.mkIf isDesktop {
