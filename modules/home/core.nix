@@ -121,8 +121,11 @@ in {
 
       recording = {
         encoder = "AV1";
-        bitrate = 4000;
-        keyframe_interval = 60;
+        container = "WebM";
+
+        bitrate = 8000;
+        fps = 60;
+        keyframe_interval = 120;
         tune = "Zerolatency";
         speed = "Veryfast";
       };
