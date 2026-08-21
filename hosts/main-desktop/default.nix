@@ -16,5 +16,11 @@
       myConfig.desktops.hyprland.enable = lib.mkForce false;
       myConfig.desktops.mango.enable = true;
     };
+    niri.configuration = {
+      system.nixos.tags = ["niri"];
+      myConfig.desktops.hyprland.enable = lib.mkForce false;
+      myConfig.desktops.mango.enable = lib.mkForce false;
+      myConfig.desktops.niri.enable = true;
+    };
   };
 }

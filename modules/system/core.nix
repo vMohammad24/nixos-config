@@ -69,8 +69,8 @@ in {
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       trusted-users = ["root" "vmohammad"];
-      extra-substituters = ["https://hyprland.cachix.org" "https://framr.cachix.org" "https://vicinae.cachix.org" "https://nix-amd-ai.cachix.org" "https://attic.xuyh0120.win/lantian"];
-      extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "framr.cachix.org-1:Nn6BXpOrE0I1sO89xW8l2WVcf2FD4UqU6PD30sgRLZk=" "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" "nix-amd-ai.cachix.org-1:F4OU4vw/lV2oiG6SBHZ+nqjl4EFJuqI4X9A7pvaBmhQ=" "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="];
+      extra-substituters = ["https://hyprland.cachix.org" "https://framr.cachix.org" "https://vicinae.cachix.org" "https://nix-amd-ai.cachix.org" "https://attic.xuyh0120.win/lantian" "https://niri-nix.cachix.org"];
+      extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "framr.cachix.org-1:Nn6BXpOrE0I1sO89xW8l2WVcf2FD4UqU6PD30sgRLZk=" "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" "nix-amd-ai.cachix.org-1:F4OU4vw/lV2oiG6SBHZ+nqjl4EFJuqI4X9A7pvaBmhQ=" "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" "niri-nix.cachix.org-1:SvFtqpDcf7Sm1SMJdby1/+Y+6f3Yt3/3PMcSTKPJNJ0="];
     };
     extraOptions = "
     !include /run/agenix/nix_conf

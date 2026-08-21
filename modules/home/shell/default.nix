@@ -21,8 +21,15 @@
       };
     loginShellInit = ''
       if set -q XDG_VTNR && test "$XDG_VTNR" -eq 1 && uwsm check may-start
-        ${lib.optionalString (osConfig.myConfig.desktops.hyprland.enable or false) "exec uwsm start hyprland-uwsm.desktop"}
-        ${lib.optionalString (osConfig.myConfig.desktops.mango.enable or false) "exec mango"}
+        ${
+        if osConfig.myConfig.desktops.niri.enable or false
+        then "exec uwsm start niri-uwsm.desktop"
+        else if osConfig.myConfig.desktops.mango.enable or false
+        then "exec mango"
+        else if osConfig.myConfig.desktops.hyprland.enable or false
+        then "exec uwsm start hyprland-uwsm.desktop"
+        else ""
+      }
       end
     '';
   };

@@ -20,6 +20,11 @@ in {
             "hyprland/workspaces"
             "hyprland/window"
           ]
+          else if osConfig.myConfig.desktops.niri.enable or false
+          then [
+            "niri/workspaces"
+            "niri/window"
+          ]
           else [
             "ext/workspaces"
             "dwl/window"
@@ -48,6 +53,10 @@ in {
           disable-scroll = true;
           all-outputs = true;
           format = "{icon}";
+        };
+        "niri/workspaces" = {
+          all-outputs = false;
+          format = "{value}";
         };
         "clock" = {
           format = " {:%H:%M   %a, %d %b}";
