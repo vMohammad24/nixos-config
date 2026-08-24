@@ -8,7 +8,7 @@
 in {
   programs.vicinae = {
     enable = true;
-    enableSoulver = true;
+    enableNumen = true;
     settings = {
       close_on_focus_loss = false;
       activate_on_single_click = true;
