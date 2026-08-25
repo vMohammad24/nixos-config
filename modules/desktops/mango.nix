@@ -12,6 +12,11 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.uwsm.enable = true;
+    programs.uwsm.waylandCompositors.mango = {
+      prettyName = "Mango";
+      comment = "Mango compositor managed by UWSM";
+      binPath = "/run/current-system/sw/bin/mango";
+    };
     programs.mango.enable = true;
 
     xdg.portal = {
