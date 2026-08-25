@@ -43,10 +43,21 @@ in {
     services.prometheus.exporters.node = {
       enable = true;
       listenAddress = "127.0.0.1";
-      enabledCollectors = ["rapl"];
+      enabledCollectors = ["rapl" "textfile"];
+      extraFlags = ["--collector.textfile.directory=/var/lib/prometheus-node-exporter-text-files"];
     };
-    services.prometheus.exporters.systemd.enable = true;
-    services.prometheus.exporters.wireguard.enable = true;
+    services.prometheus.exporters.systemd = {
+      enable = true;
+      listenAddress = "127.0.0.1";
+    };
+    services.prometheus.exporters.wireguard = {
+      enable = true;
+      listenAddress = lib.mkForce (
+        if config.myConfig.rr.enable
+        then "0.0.0.0"
+        else "127.0.0.1"
+      );
+    };
     services.prometheus.exporters.smartctl = {
       enable = true;
       listenAddress = "127.0.0.1";
