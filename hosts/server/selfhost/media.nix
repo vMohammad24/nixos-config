@@ -7,6 +7,22 @@
   mediaDir = "/mnt/HDD/media";
   stateDir = "/mnt/HDD/.state/nixarr";
   cfg = config.myConfig.rr;
+  mediaServices = [
+    "jellyfin"
+    "sonarr"
+    "sonarr-sync-config"
+    "radarr"
+    "radarr-sync-config"
+    "prowlarr"
+    "prowlarr-sync-config"
+    "bazarr"
+    "bazarr-sync-config"
+    "seerr"
+    "qbittorrent"
+    "qui"
+    "recyclarr"
+    "recyclarr-setup"
+  ];
 in {
   imports = [inputs.nixarr.nixosModules.default];
 
@@ -88,11 +104,27 @@ in {
     services.radarr.settings.auth.required = "DisabledForLocalAddresses";
     services.prowlarr.settings.auth.required = "DisabledForLocalAddresses";
 
-    systemd.services.qbittorrent.serviceConfig = {
-      CapabilityBoundingSet = lib.mkForce ["CAP_NET_RAW"];
-      AmbientCapabilities = lib.mkForce ["CAP_NET_RAW"];
-      RestrictAddressFamilies = lib.mkForce ["AF_UNIX" "AF_INET" "AF_INET6" "AF_NETLINK"];
-      InaccessiblePaths = lib.mkForce [];
-    };
+    services.nginx.virtualHosts."127.0.0.1:9586".listen = lib.mkForce [
+      {
+        addr = "127.0.0.1";
+        port = 9586;
+      }
+    ];
+
+    systemd.services =
+      lib.genAttrs mediaServices (_: {
+        unitConfig.RequiresMountsFor = [mediaDir stateDir];
+      })
+      // {
+        qbittorrent = {
+          unitConfig.RequiresMountsFor = [mediaDir stateDir];
+          serviceConfig = {
+            CapabilityBoundingSet = lib.mkForce ["CAP_NET_RAW"];
+            AmbientCapabilities = lib.mkForce ["CAP_NET_RAW"];
+            RestrictAddressFamilies = lib.mkForce ["AF_UNIX" "AF_INET" "AF_INET6" "AF_NETLINK"];
+            InaccessiblePaths = lib.mkForce [];
+          };
+        };
+      };
   };
 }
