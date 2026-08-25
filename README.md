@@ -5,10 +5,11 @@ my personal nixos config utilizing flakes & home-manager
 ## features
 
 - **hosts**: main-desktop (gaming/dev) and server (self-hosted services)
-- **WM/DE**: [hyprland](https://hyprland.org/) and [mango](https://mangowm.github.io/) via boot specialisations (only hyprland is maintained as it is my main)
+- **WM/DE**: [hyprland](https://hyprland.org/) by default, with mango and niri boot specialisations
 - **theme**: rose pine via [stylix](https://github.com/nix-community/stylix)
 - **secrets**: managed via [agenix](https://github.com/ryantm/agenix)
 - **formatting**: [alejandra](https://github.com/kamadorueda/alejandra)
+- **monitoring**: prometheus, alertmanager, grafana, loki, and alloy validation through flake checks
 
 ## file structure
 
@@ -19,7 +20,7 @@ my personal nixos config utilizing flakes & home-manager
 - `modules/`:
   - `system/`: system-wide modules (core, hardware, users).
   - `home/`: home manager config (shell, dev, programs, window managers).
-  - `desktops/`: base configurations for hyprland and mango.
+  - `desktops/`: base configurations for hyprland, mango and niri.
   - `stylix.nix`: themeing config.
 
 ## installation
@@ -35,9 +36,23 @@ my personal nixos config utilizing flakes & home-manager
 alot of stuff in this project is hardware-specfic, so you should generate a `hardware-configuration.nix` using the [nixos-generate](https://nixos.wiki/wiki/Nixos-generate-config) tool and place it in the `hosts/(main-desktop/server)` directory of the project.
 
 
-modify `/modules/system/hardware.nix` and `modules/home/windowManager/(hyprland/mango)/monitors.nix` to match your system. make sure your ssh keys are set up to decrypt agenix secrets.
+review `modules/system/hardware.nix` and each enabled compositor's monitor file.
+make sure the host SSH key is authorized to decrypt its agenix secrets.
 
 3. **build and switch**:
    ```bash
-   sudo nixos-rebuild switch --flake .#(main-desktop/server)
+   sudo nixos-rebuild switch --flake .#main-desktop
+   sudo nixos-rebuild switch --flake .#server
    ```
+
+The `mango` and `niri` boot specialisations are included in the main desktop
+generation.
+
+## validation
+
+Run these commands from the repository root before switching:
+
+```bash
+nix fmt
+nix flake check
+```
