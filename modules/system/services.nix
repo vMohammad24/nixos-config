@@ -63,7 +63,7 @@ in {
   services.gvfs.enable = isDesktop;
   services.gnome.tinysparql.enable = isDesktop;
   services.gnome.localsearch.enable = isDesktop;
-  services.udisks2.enable = lib.mkForce isDesktop;
+  services.udisks2.enable = isDesktop;
   services.devmon.enable = isDesktop;
   services.mullvad-vpn.enable = isDesktop;
 }
