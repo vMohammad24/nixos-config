@@ -13,6 +13,8 @@
 
   networking.hostName = "server";
 
+  nix.settings.trusted-users = ["vmohammad"];
+
   myConfig.ai.enable = false;
   myConfig.backups.enable = true;
   myConfig.monitoring.enable = true;
