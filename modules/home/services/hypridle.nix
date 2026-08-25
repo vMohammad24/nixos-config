@@ -1,12 +1,17 @@
 {osConfig, ...}: let
   niriEnabled = osConfig.myConfig.desktops.niri.enable or false;
+  mangoEnabled = osConfig.myConfig.desktops.mango.enable or false;
   powerOnMonitors =
     if niriEnabled
     then "niri msg action power-on-monitors"
+    else if mangoEnabled
+    then "mmsg dispatch wakeup_monitor,DP-1; mmsg dispatch wakeup_monitor,DP-2"
     else "hyprctl dispatch dpms on";
   powerOffMonitors =
     if niriEnabled
     then "niri msg action power-off-monitors"
+    else if mangoEnabled
+    then "mmsg dispatch sleep_monitor,DP-1; mmsg dispatch sleep_monitor,DP-2"
     else "hyprctl dispatch dpms off";
 in {
   services.hypridle = {
