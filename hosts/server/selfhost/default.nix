@@ -5,7 +5,7 @@
 }: let
   inherit (import ./constants.nix) serverIp virtualIp interface myServices;
 
-  tlsCert = pkgs.runCommand "local-selfsigned-cert" {buildInputs = [pkgs.openssl];} ''
+  tlsCert = pkgs.runCommand "local-selfsigned-cert" {nativeBuildInputs = [pkgs.openssl];} ''
     mkdir -p $out
     openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 \
       -keyout $out/key.pem -out $out/cert.pem \
@@ -99,9 +99,11 @@ in {
           proxyPass = "http://127.0.0.1:${toString port}";
           extraConfig = ''
             proxy_set_header Host $host;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
           '';
         };
       })
