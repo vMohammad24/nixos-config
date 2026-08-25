@@ -2,10 +2,11 @@
   pkgs,
   lib,
   inputs,
+  osConfig,
   ...
 }: let
   biomeFmt = {formatter.language_server.name = "biome";};
-  hostName = "main-desktop";
+  hostName = osConfig.networking.hostName;
   biomeWithActions =
     biomeFmt
     // {
