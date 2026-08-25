@@ -15,7 +15,6 @@ in {
   "prowlarr-torrentleech-2fa.age".publicKeys = [vmohammad server];
   "prowlarr-seedpool-apikey.age".publicKeys = [vmohammad server];
   "grafana-secret-key.age".publicKeys = [vmohammad server];
-  "miniflux-admin.age".publicKeys = [vmohammad server];
   "nix_conf.age".publicKeys = [vmohammad main-desktop];
   "restic-local-password.age".publicKeys = [vmohammad server];
   "restic-s3-env.age".publicKeys = [vmohammad server];
