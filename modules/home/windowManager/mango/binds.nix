@@ -58,8 +58,8 @@ in {
             i: let
               ws = i + 1;
             in [
-              "${mainMod},${toString i},view,${toString ws}"
-              "${mainMod}+ALT,${toString i},tag,${toString ws}"
+              "${mainMod},${toString ws},view,${toString ws}"
+              "${mainMod}+ALT,${toString ws},tag,${toString ws}"
             ]
           )
           9
