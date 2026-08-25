@@ -25,11 +25,6 @@ in {
       imports = [
         inputs.niri.homeModules.niri-nix
         ../../modules/home/windowManager/niri
-        ../../modules/home/services/hyprpaper.nix
-        ../../modules/home/services/hypridle.nix
-        ../../modules/home/services/hyprlock.nix
-        ../../modules/home/programs/bars/waybar.nix
-        ../../modules/home/services/mako.nix
       ];
     };
   };

@@ -10,20 +10,18 @@
       inputs.framr.homeManagerModules.default
       ../../modules/home/core.nix
       ../../modules/home/shell
-      ../../modules/home/programs/dev.nix
     ]
     ++ lib.optionals osConfig.myConfig.isDesktop [
       inputs.vicinae.homeManagerModules.default
       ../../modules/home/theme
+      ../../modules/home/programs/dev.nix
       ../../modules/home/services/mako.nix
       ../../modules/home/services/vicinae.nix
-      ../../modules/home/terminal/kitty.nix
-      ../../modules/home/programs/jellyfin-desktop.nix
-    ]
-    ++ lib.optionals (osConfig.myConfig.desktops.hyprland.enable or false) [
       ../../modules/home/services/hyprpaper.nix
       ../../modules/home/services/hypridle.nix
       ../../modules/home/services/hyprlock.nix
+      ../../modules/home/terminal/kitty.nix
+      ../../modules/home/programs/jellyfin-desktop.nix
       ../../modules/home/programs/bars/waybar.nix
     ];
 

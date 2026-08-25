@@ -23,11 +23,6 @@ in {
     home-manager.users.vmohammad = {
       imports = [
         ../../modules/home/windowManager/mango
-        ../../modules/home/services/hyprpaper.nix
-        ../../modules/home/services/hypridle.nix
-        ../../modules/home/services/hyprlock.nix
-        ../../modules/home/programs/bars/waybar.nix
-        ../../modules/home/services/mako.nix
       ];
     };
   };
