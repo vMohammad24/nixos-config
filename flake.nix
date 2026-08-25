@@ -103,12 +103,17 @@
   } @ inputs: {
     checks.x86_64-linux.monitoring-configs = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      alertmanagerConfig = pkgs.writeText "alertmanager-unchecked.json" (
+        builtins.toJSON self.nixosConfigurations.server.config.services.prometheus.alertmanager.configuration
+      );
     in
       pkgs.runCommand "monitoring-configs-check" {
         nativeBuildInputs = [
           pkgs.grafana-alloy
           pkgs.grafana-loki
+          pkgs.envsubst
           pkgs.jq
+          pkgs.prometheus-alertmanager
           pkgs.prometheus.cli
         ];
       } ''
@@ -116,6 +121,9 @@
         lokitool rules lint --dry-run ${./hosts/server/selfhost/loki-rules/fake/server.yml}
         alloy fmt --test ${./hosts/server/selfhost/loki.alloy}
         alloy validate ${./hosts/server/selfhost/loki.alloy}
+        export DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/0/placeholder
+        envsubst -i ${alertmanagerConfig} -o alertmanager.yml
+        amtool check-config alertmanager.yml
         jq empty \
           ${./hosts/server/selfhost/dashboards/infrastructure.json} \
           ${./hosts/server/selfhost/dashboards/server-logs.json} \
