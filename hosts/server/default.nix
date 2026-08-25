@@ -45,7 +45,21 @@
     };
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.extraRules = [
+    {
+      users = ["vmohammad"];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/nix build --no-link --profile /nix/var/nix/profiles/system *";
+          options = ["NOPASSWD"];
+        }
+        {
+          command = "/nix/var/nix/profiles/system/bin/switch-to-configuration *";
+          options = ["NOPASSWD" "SETENV"];
+        }
+      ];
+    }
+  ];
 
   services.openssh = {
     enable = true;
