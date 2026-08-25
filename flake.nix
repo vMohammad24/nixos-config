@@ -121,6 +121,7 @@
           ${./hosts/server/selfhost/dashboards/server-logs.json} \
           ${./hosts/server/selfhost/dashboards/server-overview.json} \
           ${./hosts/server/selfhost/dashboards/speedtest.json} \
+          ${./hosts/server/selfhost/dashboards/tidal-subsonic.json} \
           ${./hosts/server/selfhost/dashboards/unbound.json}
 
         grep -F 'transport="kernel"' ${./hosts/server/selfhost/loki-rules/fake/server.yml}
