@@ -2,7 +2,9 @@
   osConfig,
   lib,
   ...
-}: {
+}: let
+  isDesktop = osConfig.myConfig.isDesktop;
+in {
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -13,10 +15,10 @@
         ls = "eza --icons auto";
         ll = "eza -l -g --icons auto";
         la = "eza -a --icons auto";
-        ssh = "kitten ssh";
         nrb = "nh os switch";
       }
-      // lib.optionalAttrs osConfig.myConfig.isDesktop {
+      // lib.optionalAttrs isDesktop {
+        ssh = "kitten ssh";
         nrbs = "nh os switch . -H server --target-host vmohammad@192.168.1.31 --build-host localhost --elevation-strategy passwordless";
       };
     loginShellInit = ''
@@ -25,7 +27,7 @@
         if osConfig.myConfig.desktops.niri.enable or false
         then "exec uwsm start niri-uwsm.desktop"
         else if osConfig.myConfig.desktops.mango.enable or false
-        then "exec mango"
+        then "exec uwsm start mango-uwsm.desktop"
         else if osConfig.myConfig.desktops.hyprland.enable or false
         then "exec uwsm start hyprland-uwsm.desktop"
         else ""
@@ -71,32 +73,37 @@
   programs.fastfetch = {
     enable = true;
     settings = {
-      modules = [
-        "title"
-        "separator"
-        "os"
-        "host"
-        "kernel"
-        "uptime"
-        "shell"
-        "display"
-        "de"
-        "wm"
-        "cursor"
-        "terminal"
-        "cpu"
-        "gpu"
-        {
-          "type" = "command";
-          "key" = "Mouse";
-          "text" = "wl-mouse -j info | jq -r '\"\\(.name) @ \\(.battery_percent)%\"' | sed 's/ (dongle)//; s/ (wired)//'";
-        }
-        "memory"
-        "swap"
-        "disk"
-        "break"
-        "colors"
-      ];
+      modules =
+        [
+          "title"
+          "separator"
+          "os"
+          "host"
+          "kernel"
+          "uptime"
+          "shell"
+          "display"
+          "de"
+          "wm"
+          "cursor"
+          "terminal"
+          "cpu"
+          "gpu"
+        ]
+        ++ lib.optionals isDesktop [
+          {
+            "type" = "command";
+            "key" = "Mouse";
+            "text" = "wl-mouse -j info | jq -r '\"\\(.name) @ \\(.battery_percent)%\"' | sed 's/ (dongle)//; s/ (wired)//'";
+          }
+        ]
+        ++ [
+          "memory"
+          "swap"
+          "disk"
+          "break"
+          "colors"
+        ];
     };
   };
 }
