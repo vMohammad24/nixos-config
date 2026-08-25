@@ -1,5 +1,5 @@
 {
-  description = "Hyprland";
+  description = "NixOS configurations for main-desktop and server";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
