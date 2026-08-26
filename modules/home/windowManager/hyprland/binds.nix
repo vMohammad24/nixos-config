@@ -33,6 +33,7 @@ in {
         (h.bindExec "P" "hyprpicker -a")
         (h.bindExec "V" "vicinae vicinae://launch/clipboard/history")
         (h.bindExec "S" "grim -g \\\"$(slurp)\\\" - | wl-copy")
+        (h.bindExec "ALT + S" "framr -o - | tesseract stdin stdout --psm 6 2>/dev/null | wl-copy")
         (h.bindExec "comma" "vicinae vicinae://launch/core/search-emojis")
         (h.bind "\"Print\"" "hl.dsp.exec_cmd(\"framr -u -c -a\")")
         (h.bindExec "Print" "framr --record -u -c -a --container webm")

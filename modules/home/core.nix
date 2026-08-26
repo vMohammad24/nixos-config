@@ -174,6 +174,7 @@ in {
       discord-canary
       labymod-launcher
       blender
+      tesseract
       # utils/essentials
       hyprpicker
       libnotify
