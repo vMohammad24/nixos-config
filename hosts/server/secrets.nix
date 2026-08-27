@@ -12,6 +12,10 @@
           file = ../../secrets/cloudflared.age;
           mode = "0400";
         };
+        cloudflare-dns-api-token = {
+          file = ../../secrets/cloudflare-dns-api-token.age;
+          mode = "0400";
+        };
         tss = {
           file = ../../secrets/tss.age;
           mode = "0400";

@@ -7,6 +7,7 @@ let
 in {
   "nest_api_key.age".publicKeys = users ++ systems;
   "cloudflared.age".publicKeys = [vmohammad server];
+  "cloudflare-dns-api-token.age".publicKeys = [vmohammad server];
   "tss.age".publicKeys = [vmohammad server];
   "heliopolis-runner-token.age".publicKeys = [vmohammad server];
   "mullvad-wg.age".publicKeys = [vmohammad server];

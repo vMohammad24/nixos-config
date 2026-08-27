@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (import ./constants.nix) serverIp virtualIp myServices proxiedDomains;
+  inherit (import ./constants.nix) serverIp virtualIp internalDomain myServices proxiedDomains;
 
   blocklist = pkgs.runCommand "unbound-blocklist.conf" {nativeBuildInputs = [pkgs.gawk];} ''
     awk '
@@ -55,7 +55,7 @@ in {
           "192.168.1.0/24 allow"
         ];
         local-zone =
-          [''"local." static'']
+          [''"${internalDomain}." static'']
           ++ map (domain: ''"${domain}." redirect'') proxiedDomains;
         local-data =
           lib.mapAttrsToList (domain: _: ''"${domain}. IN A ${serverIp}"'') myServices

@@ -49,7 +49,7 @@ in {
     ];
 
     domains = [
-      "~local"
+      "~lan.vmohammad.dev"
     ];
 
     networkConfig = {

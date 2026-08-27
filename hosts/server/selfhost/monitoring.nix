@@ -5,6 +5,8 @@
   pkgs,
   ...
 }: let
+  inherit (import ./constants.nix) internalDomain;
+
   grafanaPort = 3001;
   promPort = 9090;
   alertmanagerPort = 9093;
@@ -246,8 +248,8 @@ in {
         server = {
           http_addr = "127.0.0.1";
           http_port = grafanaPort;
-          domain = "grafana.local";
-          root_url = "https://grafana.local/";
+          domain = "grafana.${internalDomain}";
+          root_url = "https://grafana.${internalDomain}/";
         };
         security.secret_key = "$__file{/run/agenix/grafana-secret-key}";
       };

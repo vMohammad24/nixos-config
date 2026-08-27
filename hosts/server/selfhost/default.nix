@@ -1,17 +1,5 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (import ./constants.nix) serverIp virtualIp interface myServices;
-
-  tlsCert = pkgs.runCommand "local-selfsigned-cert" {nativeBuildInputs = [pkgs.openssl];} ''
-    mkdir -p $out
-    openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 \
-      -keyout $out/key.pem -out $out/cert.pem \
-      -days 3650 -nodes -subj "/CN=*.local" \
-      -addext "subjectAltName=DNS:*.local"
-  '';
+{lib, ...}: let
+  inherit (import ./constants.nix) serverIp virtualIp interface internalDomain myServices;
 in {
   imports = [
     ./projects.nix
@@ -75,6 +63,19 @@ in {
     };
   };
 
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "vmohammad@vmohammad.dev";
+    certs.${internalDomain} = {
+      domain = internalDomain;
+      extraDomainNames = ["*.${internalDomain}"];
+      dnsProvider = "cloudflare";
+      dnsResolver = "1.1.1.1:53";
+      credentialFiles."CF_DNS_API_TOKEN_FILE" = "/run/agenix/cloudflare-dns-api-token";
+      group = "nginx";
+    };
+  };
+
   services.nginx = {
     enable = true;
     defaultListenAddresses = [serverIp "127.0.0.1"];
@@ -92,8 +93,7 @@ in {
 
     virtualHosts =
       lib.mapAttrs (domain: port: {
-        sslCertificate = "${tlsCert}/cert.pem";
-        sslCertificateKey = "${tlsCert}/key.pem";
+        useACMEHost = internalDomain;
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString port}";
