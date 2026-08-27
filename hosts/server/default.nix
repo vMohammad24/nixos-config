@@ -56,7 +56,7 @@
           options = ["NOPASSWD"];
         }
         {
-          command = "/nix/var/nix/profiles/system/bin/switch-to-configuration *";
+          command = "^/nix/store/[a-z0-9]{32}-nixos-system-server-[^/]+/bin/switch-to-configuration$ ^(switch|boot|test)$";
           options = ["NOPASSWD" "SETENV"];
         }
       ];
