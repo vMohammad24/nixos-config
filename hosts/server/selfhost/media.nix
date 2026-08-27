@@ -79,6 +79,7 @@ in {
       vpn = {
         enable = true;
         wgConf = "/run/agenix/mullvad-wg";
+        exposeOnLAN = false;
       };
 
       recyclarr = {
@@ -111,20 +112,14 @@ in {
       }
     ];
 
-    systemd.services =
-      lib.genAttrs mediaServices (_: {
+    systemd.services = lib.mkMerge [
+      (lib.genAttrs mediaServices (_: {
         unitConfig.RequiresMountsFor = [mediaDir stateDir];
-      })
-      // {
-        qbittorrent = {
-          unitConfig.RequiresMountsFor = [mediaDir stateDir];
-          serviceConfig = {
-            CapabilityBoundingSet = lib.mkForce ["CAP_NET_RAW"];
-            AmbientCapabilities = lib.mkForce ["CAP_NET_RAW"];
-            RestrictAddressFamilies = lib.mkForce ["AF_UNIX" "AF_INET" "AF_INET6" "AF_NETLINK"];
-            InaccessiblePaths = lib.mkForce [];
-          };
-        };
-      };
+      }))
+      {
+        wg.restartTriggers = [config.age.secrets.mullvad-wg.file];
+        qbittorrent.unitConfig.PartOf = ["wg.service"];
+      }
+    ];
   };
 }
