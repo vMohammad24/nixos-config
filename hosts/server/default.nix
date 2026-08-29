@@ -18,14 +18,19 @@
   myConfig.ai.enable = false;
   myConfig.backups.enable = true;
   myConfig.monitoring.enable = true;
-  myConfig.rr.enable = false;
+  myConfig.rr.enable = true;
   myConfig.forgejo-runner.enable = false;
+  myConfig.gpu.enable = true;
   virtualisation.docker.enable = config.myConfig.forgejo-runner.enable;
 
   powerManagement.cpuFreqGovernor = "powersave";
   powerManagement.powertop.enable = true;
   services.thermald.enable = true;
-  boot.kernelParams = ["intel_pstate=no_turbo"];
+  boot.kernelParams = [
+    "intel_pstate=no_turbo"
+    "video=eDP-1:d"
+    "consoleblank=60"
+  ];
 
   services.udev.extraRules = ''
     SUBSYSTEM=="cpu", ACTION=="add", ATTR{cpufreq/energy_performance_preference}="power"
@@ -45,6 +50,13 @@
       HandleLidSwitchExternalPower = "ignore";
       HandleLidSwitchDocked = "ignore";
     };
+  };
+
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = false;
+    AllowHibernation = false;
+    AllowSuspendThenHibernate = false;
+    AllowHybridSleep = false;
   };
 
   security.sudo.extraRules = [
