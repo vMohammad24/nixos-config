@@ -78,6 +78,10 @@
       url = "github:nix-media-server/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rffmpeg = {
+      url = "github:joshuaboniface/rffmpeg";
+      flake = false;
+    };
     jellyfin-desktop = {
       url = "github:xaltsc/jellyfin-desktop";
       inputs.nixpkgs.follows = "nixpkgs";

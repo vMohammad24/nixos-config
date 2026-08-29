@@ -1166,6 +1166,22 @@
         "type": "github"
       }
     },
+    "rffmpeg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762198978,
+        "narHash": "sha256-UI//X2L6sGWVllfNrRzHrlF4yG+83eldXYVBMrgQqiM=",
+        "owner": "joshuaboniface",
+        "repo": "rffmpeg",
+        "rev": "f54ac843c7c8a157562e7ce37aaebbc5cb41354e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "joshuaboniface",
+        "repo": "rffmpeg",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -1185,6 +1201,7 @@
         "nix-index-database": "nix-index-database",
         "nixarr": "nixarr",
         "nixpkgs": "nixpkgs_5",
+        "rffmpeg": "rffmpeg",
         "speedtest-exporter": "speedtest-exporter",
         "stylix": "stylix",
         "systems": "systems_3",

@@ -9,6 +9,13 @@
 
   myConfig.ai.enable = false;
   myConfig.desktops.hyprland.enable = true;
+  myConfig.rffmpeg = {
+    enable = true;
+    role = "worker";
+    interface = "enp5s0";
+    vaapiRenderDevice = "/dev/dri/by-path/pci-0000:03:00.0-render";
+    vaapiVendorId = "0x1002";
+  };
 
   specialisation = {
     mango.configuration = {
