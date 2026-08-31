@@ -80,7 +80,6 @@ in {
     enableSessionWide = true;
     settings = {
       no_display = true;
-      gui_scaling = 100;
     };
   };
 
