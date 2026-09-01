@@ -57,6 +57,7 @@ in {
       ols
       biome
       rust-analyzer
+      wgsl-analyzer
       rustfmt
       clippy
       clang-tools
@@ -80,6 +81,7 @@ in {
       "make"
       "neocmake"
       "superhtml"
+      "wgsl"
     ];
     userSettings = {
       disable_ai = true;
