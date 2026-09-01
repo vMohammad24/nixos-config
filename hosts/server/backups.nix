@@ -149,6 +149,9 @@ in {
 
       restic-restore-test-local = mkRestoreTest "local" {
         unitConfig.RequiresMountsFor = "/mnt/HDD";
+        serviceConfig.ReadWritePaths = [
+          "/mnt/HDD/backups/restic-server/locks"
+        ];
         environment = {
           RESTIC_REPOSITORY = "/mnt/HDD/backups/restic-server";
           RESTIC_PASSWORD_FILE = config.age.secrets.restic-local-password.path;
