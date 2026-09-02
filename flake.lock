@@ -326,11 +326,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1787645044,
-        "narHash": "sha256-ztq0Onqa0nRxcEaV7Ucqh3I/6z1C2ApGe/aNseAD9RA=",
+        "lastModified": 1788285519,
+        "narHash": "sha256-5vifKIKbgjM7XrCNIaPXXviPeKMVer57b1OaNriRKU4=",
         "owner": "vMohammad24",
         "repo": "framr",
-        "rev": "1e212e60b4282c70e11adbabffd5216f55f8d2f4",
+        "rev": "8b6c639a1d0335e794729981d3606a7ea8304f8f",
         "type": "github"
       },
       "original": {
@@ -1105,11 +1105,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1772542754,
-        "narHash": "sha256-WGV2hy+VIeQsYXpsLjdr4GvHv5eECMISX1zKLTedhdg=",
+        "lastModified": 1787900134,
+        "narHash": "sha256-VYXO0XZlgj06dxJZRhrD3WoSsvq/c7+/Akyoa22pefw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8c809a146a140c5c8806f13399592dbcb1bb5dc4",
+        "rev": "83199d0d373dd3ac2b9a1996b1d0263f76ab7a4c",
         "type": "github"
       },
       "original": {
@@ -1127,16 +1127,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1787516130,
-        "narHash": "sha256-j+Y331tYcnCTnQ9NdqqwDME6PLQU/1Xtid/8CKfdSC4=",
+        "lastModified": 1788096061,
+        "narHash": "sha256-kjnCgTn45XzFmoiHZYFZsToyc+TXHQ43Nk0UkEbhw68=",
         "owner": "vicinaehq",
         "repo": "numen",
-        "rev": "773807cf49400d4b76f67f38138bcbd05f793605",
+        "rev": "0ed1b2bfddd6adfa367acfa46148e2b9c5a5b818",
         "type": "github"
       },
       "original": {
         "owner": "vicinaehq",
-        "ref": "v0.4.1",
+        "ref": "v0.6.1",
         "repo": "numen",
         "type": "github"
       }
@@ -1517,11 +1517,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787922551,
-        "narHash": "sha256-tt862rbWTOGAud9uXbByCaPnEsXBVekR5UhvFbReTJk=",
+        "lastModified": 1788369636,
+        "narHash": "sha256-tZxh1+95Ieh2NYI3Gf6QLFEMx4KOfUelkeavxksiPug=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "b0273863a1f73923e9a92fa33a26ac34abe1381d",
+        "rev": "e99c29d6ed3267359dbbcd42a1c56e982ee2507a",
         "type": "github"
       },
       "original": {
