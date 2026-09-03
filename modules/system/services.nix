@@ -46,13 +46,6 @@ in {
     };
   };
 
-  services.sunshine = lib.mkIf isDesktop {
-    enable = true;
-    autoStart = false;
-    capSysAdmin = true;
-    openFirewall = true;
-  };
-
   services.wivrn = lib.mkIf isDesktop {
     enable = true;
     openFirewall = true;

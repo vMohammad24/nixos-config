@@ -32,6 +32,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    moonshine = {
+      url = "github:hgaiser/moonshine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     tss = {
       url = "github:vMohammad24/TidalSubSonic";
       inputs.nixpkgs.follows = "nixpkgs";

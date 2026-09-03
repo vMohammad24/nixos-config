@@ -820,6 +820,26 @@
         "type": "github"
       }
     },
+    "moonshine": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788288819,
+        "narHash": "sha256-CyusUkuNUxFEaLb9tYz/S50eWcwCAxeEcYpmT+7Nda8=",
+        "owner": "hgaiser",
+        "repo": "moonshine",
+        "rev": "3a990098191fe1e62b5247ebf5f5fe8bd42b7620",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hgaiser",
+        "repo": "moonshine",
+        "type": "github"
+      }
+    },
     "niri": {
       "inputs": {
         "niri-unstable": "niri-unstable",
@@ -1195,6 +1215,7 @@
         "hyprland": "hyprland",
         "jellyfin-desktop": "jellyfin-desktop",
         "mangowm": "mangowm",
+        "moonshine": "moonshine",
         "niri": "niri",
         "nix-amd-ai": "nix-amd-ai",
         "nix-cachyos-kernel": "nix-cachyos-kernel",

@@ -9,6 +9,7 @@
 
   myConfig.ai.enable = false;
   myConfig.desktops.hyprland.enable = true;
+  services.moonshine.settings.compositor.gpu = "/dev/dri/by-path/pci-0000:03:00.0-render";
   myConfig.rffmpeg = {
     enable = true;
     role = "worker";
