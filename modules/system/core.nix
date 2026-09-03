@@ -62,6 +62,11 @@ in {
     ipv6AcceptRAConfig.UseDNS = false;
   };
 
+  systemd.network.links."10-enp5s0" = lib.mkIf isDesktop {
+    matchConfig.OriginalName = "enp5s0";
+    linkConfig.WakeOnLan = "magic";
+  };
+
   time.timeZone = "Asia/Amman";
 
   nix = {
