@@ -85,15 +85,36 @@ in {
       recyclarr = {
         enable = true;
         configuration = {
-          sonarr.main = {
-            base_url = "http://localhost:8989";
-            api_key = "!env_var SONARR_API_KEY";
-            quality_definition.type = "series";
-          };
-          radarr.main = {
-            base_url = "http://localhost:7878";
+          radarr.movies = {
+            base_url = "http://127.0.0.1:7878";
             api_key = "!env_var RADARR_API_KEY";
+
+            delete_old_custom_formats = true;
+
             quality_definition.type = "movie";
+
+            quality_profiles = [
+              {
+                trash_id = "fd161a61e3ab826d3a22d53f935696dd";
+                reset_unmatched_scores.enabled = true;
+              }
+            ];
+          };
+
+          sonarr.series = {
+            base_url = "http://127.0.0.1:8989";
+            api_key = "!env_var SONARR_API_KEY";
+
+            delete_old_custom_formats = true;
+
+            quality_definition.type = "series";
+
+            quality_profiles = [
+              {
+                trash_id = "76a5053bdb2d1e4a8f16a69a37d46c12";
+                reset_unmatched_scores.enabled = true;
+              }
+            ];
           };
         };
       };
