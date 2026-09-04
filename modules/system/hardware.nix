@@ -15,6 +15,10 @@
       ];
     };
 
+    hardware.bluetooth = {
+      enable = true;
+    };
+
     powerManagement.cpuFreqGovernor = "performance";
 
     hardware.openrazer.enable = true;
