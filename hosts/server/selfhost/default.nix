@@ -3,6 +3,7 @@
 in {
   imports = [
     ./projects.nix
+    ./status.nix
     ./glance.nix
     ./media.nix
     ./monitoring.nix
@@ -58,6 +59,11 @@ in {
           "vw.vmohammad.dev" = "http://127.0.0.1:8222";
           "tidal.vmohammad.dev" = "http://127.0.0.1:3000";
         };
+        default = "http_status:503";
+      };
+      "b6180c38-8f39-4f1a-a115-ca4e29e9ca04" = {
+        credentialsFile = "/run/agenix/cloudflared-atums";
+        ingress."status.atums.world" = "http://127.0.0.1:3032";
         default = "http_status:503";
       };
     };
