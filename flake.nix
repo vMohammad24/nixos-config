@@ -94,7 +94,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland/pull/16013/merge";
+      url = "github:hyprwm/Hyprland";
       inputs.pre-commit-hooks.follows = "";
     };
     niri = {
