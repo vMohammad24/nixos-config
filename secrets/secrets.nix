@@ -12,6 +12,7 @@ in {
   "tss.age".publicKeys = [vmohammad server];
   "heliopolis-runner-token.age".publicKeys = [vmohammad server];
   "mullvad-wg.age".publicKeys = [vmohammad server];
+  "netbird-setup-key.age".publicKeys = [vmohammad server];
   "prowlarr-milkie-apikey.age".publicKeys = [vmohammad server];
   "prowlarr-torrentleech-password.age".publicKeys = [vmohammad server];
   "prowlarr-torrentleech-2fa.age".publicKeys = [vmohammad server];

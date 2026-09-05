@@ -7,6 +7,7 @@ in {
     ./glance.nix
     ./media.nix
     ./monitoring.nix
+    ./netbird.nix
     ./proxy.nix
     ./unbound.nix
     ./forgejo

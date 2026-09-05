@@ -28,6 +28,10 @@
           file = ../../secrets/mullvad-wg.age;
           mode = "0400";
         };
+        netbird-setup-key = {
+          file = ../../secrets/netbird-setup-key.age;
+          mode = "0400";
+        };
       }
       (lib.mkIf config.myConfig.forgejo-runner.enable {
         heliopolis-runner-token = {
