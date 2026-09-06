@@ -6,6 +6,18 @@
 		"enabled": true
 	},
 
+	"customManagers": [
+		{
+			"customType": "regex",
+			"description": "Update Docker images",
+			"managerFilePatterns": ["/\\.nix$/"],
+			"matchStrings": [
+				"#\\s*renovate:\\s*docker\\s*\"?[a-zA-Z._-]+\"?\\s*=\\s*\"(?<depName>[a-zA-Z0-9._/-]+)(?::(?<currentValue>[a-zA-Z0-9._-]+))?@(?<currentDigest>sha256:[a-fA-F0-9]{64})\";"
+			],
+			"datasourceTemplate": "docker"
+		}
+	],
+
 	"lockFileMaintenance": {
 		"enabled": true,
 		"schedule": ["at any time"]
