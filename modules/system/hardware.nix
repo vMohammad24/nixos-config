@@ -12,6 +12,9 @@
       extraPackages = with pkgs; [
         rocmPackages.clr.icd
         rocmPackages.clr
+        libva
+        libva-utils
+        mesa
       ];
     };
 
