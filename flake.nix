@@ -79,7 +79,7 @@
       inputs.systems.follows = "systems";
     };
     nixarr = {
-      url = "github:nix-media-server/nixarr/pull/181/merge";
+      url = "github:nix-media-server/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rffmpeg = {
