@@ -12,13 +12,14 @@ let
     qui = 5252;
     grafana = 3001;
     prometheus = 9090;
+    search = 8888;
   };
 in {
   serverIp = "192.168.1.31";
   virtualIp = "192.168.1.200";
   interface = "eno2";
 
-  inherit internalDomain;
+  inherit internalDomain servicePorts;
 
   myServices = builtins.listToAttrs (
     map (name: {

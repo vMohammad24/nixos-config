@@ -32,6 +32,10 @@
           file = ../../secrets/netbird-setup-key.age;
           mode = "0400";
         };
+        searx-secret-key = {
+          file = ../../secrets/searx-secret-key.age;
+          mode = "0400";
+        };
       }
       (lib.mkIf config.myConfig.forgejo-runner.enable {
         heliopolis-runner-token = {

@@ -9,6 +9,7 @@ in {
     ./monitoring.nix
     ./netbird.nix
     ./proxy.nix
+    ./searx.nix
     ./unbound.nix
     ./forgejo
   ];
