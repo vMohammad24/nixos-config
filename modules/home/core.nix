@@ -10,6 +10,14 @@
     IdentityFile = "~/.ssh/id_rsa";
     IdentitiesOnly = "yes";
   };
+
+  sshMux = {
+    ControlMaster = "auto";
+    ControlPath = "~/.ssh/cm-%C";
+    ControlPersist = "300";
+    ServerAliveInterval = 30;
+    ServerAliveCountMax = 3;
+  };
 in {
   home.username = "vmohammad";
   home.homeDirectory = "/home/vmohammad";
@@ -89,19 +97,27 @@ in {
     settings = {
       "github.com" =
         sshKey
+        // sshMux
         // {
           HostName = "github.com";
           AddKeysToAgent = "yes";
         };
       "server" =
         sshKey
+        // sshMux
         // {
           User = "vmohammad";
           HostName = "192.168.1.31";
           Port = 22;
+          IdentityFile = [
+            "~/.ssh/hermes_ed25519"
+            "~/.ssh/id_rsa"
+          ];
+          IdentityAgent = "none";
         };
       "rpi" =
         sshKey
+        // sshMux
         // {
           User = "vmohammad";
           HostName = "192.168.1.32";

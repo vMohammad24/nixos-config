@@ -91,6 +91,10 @@
     openFirewall = true;
   };
 
+  users.users.vmohammad.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBXYZZHOoZbjw3SWHxdJh2FAc7yEnusqmjcScpF0gjDW hermes@main-desktop"
+  ];
+
   fileSystems."/mnt/HDD" = {
     device = "/dev/disk/by-uuid/a8a13d43-ce2d-43a6-b50d-34a1084722f4";
     fsType = "xfs";
