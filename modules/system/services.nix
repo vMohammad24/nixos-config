@@ -1,6 +1,8 @@
 {
   config,
+  inputs,
   lib,
+  pkgs,
   ...
 }: let
   isDesktop = config.myConfig.isDesktop;
@@ -50,6 +52,7 @@ in {
     enable = true;
     openFirewall = true;
     autoStart = true;
+    package = inputs.wivrn.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
   services.gnome.gnome-keyring.enable = isDesktop;

@@ -101,6 +101,11 @@
       url = "git+https://codeberg.org/BANanaD3V/niri-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wivrn = {
+      url = "github:WiVRn/WiVRn";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs = {

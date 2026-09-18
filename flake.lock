@@ -1228,6 +1228,7 @@
         "tss": "tss",
         "vicinae": "vicinae",
         "windows-spy-blocker-hosts": "windows-spy-blocker-hosts",
+        "wivrn": "wivrn",
         "wl-mouse": "wl-mouse"
       }
     },
@@ -1596,6 +1597,29 @@
       "original": {
         "type": "file",
         "url": "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
+      }
+    },
+    "wivrn": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789587924,
+        "narHash": "sha256-2oN3QQa/MlY3hWAyJB2TbhGUTRRo4pazbcQjsohkLs8=",
+        "owner": "WiVRn",
+        "repo": "WiVRn",
+        "rev": "c64af3ac90b67ed1692753cdb996371e46de970b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "WiVRn",
+        "repo": "WiVRn",
+        "type": "github"
       }
     },
     "wl-mouse": {
