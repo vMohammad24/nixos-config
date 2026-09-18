@@ -417,11 +417,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789676441,
-        "narHash": "sha256-mOvO5VvycuBtOUe5EYI54vrLsWe+2KF/82fmwKooe48=",
+        "lastModified": 1789695075,
+        "narHash": "sha256-HREFWgmCTp28ZdMkSFOW2QW8uI17v5CNc04W46h6aPo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9d485f74cd27d17126ee34cb31005c39d20f741f",
+        "rev": "4ac5a2ae9025eab1ebece4f9df8c315fd84a738a",
         "type": "github"
       },
       "original": {
@@ -806,11 +806,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1789656621,
-        "narHash": "sha256-oXFy3QL59aUakC93RhUs8+RdRYq8uAlvGiUPvh8RjSE=",
+        "lastModified": 1789695071,
+        "narHash": "sha256-n3pioCRRk7hkAqJJl4vzYq0Q4E7SDaHFBoIgMNsXMdY=",
         "owner": "mangowm",
         "repo": "mango",
-        "rev": "c0086278eff891d166b6b6465fe59971195f2c64",
+        "rev": "42cdf4161bfd080dec3da9b966aa6d52d4816bed",
         "type": "github"
       },
       "original": {
@@ -848,11 +848,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1789603491,
-        "narHash": "sha256-DEPYsLQGJxAJSGAYGt3MzAknlJFKjeyAPm+TBunSJK8=",
+        "lastModified": 1789689721,
+        "narHash": "sha256-5+GEhAx6YbMkP9jBoDlNlP5yiW9sPa4QdruKD+zbkVM=",
         "ref": "refs/heads/main",
-        "rev": "d62b823f49d861a133616702ab055a074b5e66b8",
-        "revCount": 192,
+        "rev": "cc07aa2c81b784aa4078ed19e4b963663f5172ba",
+        "revCount": 193,
         "type": "git",
         "url": "https://codeberg.org/BANanaD3V/niri-nix.git"
       },
@@ -864,11 +864,11 @@
     "niri-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1789498232,
-        "narHash": "sha256-77MjtAjEiPCRH/CtChSU6IHclKkgQ3pI7s3c7N7iiiQ=",
+        "lastModified": 1789656515,
+        "narHash": "sha256-Y7EZJ/Cz53VTwuSVB9aGDPqjkOrAxE4A3l6Hd21l4mU=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "02fdd8e7586110d6aa79d94f388756a3479091b6",
+        "rev": "b735805d00d2daae6cedb6823660e80636418d7c",
         "type": "github"
       },
       "original": {
@@ -1537,11 +1537,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789678025,
-        "narHash": "sha256-2J4lfs7VQ786BozwayPIdughM18fV+x4ZRP8XNkLgG4=",
+        "lastModified": 1789689154,
+        "narHash": "sha256-+Ti1hcYdjgdAZWu5f6myDckjp7ox0mtux7q8U1t44jo=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "4274ac5451fec2caf9e1bc50746db00f0f5febaa",
+        "rev": "c3415a3ed56676d2960d90975ab319ae8a7aba6e",
         "type": "github"
       },
       "original": {
