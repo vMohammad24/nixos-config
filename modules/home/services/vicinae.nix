@@ -41,7 +41,7 @@ in {
         };
         files = {
           preferences = {
-            autoIndexing = true;
+            autoIndexing = false;
             excludedIndexingPaths = ["/nix/store" "/mnt"];
             indexingPaths = "/home/vmohammad";
           };
