@@ -30,11 +30,12 @@ in {
   programs.steam = lib.mkIf isDesktop {
     enable = true;
     gamescopeSession.enable = true;
+    gamescopeSession.args = ["-W" "2560" "-H" "1440" "-r" "237" "--adaptive-sync"];
     remotePlay.openFirewall = true;
   };
   programs.gamescope = lib.mkIf isDesktop {
     enable = true;
-    capSysNice = true;
+    capSysNice = false;
   };
   programs.localsend.enable = isDesktop;
   programs.virt-manager.enable = isDesktop;
