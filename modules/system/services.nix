@@ -14,8 +14,14 @@ in {
       PasswordAuthentication = false;
     };
   };
-  virtualisation.libvirtd.enable = isDesktop;
   virtualisation.waydroid.enable = isDesktop;
+  virtualisation.libvirtd = lib.mkIf isDesktop {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      vhostUserPackages = [pkgs.virtiofsd];
+    };
+  };
   virtualisation.podman = lib.mkIf isDesktop {
     enable = true;
     dockerCompat = true;
