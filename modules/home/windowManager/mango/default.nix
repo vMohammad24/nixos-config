@@ -14,11 +14,11 @@
     systemd.enable = false;
 
     settings = {
-      gappih = 4;
-      gappiv = 4;
-      gappoh = 8;
-      gappov = 8;
-      borderpx = 2;
+      gap_inner_horizontal = 4;
+      gap_inner_vertical = 4;
+      gap_outer_horizontal = 8;
+      gap_outer_vertical = 8;
+      border_px = 2;
       border_radius = 6;
       circle_layout = "dwindle";
 
