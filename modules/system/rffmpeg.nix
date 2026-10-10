@@ -15,6 +15,8 @@
   vaapiDevice = "/dev/dri/jellyfin-vaapi";
   rffmpegStateDir = "/var/lib/rffmpeg";
   rffmpegKeyDir = "/var/lib/rffmpeg-ssh";
+  rffmpegPersistDir = "/run/rffmpeg";
+  sshControlPath = persistDir: "${persistDir}/ssh-%i-%r@%h:%p";
   ffmpeg = pkgs.jellyfin-ffmpeg;
   rffmpegPython = pkgs.python3.withPackages (pythonPackages: [
     pythonPackages.click
@@ -33,7 +35,8 @@
       install -Dm755 rffmpeg "$out/bin/rffmpeg"
       substituteInPlace "$out/bin/rffmpeg" \
         --replace-fail '#!/usr/bin/env python3' '#!${rffmpegPython}/bin/python3' \
-        --replace-fail 'ssh-%r@%h:%p' 'ssh-%i-%r@%h:%p'
+        --replace-fail 'ssh-%r@%h:%p' 'ssh-%i-%r@%h:%p' \
+        --replace-fail 'ssh_command.append("-t")' 'ssh_command.append("-T")'
       ln -s rffmpeg "$out/bin/ffmpeg"
       ln -s rffmpeg "$out/bin/ffprobe"
 
@@ -48,35 +51,40 @@
       platforms = lib.platforms.linux;
     };
   };
-  hardwareAwareFfmpeg = pkgs.symlinkJoin {
-    name = "jellyfin-hardware-aware-ffmpeg-${ffmpeg.version}";
-    paths = [
-      (pkgs.writeShellApplication {
-        name = "ffmpeg";
-        runtimeInputs = [pkgs.coreutils];
-        text = ''
-          arguments=("$@")
-          renderNode="$(readlink -f ${vaapiDevice})"
-          vendorFile="/sys/class/drm/''${renderNode##*/}/device/vendor"
+  mkHardwareAwareFfmpeg = name: ffmpegPackage:
+    pkgs.symlinkJoin {
+      name = "${name}-hardware-aware-ffmpeg-${ffmpegPackage.version}";
+      paths = [
+        (pkgs.writeShellApplication {
+          name = "ffmpeg";
+          runtimeInputs = [pkgs.coreutils pkgs.gnused];
+          text = ''
+            arguments=("$@")
+            renderNode="$(readlink -f ${vaapiDevice})"
+            vendorFile="/sys/class/drm/''${renderNode##*/}/device/vendor"
 
-          if [[ -r "$vendorFile" ]] && [[ "$(< "$vendorFile")" == "0x1002" ]]; then
-            arguments=()
-            for argument in "$@"; do
-              arguments+=("''${argument//,driver=iHD/,driver=radeonsi}")
-            done
-          fi
+            if [[ -r "$vendorFile" ]] && [[ "$(< "$vendorFile")" == "0x1002" ]]; then
+              for index in "''${!arguments[@]}"; do
+                argument="''${arguments[index]//,driver=iHD/,driver=radeonsi}"
+                argument="''${argument//:mode=hq/}"
+                argument="''${argument//mode=hq:/}"
+                argument="''${argument//hwmap,format=/hwdownload,format=}"
+                arguments[index]="$argument"
+              done
+            fi
 
-          exec ${ffmpeg}/bin/ffmpeg "''${arguments[@]}"
-        '';
-      })
-      (pkgs.writeShellApplication {
-        name = "ffprobe";
-        text = ''
-          exec ${ffmpeg}/bin/ffprobe "$@"
-        '';
-      })
-    ];
-  };
+            exec ${ffmpegPackage}/bin/ffmpeg "''${arguments[@]}"
+          '';
+        })
+        (pkgs.writeShellApplication {
+          name = "ffprobe";
+          text = ''
+            exec ${ffmpegPackage}/bin/ffprobe "$@"
+          '';
+        })
+      ];
+    };
+  hardwareAwareFfmpeg = mkHardwareAwareFfmpeg "jellyfin" ffmpeg;
   jellyfinWithRffmpeg = pkgs.jellyfin.override {
     jellyfin-ffmpeg = rffmpeg;
   };
@@ -113,15 +121,22 @@
 
       chmod 0660 ${rffmpegStateDir}/rffmpeg.db
 
-      if ! ssh \
+      if ssh \
         -q \
+        -T \
         -o BatchMode=yes \
-        -o ConnectTimeout=5 \
+        -o ConnectTimeout=10 \
+        -o ConnectionAttempts=3 \
         -o StrictHostKeyChecking=no \
         -o UserKnownHostsFile=/dev/null \
+        -o ControlMaster=auto \
+        -o ControlPath='${sshControlPath rffmpegPersistDir}' \
+        -o ControlPersist=300 \
         -i ${rffmpegKeyDir}/id_ed25519 \
         jellyfin@${cfg.workerAddress} \
         ${hardwareAwareFfmpeg}/bin/ffmpeg -version; then
+        rffmpeg clear ${cfg.workerAddress}
+      else
         echo "WARNING: rffmpeg worker ${cfg.workerAddress} is not ready; local VAAPI fallback will be used" >&2
       fi
 
@@ -159,11 +174,6 @@ in {
       type = lib.types.str;
       description = "PCI vendor ID whose render node is exposed to Jellyfin as the common VAAPI device.";
     };
-
-    vaapiRenderDevice = lib.mkOption {
-      type = lib.types.str;
-      description = "Stable by-path render device exposed at the common Jellyfin VAAPI path.";
-    };
   };
 
   config = lib.mkIf cfg.enable (lib.mkMerge [
@@ -176,24 +186,8 @@ in {
       ];
 
       services.udev.extraRules = ''
-        SUBSYSTEM=="drm", KERNEL=="renderD*", ATTRS{vendor}=="${cfg.vaapiVendorId}", SYMLINK+="dri/jellyfin-vaapi"
+        SUBSYSTEM=="drm", KERNEL=="renderD*", ATTRS{vendor}=="${cfg.vaapiVendorId}", SYMLINK+="dri/jellyfin-vaapi", TAG+="systemd"
       '';
-
-      systemd.services.rffmpeg-vaapi-device = {
-        description = "Create the common rffmpeg VAAPI device path";
-        wantedBy = ["multi-user.target"];
-        before = lib.optionals isController ["jellyfin.service"];
-        after = ["systemd-udev-settle.service"];
-        wants = ["systemd-udev-settle.service"];
-        serviceConfig.Type = "oneshot";
-        script = ''
-          if [ ! -e ${cfg.vaapiRenderDevice} ]; then
-            echo "VAAPI render device ${cfg.vaapiRenderDevice} does not exist" >&2
-            exit 1
-          fi
-          ln -sfn ${cfg.vaapiRenderDevice} ${vaapiDevice}
-        '';
-      };
 
       environment.systemPackages =
         [
@@ -220,6 +214,7 @@ in {
         };
         transcoding = {
           enableHardwareEncoding = true;
+          enableToneMapping = false;
           hardwareDecodingCodecs = {
             h264 = true;
             hevc = true;
@@ -239,7 +234,7 @@ in {
             debug: false
           directories:
             state: "${rffmpegStateDir}"
-            persist: "/run/rffmpeg"
+            persist: "${rffmpegPersistDir}"
             owner: jellyfin
             group: media
           remote:
@@ -273,7 +268,7 @@ in {
           "${jellyfinStateDir}" = {
             "${cfg.workerAddress}/32" = [
               "rw"
-              "sync"
+              "async"
               "no_subtree_check"
               "no_root_squash"
             ];
@@ -293,7 +288,7 @@ in {
         "z ${rffmpegStateDir}/rffmpeg.db 0660 jellyfin media - -"
         "z ${rffmpegKeyDir}/id_ed25519 0600 jellyfin media - -"
         "z ${rffmpegKeyDir}/id_ed25519.pub 0644 jellyfin media - -"
-        "d /run/rffmpeg 2770 jellyfin media - -"
+        "d ${rffmpegPersistDir} 2770 jellyfin media - -"
         "d /var/log/rffmpeg 2770 jellyfin media - -"
         "f /var/log/rffmpeg/rffmpeg.log 0660 jellyfin media - -"
         "z /var/log/rffmpeg/rffmpeg.log 0660 jellyfin media - -"
@@ -314,14 +309,14 @@ in {
             Type = "oneshot";
             User = "jellyfin";
             Group = "media";
+            KillMode = "process";
             ExecStart = lib.getExe initializeRffmpeg;
           };
           environment.RFFMPEG_CONFIG = "/etc/rffmpeg/rffmpeg.yml";
         };
 
         jellyfin = {
-          after = ["rffmpeg-vaapi-device.service"];
-          requires = ["rffmpeg-vaapi-device.service"];
+          after = ["dev-dri-jellyfin\\x2dvaapi.device"];
           path = [rffmpeg];
           environment = {
             RFFMPEG_CONFIG = "/etc/rffmpeg/rffmpeg.yml";
@@ -337,16 +332,18 @@ in {
 
       users = {
         groups.media.gid = 169;
-        users.jellyfin = {
-          isSystemUser = true;
-          uid = 146;
-          group = "media";
-          home = jellyfinDataDir;
-          shell = pkgs.bashInteractive;
-          extraGroups = [
-            "render"
-            "video"
-          ];
+        users = {
+          jellyfin = {
+            isSystemUser = true;
+            uid = 146;
+            group = "media";
+            home = jellyfinDataDir;
+            shell = pkgs.bashInteractive;
+            extraGroups = [
+              "render"
+              "video"
+            ];
+          };
         };
       };
 
@@ -360,8 +357,10 @@ in {
             "nofail"
             "x-systemd.automount"
             "x-systemd.idle-timeout=10min"
-            "sync"
-            "actimeo=1"
+            "rsize=1048576"
+            "wsize=1048576"
+            "actimeo=60"
+            "async"
           ];
         };
         ${jellyfinStateDir} = {
@@ -373,8 +372,10 @@ in {
             "nofail"
             "x-systemd.automount"
             "x-systemd.idle-timeout=10min"
-            "sync"
-            "actimeo=1"
+            "async"
+            "rsize=1048576"
+            "wsize=1048576"
+            "actimeo=30"
           ];
         };
       };

@@ -25,7 +25,6 @@
     enable = true;
     role = "controller";
     interface = "eno2";
-    vaapiRenderDevice = "/dev/dri/by-path/pci-0000:00:02.0-render";
     vaapiVendorId = "0x8086";
   };
   virtualisation.docker.enable = config.myConfig.forgejo-runner.enable;
