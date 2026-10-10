@@ -29,7 +29,7 @@ in {
     }) (builtins.attrNames servicePorts)
   );
 
-  proxiedDevices = ["192.168.1.53"];
+  proxiedDevices = []; #["192.168.1.53"];
 
   proxiedDomains = [
     "tiktok.com"
