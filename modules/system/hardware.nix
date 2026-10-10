@@ -26,7 +26,10 @@
 
     hardware.openrazer.enable = true;
     hardware.openrazer.users = ["vmohammad"];
-    environment.systemPackages = [pkgs.openrazer-daemon];
+    environment.systemPackages = with pkgs; [
+      openrazer-daemon
+      rgp
+    ];
 
     services.xserver.videoDrivers = lib.mkDefault ["amdgpu"];
 
