@@ -23,7 +23,7 @@ in {
         (h.bindExec "SHIFT + P" "uwsm app -- prismlauncher")
         (h.bindExec "SHIFT + T" "uwsm app -- feishin")
         (h.bindExec "SHIFT + E" "uwsm app -- discordcanary")
-        (h.bindExec "SHIFT + J" "uwsm app -- jellyfin-desktop")
+        (h.bindExec "SHIFT + J" "uwsm app -- jellyfin-mpv-shim")
 
         # power management
         (h.bind "\"CTRL + ALT + delete\"" "hl.dsp.exec_cmd(\"vicinae deeplink vicinae://launch/power\")")

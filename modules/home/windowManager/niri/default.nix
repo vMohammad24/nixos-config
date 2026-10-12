@@ -161,7 +161,7 @@ in {
           "Mod+Shift+P" = spawn ["uwsm" "app" "--" "prismlauncher"];
           "Mod+Shift+T" = spawn ["uwsm" "app" "--" "feishin"];
           "Mod+Shift+E" = spawn ["uwsm" "app" "--" "discordcanary"];
-          "Mod+Shift+J" = spawn ["uwsm" "app" "--" "jellyfin-desktop"];
+          "Mod+Shift+J" = spawn ["uwsm" "app" "--" "jellyfin-mpv-shim"];
 
           "Mod+Ctrl+Delete" = spawn ["vicinae" "deeplink" "vicinae://launch/power"];
           "Mod+Shift+L" = spawnSh "pidof hyprlock || hyprlock";

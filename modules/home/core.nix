@@ -190,6 +190,7 @@ in {
       labymod-launcher
       blender
       tesseract
+      jellyfin-mpv-shim
       # utils/essentials
       hyprpicker
       libnotify

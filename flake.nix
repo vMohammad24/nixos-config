@@ -83,13 +83,6 @@
       url = "github:joshuaboniface/rffmpeg";
       flake = false;
     };
-    jellyfin-desktop = {
-      url = "github:xaltsc/jellyfin-desktop";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.flake-parts.follows = "flake-parts";
-    };
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.pre-commit-hooks.follows = "";

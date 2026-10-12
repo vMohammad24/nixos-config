@@ -138,21 +138,6 @@
     },
     "crane_2": {
       "locked": {
-        "lastModified": 1781825982,
-        "narHash": "sha256-SlXKwIRIhrOSAcTjCB3ftPLzJWZStQIPS7J1FlZPnKk=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "469fd08d0bcf6926321fa973c6777fbc87785dd7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
-    "crane_3": {
-      "locked": {
         "lastModified": 1785541369,
         "narHash": "sha256-6VCYI5xashcnAR1lambqt9FGh0F6kYhg1P2Z0VDlr48=",
         "owner": "ipetkov",
@@ -771,52 +756,6 @@
         "type": "github"
       }
     },
-    "import-tree": {
-      "locked": {
-        "lastModified": 1778781969,
-        "narHash": "sha256-Jjuz5CmSkur8KvLDoGa+vylEp+RkQtv4mt/qcMznpH0=",
-        "owner": "denful",
-        "repo": "import-tree",
-        "rev": "d321337efd0f23a9eb14a42adb7b2c29313ab274",
-        "type": "github"
-      },
-      "original": {
-        "owner": "denful",
-        "repo": "import-tree",
-        "type": "github"
-      }
-    },
-    "jellyfin-desktop": {
-      "inputs": {
-        "crane": "crane_2",
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "home-manager": [
-          "home-manager"
-        ],
-        "import-tree": "import-tree",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-stable": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783807137,
-        "narHash": "sha256-riVMWfhhEyVu1SI7SquZqGZcsL/PXsOa6tNiKwhINwg=",
-        "owner": "xaltsc",
-        "repo": "jellyfin-desktop",
-        "rev": "ab262df44fb9417ff2952b22673b22be94eeb9f1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "xaltsc",
-        "repo": "jellyfin-desktop",
-        "type": "github"
-      }
-    },
     "mangowm": {
       "inputs": {
         "flake-parts": [
@@ -1234,7 +1173,6 @@
         "hagezi-whitelist-referral": "hagezi-whitelist-referral",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "jellyfin-desktop": "jellyfin-desktop",
         "mangowm": "mangowm",
         "moonshine": "moonshine",
         "niri": "niri",
@@ -1526,7 +1464,7 @@
     },
     "tss": {
       "inputs": {
-        "crane": "crane_3",
+        "crane": "crane_2",
         "flake-utils": [
           "flake-utils"
         ],
