@@ -5,6 +5,7 @@
     settings = {
       window_padding_width = 10;
       confirm_os_window_close = 0;
+      remember_window_size = false;
     };
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";
