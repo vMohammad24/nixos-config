@@ -20,6 +20,7 @@
       ../../modules/home/services/hyprpaper.nix
       ../../modules/home/services/hypridle.nix
       ../../modules/home/services/hyprlock.nix
+      ../../modules/home/services/voice-chain.nix
       ../../modules/home/terminal/kitty.nix
       ../../modules/home/programs/jellyfin-desktop.nix
       ../../modules/home/programs/bars/waybar.nix

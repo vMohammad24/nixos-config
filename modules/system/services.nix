@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -49,10 +48,29 @@ in {
           ];
           "default.clock.min-quantum" = 512;
           "default.clock.max-quantum" = 2048;
+          "resample.quality" = 10;
         };
       };
     };
+
+    wireplumber.extraConfig."51-schiit-driver" = {
+      "monitor.alsa.rules" = [
+        {
+          matches = [{"node.name" = "~alsa_output.usb-Schiit.*";}];
+          actions.update-props = {
+            "priority.driver" = 3000;
+            "node.pause-on-idle" = true;
+          };
+        }
+        {
+          matches = [{"node.name" = "~alsa_input.usb-HP__Inc_HyperX.*";}];
+          actions.update-props."node.pause-on-idle" = true;
+        }
+      ];
+    };
   };
+
+  security.rtkit.enable = isDesktop;
 
   services.wivrn = lib.mkIf isDesktop {
     enable = true;
