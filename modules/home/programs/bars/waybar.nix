@@ -25,6 +25,11 @@ in {
             "niri/workspaces"
             "niri/window"
           ]
+          else if osConfig.myConfig.desktops.mango.enable or false
+          then [
+            "mango/workspaces"
+            "mango/window"
+          ]
           else [
             "ext/workspaces"
             "dwl/window"
@@ -57,6 +62,12 @@ in {
         "niri/workspaces" = {
           all-outputs = false;
           format = "{value}";
+        };
+
+        "mango/workspaces" = {
+          on-click = "activate";
+          on-click-right = "toggle";
+          hide-empty = true;
         };
         "clock" = {
           format = " {:%H:%M   %a, %d %b}";
@@ -92,7 +103,7 @@ in {
           on-click = "kitty btop";
         };
         "memory" = {
-          format = " {used}/{total}GB";
+          format = " {used:0.2f}/{total:0.2f}GB";
           tooltip = false;
         };
         "tray" = {
