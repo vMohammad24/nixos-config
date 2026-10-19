@@ -45,6 +45,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    waybar = {
+      url = "github:Alexays/Waybar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
     hagezi-pro = {
@@ -161,6 +165,9 @@
         ./modules/stylix.nix
         {
           nixpkgs.config.allowUnfree = true;
+          nixpkgs.overlays = [
+            inputs.waybar.overlays.default
+          ];
         }
         inputs.hyprland.nixosModules.default
         ./modules/desktops/hyprland.nix
