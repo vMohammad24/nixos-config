@@ -52,6 +52,7 @@ in {
             stdout = "journal";
             stderr = "journal";
             launch_timeout_secs = 10;
+            steam_integration = true;
           }
           {
             title = "Krita";
@@ -78,6 +79,7 @@ in {
             stdout = "journal";
             stderr = "journal";
             launch_timeout_secs = 10;
+            steam_integration = true;
           }
         ];
         compositor.hdr = true;
