@@ -17,6 +17,7 @@ in {
         "libvirtd"
         "docker"
         "wireshark"
+        "kvm"
       ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
