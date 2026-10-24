@@ -76,7 +76,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     vicinae = {
-      url = "github:vicinaehq/vicinae/pull/2055/merge";
+      url = "github:vicinaehq/vicinae";
       inputs.systems.follows = "systems";
     };
     nixarr = {
