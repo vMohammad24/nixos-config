@@ -43,10 +43,15 @@
       GDK_BACKEND = "wayland,x11";
     };
 
+    boot.kernel.sysctl."vm.max_map_count" = 2097152;
+
     services.udev.extraRules = ''
       # WlMouse (beast) 8k dongle
       SUBSYSTEM=="hidraw", ATTRS{idVendor}=="36a7", MODE="0666", TAG+="uaccess"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="36a7", MODE="0666", TAG+="uaccess"
+
+      # KVM
+      KERNEL=="udmabuf", GROUP="kvm", MODE="0660"
 
       # Razer Huntsman TKL V2 (1532:026B) - force 8kHz polling rate
       SUBSYSTEM=="hid", KERNEL=="0003:1532:026B.*", ATTR{poll_rate}="8000"
