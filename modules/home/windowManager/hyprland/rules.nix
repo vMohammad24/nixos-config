@@ -14,5 +14,10 @@ in {
           suppress_event = "fullscreen maximize";
         })
     ];
+
+    layer_rule = [
+      (h.layerRule "notification-slide" {namespace = "notifications";} {animation = "slide right";})
+      (h.layerRule "vicinae-popin" {namespace = "vicinae";} {animation = "popin 85%";})
+    ];
   };
 }

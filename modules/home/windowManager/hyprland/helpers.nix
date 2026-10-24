@@ -68,6 +68,12 @@ in rec {
     }
     // extra;
 
+  layerRule = name: match: extra:
+    {
+      inherit name match;
+    }
+    // extra;
+
   # env
   env = name: value: {
     _args = [name value];
