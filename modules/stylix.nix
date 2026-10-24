@@ -4,8 +4,12 @@
   ...
 }: let
   monoFont = {
-    package = pkgs.nerd-fonts.jetbrains-mono;
-    name = "JetBrainsMono Nerd Font";
+    package = pkgs.nerd-fonts.geist-mono;
+    name = "GeistMono Nerd Font Mono";
+  };
+  sansFont = {
+    package = pkgs.geist-font;
+    name = "Geist";
   };
 in {
   imports = [inputs.stylix.nixosModules.stylix];
@@ -26,8 +30,8 @@ in {
 
     fonts = {
       monospace = monoFont;
-      sansSerif = monoFont;
-      serif = monoFont;
+      sansSerif = sansFont;
+      serif = sansFont;
       sizes = {
         applications = 11;
         desktop = 11;

@@ -86,6 +86,8 @@ in {
     userSettings = {
       disable_ai = true;
       cli_default_open_behavior = "new_window";
+      ui_font_family = lib.mkForce "Geist";
+      buffer_font_family = lib.mkForce "JetBrainsMono Nerd Font";
       load_direnv = "shell_hook";
       telemetry = {
         metrics = false;

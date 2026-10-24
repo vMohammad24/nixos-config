@@ -14,12 +14,12 @@
   };
 
   fonts = {
-    enableDefaultPackages = true;
     packages = with pkgs; [
+      geist-font
+      nerd-fonts.geist-mono
       jetbrains-mono
       nerd-fonts.jetbrains-mono
       noto-fonts
-      noto-fonts-lgc-plus
       ibm-plex
       vazirmatn
     ];
@@ -52,4 +52,6 @@
   environment.sessionVariables = {
     GIO_EXTRA_MODULES = ["${pkgs.glib-networking}/lib/gio/modules"];
   };
+
+  environment.variables.FREETYPE_PROPERTIES = "cff:no-stem-darkening=0";
 }
