@@ -35,6 +35,10 @@ in rec {
 
   bindFocus = keys: dir: bindMod keys "hl.dsp.focus({ direction = \"${dir}\" })";
 
+  bindMove = keys: dir: bindMod keys "hl.dsp.window.move({ direction = \"${dir}\" })";
+
+  bindSwap = keys: dir: bindMod keys "hl.dsp.window.swap({ direction = \"${dir}\" })";
+
   bindWorkspace = keys: ws: bindMod keys "hl.dsp.focus({ workspace = ${toString ws} })";
   bindMoveToWorkspace = keys: ws: bindMod keys "hl.dsp.window.move({ workspace = ${toString ws} })";
 

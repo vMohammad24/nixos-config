@@ -55,6 +55,18 @@ in {
         (h.bindFocus "right" "r")
         (h.bindFocus "up" "u")
         (h.bindFocus "down" "d")
+
+        # move window through the layout
+        (h.bindMove "SHIFT + left" "l")
+        (h.bindMove "SHIFT + right" "r")
+        (h.bindMove "SHIFT + up" "u")
+        (h.bindMove "SHIFT + down" "d")
+
+        # swap window with the one in that direction
+        (h.bindSwap "CTRL + SHIFT + left" "l")
+        (h.bindSwap "CTRL + SHIFT + right" "r")
+        (h.bindSwap "CTRL + SHIFT + up" "u")
+        (h.bindSwap "CTRL + SHIFT + down" "d")
       ]
       ++ (
         builtins.concatLists (
