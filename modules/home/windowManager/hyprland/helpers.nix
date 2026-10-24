@@ -49,10 +49,28 @@ in rec {
     ];
   };
 
+  spring = name: mass: stiffness: damping: {
+    _args = [
+      name
+      {
+        type = "spring";
+        inherit mass stiffness damping;
+      }
+    ];
+  };
+
   anim = leaf: speed: bezier: extra:
     {
       inherit leaf speed bezier;
       enabled = true;
+    }
+    // extra;
+
+  animSpring = leaf: speed: spring: extra:
+    {
+      inherit leaf speed;
+      enabled = true;
+      inherit spring;
     }
     // extra;
 

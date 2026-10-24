@@ -5,27 +5,43 @@ in {
     config.animations.enabled = true;
 
     curve = [
-      (h.curve "smoothOut" [[0.25 0.8] [0.2 1.0]])
-      (h.curve "quickInOut" [[0.4 0.0] [0.6 1.0]])
+      (h.curve "easeOutQuint" [[0.23 1.0] [0.32 1.0]])
+      (h.curve "quick" [[0.15 0.0] [0.1 1.0]])
+      (h.spring "smooth" 1 520 39)
+      (h.spring "resize" 1 700 52)
+      (h.spring "soft" 1 160 24)
     ];
 
     animation = [
-      (h.anim "global" 4 "smoothOut" {})
-      (h.anim "windows" 5 "smoothOut" {style = "popin 80%";})
-      (h.anim "windowsIn" 5 "smoothOut" {style = "popin 80%";})
-      (h.anim "windowsOut" 3 "quickInOut" {style = "popin 80%";})
-      (h.anim "border" 2 "quickInOut" {})
-      (h.anim "fadeIn" 3 "smoothOut" {})
-      (h.anim "fadeOut" 2 "quickInOut" {})
-      (h.anim "fade" 3 "smoothOut" {})
-      (h.anim "layers" 4 "smoothOut" {})
-      (h.anim "layersIn" 4 "smoothOut" {})
-      (h.anim "layersOut" 3 "quickInOut" {})
-      (h.anim "workspaces" 4 "smoothOut" {})
-      (h.anim "workspacesIn" 4 "smoothOut" {})
-      (h.anim "workspacesOut" 4 "smoothOut" {})
-      (h.anim "zoomFactor" 5 "smoothOut" {})
-      (h.anim "specialWorkspace" 2 "quickInOut" {style = "slidevert";})
+      (h.animSpring "global" 3 "smooth" {})
+
+      (h.animSpring "windows" 3 "smooth" {style = "popin 85%";})
+      (h.animSpring "windowsIn" 3 "smooth" {style = "popin 85%";})
+      (h.animSpring "windowsOut" 2.2 "resize" {style = "popin 90%";})
+      (h.animSpring "windowsMove" 3 "resize" {})
+
+      (h.anim "border" 3 "easeOutQuint" {})
+
+      (h.anim "fade" 2.5 "quick" {})
+      (h.anim "fadeIn" 2.2 "quick" {})
+      (h.anim "fadeOut" 2 "quick" {})
+      (h.anim "fadeSwitch" 1.5 "quick" {})
+      (h.anim "fadeShadow" 2 "easeOutQuint" {})
+      (h.anim "fadeDim" 3 "easeOutQuint" {})
+      (h.anim "fadeDpms" 2 "quick" {})
+
+      (h.animSpring "layers" 3 "smooth" {})
+      (h.animSpring "layersIn" 3.2 "smooth" {})
+      (h.animSpring "layersOut" 2.4 "smooth" {})
+      (h.anim "fadeLayers" 2 "quick" {})
+      (h.anim "fadeLayersIn" 2 "quick" {})
+      (h.anim "fadeLayersOut" 1.8 "quick" {})
+
+      (h.anim "fadePopups" 1.5 "quick" {})
+      (h.anim "fadePopupsIn" 1.5 "quick" {})
+      (h.anim "fadePopupsOut" 1.2 "quick" {})
+      (h.anim "zoomFactor" 3 "quick" {})
+      (h.anim "monitorAdded" 3 "easeOutQuint" {})
     ];
   };
 }
