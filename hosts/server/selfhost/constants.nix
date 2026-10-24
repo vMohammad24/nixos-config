@@ -14,6 +14,7 @@ let
     prometheus = 9090;
     search = 8888;
     ntfy = 2586;
+    honcho = 8000;
   };
 in {
   serverIp = "192.168.1.31";

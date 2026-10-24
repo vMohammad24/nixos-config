@@ -20,6 +20,7 @@
   myConfig.monitoring.enable = true;
   myConfig.rr.enable = true;
   myConfig.forgejo-runner.enable = false;
+  myConfig.honcho.enable = true;
   myConfig.gpu.enable = false;
   myConfig.rffmpeg = {
     enable = true;

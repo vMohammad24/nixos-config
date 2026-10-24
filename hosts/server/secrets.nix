@@ -36,6 +36,10 @@
           file = ../../secrets/searx-secret-key.age;
           mode = "0400";
         };
+        honcho-env = {
+          file = ../../secrets/honcho-env.age;
+          mode = "0400";
+        };
       }
       (lib.mkIf config.myConfig.forgejo-runner.enable {
         heliopolis-runner-token = {

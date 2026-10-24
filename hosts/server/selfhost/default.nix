@@ -12,6 +12,7 @@ in {
     ./proxy.nix
     ./searx.nix
     ./unbound.nix
+    ./honcho.nix
     ./forgejo
   ];
 
