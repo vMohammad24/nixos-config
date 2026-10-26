@@ -33,7 +33,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     moonshine = {
-      url = "github:hgaiser/moonshine";
+      url = "github:hgaiser/moonshine/pull/242/merge";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tss = {
