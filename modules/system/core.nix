@@ -75,7 +75,7 @@ in {
       auto-optimise-store = true;
       trusted-users = lib.optionals isDesktop ["vmohammad"];
       extra-substituters =
-        ["https://attic.xuyh0120.win/lantian"]
+        ["https://cache.lantian.pub/lantian"]
         ++ lib.optionals isDesktop [
           "https://hyprland.cachix.org"
           "https://framr.cachix.org"
@@ -84,7 +84,7 @@ in {
           "https://niri-nix.cachix.org"
         ];
       extra-trusted-public-keys =
-        ["lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="]
+        ["lantian:WVGO7vsRMSEN+h7Lp7kv6SAmrkEXgUGbbXm7jMDjBuQ="]
         ++ lib.optionals isDesktop [
           "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
           "framr.cachix.org-1:Nn6BXpOrE0I1sO89xW8l2WVcf2FD4UqU6PD30sgRLZk="
