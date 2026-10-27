@@ -1,4 +1,4 @@
-{lib, ...}: let
+{lib, pkgs, ...}: let
   inherit (import ./constants.nix) serverIp virtualIp interface internalDomain myServices;
 in {
   imports = [
@@ -36,6 +36,8 @@ in {
     wireguardConfigFile = "/run/agenix/mullvad-wg";
     accessibleFrom = ["192.168.1.0/24"];
   };
+
+  systemd.services.wg.serviceConfig.ExecStartPost = ["${pkgs.iproute2}/bin/ip -n wg route replace 10.64.0.1/32 dev wg0"];
 
   services.vaultwarden = {
     enable = true;
