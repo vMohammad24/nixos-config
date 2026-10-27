@@ -173,13 +173,11 @@ in {
       # core
       thunar
       udiskie
-
       # apps
       hyprpolkitagent
       protonup-rs
       wayland-utils
       bs-manager
-      teamspeak6-client
       qview
       bruno
       feishin
