@@ -187,7 +187,7 @@ in {
       discord-canary
       labymod-launcher
       blender
-      tesseract
+      (tesseract.override {enableLanguages = ["eng"];})
       jellyfin-mpv-shim
       # utils/essentials
       hyprpicker
