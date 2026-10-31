@@ -184,7 +184,7 @@ in {
       mitmproxy
       mullvad-vpn
       prismlauncher
-      discord-canary
+      discord
       labymod-launcher
       blender
       (tesseract.override {enableLanguages = ["eng"];})

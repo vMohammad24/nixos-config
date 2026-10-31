@@ -12,7 +12,7 @@ in {
         "${mainMod}+SHIFT,S,spawn,uwsm app -- steam"
         "${mainMod}+SHIFT,P,spawn,uwsm app -- prismlauncher"
         "${mainMod}+SHIFT,T,spawn,uwsm app -- feishin"
-        "${mainMod}+SHIFT,E,spawn,uwsm app -- discordcanary"
+        "${mainMod}+SHIFT,E,spawn,uwsm app -- discord"
         "${mainMod}+SHIFT,J,spawn,uwsm app -- jellyfin-mpv-shim"
 
         # power management

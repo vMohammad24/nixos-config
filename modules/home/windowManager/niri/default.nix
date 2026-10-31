@@ -160,7 +160,7 @@ in {
           "Mod+Shift+S" = spawn ["uwsm" "app" "--" "steam"];
           "Mod+Shift+P" = spawn ["uwsm" "app" "--" "prismlauncher"];
           "Mod+Shift+T" = spawn ["uwsm" "app" "--" "feishin"];
-          "Mod+Shift+E" = spawn ["uwsm" "app" "--" "discordcanary"];
+          "Mod+Shift+E" = spawn ["uwsm" "app" "--" "discord"];
           "Mod+Shift+J" = spawn ["uwsm" "app" "--" "jellyfin-mpv-shim"];
 
           "Mod+Ctrl+Delete" = spawn ["vicinae" "deeplink" "vicinae://launch/power"];
