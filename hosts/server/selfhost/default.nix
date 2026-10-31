@@ -95,7 +95,8 @@ in {
   services.nginx = {
     enable = true;
     defaultListenAddresses = [serverIp "127.0.0.1"];
-
+    recommendedProxySettings = true;
+    proxyTimeout = "3600s";
     streamConfig = ''
       server {
         listen ${virtualIp}:443;
@@ -116,16 +117,10 @@ in {
           proxyWebsockets = true;
           extraConfig =
             ''
-              proxy_set_header Host $host;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
               proxy_buffering off;
             ''
             + lib.optionalString (domain == "ntfy.${internalDomain}") ''
               gzip off;
-              proxy_read_timeout 3600s;
-              proxy_send_timeout 3600s;
             '';
         };
       })
