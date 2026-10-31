@@ -101,3 +101,21 @@ groups:
         annotations:
           summary: 'Sustained high load on {{ $labels.instance }}'
           description: 'The 15-minute load average has exceeded twice the CPU count for 30 minutes.'
+
+      - alert: HonchoIngestionStalled
+        expr: max(deriver_queue_oldest_pending_age_seconds{job="honcho"}) > 1800
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Honcho memory ingestion is stalled'
+          description: 'The oldest deriver queue item has been pending for {{ $value | printf "%.0f" }} seconds.'
+
+      - alert: HonchoDreamsNotFiring
+        expr: max(dreams_due{job="honcho"}) > 0
+        for: 12h
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Honcho dreams are due but not running'
+          description: 'A dream has been due for over 12 hours; the idle-timeout cycle is not executing.'

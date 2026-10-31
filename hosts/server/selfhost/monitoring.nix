@@ -209,6 +209,9 @@ in {
         ]
         ++ lib.optionals config.services.tss.enable [
           (scrape "tidal-subsonic" tidalSubsonicMetricsPort)
+        ]
+        ++ lib.optionals config.myConfig.honcho.enable [
+          (scrape "honcho" 8000)
         ];
     };
 
