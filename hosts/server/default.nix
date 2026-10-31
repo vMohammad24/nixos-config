@@ -13,6 +13,12 @@
 
   networking.hostName = "server";
 
+  boot.kernel.sysctl = {
+    "net.ipv6.conf.all.accept_ra" = 2;
+    "net.ipv6.conf.default.accept_ra" = 2;
+    "net.ipv6.conf.eno2.accept_ra" = 2;
+  };
+
   nix.settings.trusted-users = ["vmohammad"];
 
   myConfig.ai.enable = false;
