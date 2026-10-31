@@ -46,7 +46,10 @@ in {
       enable = true;
       listenAddress = "127.0.0.1";
       enabledCollectors = ["rapl" "textfile"];
-      extraFlags = ["--collector.textfile.directory=/var/lib/prometheus-node-exporter-text-files"];
+      extraFlags = [
+        "--collector.textfile.directory=/var/lib/prometheus-node-exporter-text-files"
+        "--collector.hwmon.chip-exclude=nvme"
+      ];
     };
     services.prometheus.exporters.systemd = {
       enable = true;
