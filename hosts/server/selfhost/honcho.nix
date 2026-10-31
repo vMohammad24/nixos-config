@@ -45,6 +45,7 @@
     DREAM_INDUCTION_MODEL_CONFIG__TRANSPORT = "openai";
     DREAM_INDUCTION_MODEL_CONFIG__MODEL = model;
     DREAM_INDUCTION_MODEL_CONFIG__OVERRIDES__BASE_URL = openrouterBase;
+    DREAM_BRIEF_ENABLED = "true";
   };
 in {
   options.myConfig.honcho.enable = lib.mkEnableOption "Honcho memory server";
@@ -103,6 +104,7 @@ in {
           commonEnv
           // {
             API_WORKERS = "1";
+            METRICS_ENABLED = "true";
           };
         extraOptions = [
           "--network=host"
