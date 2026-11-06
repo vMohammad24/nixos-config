@@ -184,7 +184,7 @@ in {
       mitmproxy
       mullvad-vpn
       prismlauncher
-      discord
+      vesktop
       labymod-launcher
       blender
       (tesseract.override {enableLanguages = ["eng"];})

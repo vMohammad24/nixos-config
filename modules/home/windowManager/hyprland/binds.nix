@@ -22,7 +22,7 @@ in {
         (h.bindExec "SHIFT + S" "uwsm app -- steam")
         (h.bindExec "SHIFT + P" "uwsm app -- prismlauncher")
         (h.bindExec "SHIFT + T" "uwsm app -- feishin")
-        (h.bindExec "SHIFT + E" "uwsm app -- discord")
+        (h.bindExec "SHIFT + E" "uwsm app -- vesktop")
         (h.bindExec "SHIFT + J" "uwsm app -- jellyfin-mpv-shim")
 
         # power management
