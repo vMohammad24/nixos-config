@@ -66,9 +66,6 @@ in {
             reboot = powerCmd "systemctl reboot";
           };
         };
-        system = {
-          enabled = false;
-        };
       };
     };
 
