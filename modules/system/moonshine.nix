@@ -7,7 +7,6 @@
 }: let
   isDesktop = config.myConfig.isDesktop;
   steam = "/run/current-system/sw/bin/steam";
-  krita = lib.getExe pkgs.krita;
   blender = lib.getExe pkgs.blender;
   stopDesktopSteam = pkgs.writeShellApplication {
     name = "moonshine-stop-desktop-steam";
@@ -54,14 +53,6 @@ in {
             launch_timeout_secs = 10;
             steam_integration = true;
           }
-          {
-            title = "Krita";
-            command = [krita];
-            stdout = "journal";
-            stderr = "journal";
-            launch_timeout_secs = 10;
-          }
-
           {
             title = "Blender";
             command = [blender];
