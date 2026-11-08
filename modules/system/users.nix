@@ -26,7 +26,13 @@ in {
   };
 
   programs.fish.enable = true;
-  programs.firefox.enable = isDesktop;
+  programs.firefox = {
+    enable = isDesktop;
+    package = pkgs.wrapFirefox
+    (pkgs.firefox-unwrapped.override {
+      onnxruntime = pkgs.onnxruntime.override {rocmSupport = false;};
+    }) {};
+  };
   programs.gamemode.enable = isDesktop;
   programs.steam = lib.mkIf isDesktop {
     enable = true;
