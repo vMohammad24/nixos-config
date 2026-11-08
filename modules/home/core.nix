@@ -184,7 +184,10 @@ in {
       feishin
       mitmproxy
       mullvad-vpn
-      prismlauncher
+      (prismlauncher.override {
+        jdk17 = jdk25;
+        jdk21 = jdk25;
+      })
       vesktop
       labymod-launcher
       blender
