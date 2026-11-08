@@ -7,7 +7,12 @@
 }: let
   isDesktop = config.myConfig.isDesktop;
 in {
-  nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
+  nixpkgs.overlays = [
+    inputs.nix-cachyos-kernel.overlays.pinned
+    (final: prev: {
+      espeak-ng = prev.espeak-ng.override {mbrolaSupport = false;};
+    })
+  ];
   nixpkgs.config.rocmSupport = isDesktop;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.limine = {
