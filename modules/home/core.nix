@@ -24,6 +24,7 @@ in {
   home.stateVersion = "25.11";
 
   programs.home-manager.enable = true;
+  programs.man.generateCaches = false;
 
   xdg.mimeApps = lib.mkIf isDesktop {
     enable = true;

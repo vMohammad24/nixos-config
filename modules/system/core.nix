@@ -100,6 +100,8 @@ in {
 
   security.polkit.enable = true;
 
+  documentation.man.cache.enable = false;
+
   virtualisation.vmVariant = {
     virtualisation.memorySize = 8192;
     virtualisation.cores = 6;
