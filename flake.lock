@@ -771,15 +771,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1794175379,
-        "narHash": "sha256-v5TuPgFBKz6DuP9cCKckpA1Fy4Kf6mJkYy4e47XGB5k=",
+        "lastModified": 1794240618,
+        "narHash": "sha256-RoJMwq5J3vDM6kS6mjmudqgtee+cxm/3so60bRAko7A=",
         "owner": "hgaiser",
         "repo": "moonshine",
-        "rev": "87a4b0d84be201c0061c088ae38973b781d78ca4",
+        "rev": "2a90221f25cd025c0abc865949495bb53f03c8c3",
         "type": "github"
       },
       "original": {
         "owner": "hgaiser",
+        "ref": "pull/262/merge",
         "repo": "moonshine",
         "type": "github"
       }
