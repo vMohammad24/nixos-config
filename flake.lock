@@ -371,7 +371,7 @@
     "hagezi-pro": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-f87FWexcVWZqNZJAiI5Ru0b18+pA0LG6MCR+b0cEuN0=",
+        "narHash": "sha256-qyN1A4FUUn9vYgDclDzOflLea67BvNhoQfMBIh2Vxbo=",
         "type": "file",
         "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
       },
@@ -383,7 +383,7 @@
     "hagezi-tif": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-q8AhLFvzXXLkYPwIiMTBDbu4m5dw2J+wwJkfx9ns4NU=",
+        "narHash": "sha256-72jM4FCH/ObHQS/xOXib9aLyWR2di4HC22nupcscxqY=",
         "type": "file",
         "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt"
       },
@@ -1464,11 +1464,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794153382,
-        "narHash": "sha256-GyN4K/lOaRRO2RkFJS5dVmpNX7xsrVbclzBfxd3mxtU=",
+        "lastModified": 1794232017,
+        "narHash": "sha256-glMFRfXj2yKNShkmYufX+5Szb926RlC0d24+p6tKXO0=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "84a0086f0e589576c3c55a211579e63c20d83e59",
+        "rev": "edfe6ee403c87f9220ddf34d441a8d964b126b20",
         "type": "github"
       },
       "original": {
