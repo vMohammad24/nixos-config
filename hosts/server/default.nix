@@ -13,6 +13,20 @@
 
   networking.hostName = "server";
 
+  services.timesyncd.servers = ["162.159.200.1" "162.159.200.123"];
+
+  systemd.services = {
+    cloudflared-tunnel-3d9a81e9-9dab-43a5-b910-2240006a90dc.startLimitIntervalSec = 0;
+    cloudflared-tunnel-b6180c38-8f39-4f1a-a115-ca4e29e9ca04.startLimitIntervalSec = 0;
+    searx = {
+      startLimitIntervalSec = 0;
+      serviceConfig = {
+        Restart = "on-failure";
+        RestartSec = 15;
+      };
+    };
+  };
+
   boot.kernel.sysctl = {
     "net.ipv6.conf.all.accept_ra" = 2;
     "net.ipv6.conf.default.accept_ra" = 2;
