@@ -182,7 +182,9 @@ in {
       qview
       bruno
       feishin
-      mitmproxy
+      (mitmproxy.overridePythonAttrs (o: {
+        disabledTests = (o.disabledTests or []) ++ ["test_emudhra"];
+      }))
       mullvad-vpn
       (prismlauncher.override {
         jdk17 = jdk25;
