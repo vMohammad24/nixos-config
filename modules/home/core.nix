@@ -47,6 +47,12 @@ in {
     enable = true;
     createDirectories = true;
     setSessionVariables = false;
+
+    desktop = null;
+    templates = null;
+    publicShare = null;
+    videos = null;
+    projects = "$HOME/Projects";
   };
 
   xdg.terminal-exec = lib.mkIf isDesktop {
