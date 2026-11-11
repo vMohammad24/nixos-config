@@ -175,7 +175,6 @@ in {
       udiskie
       # apps
       hyprpolkitagent
-      protonup-rs
       wayland-utils
       bs-manager
       qview
