@@ -86,7 +86,6 @@ in {
   };
   programs.mangohud = lib.mkIf isDesktop {
     enable = true;
-    enableSessionWide = true;
     settings = {
       no_display = true;
     };
