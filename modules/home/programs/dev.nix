@@ -5,16 +5,18 @@
   osConfig,
   ...
 }: let
-  biomeFmt = {formatter.language_server.name = "biome";};
   hostName = osConfig.networking.hostName;
-  biomeWithActions =
-    biomeFmt
-    // {
-      code_actions_on_format = {
-        "source.fixAll.biome" = true;
-        "source.organizeImports.biome" = true;
-      };
-    };
+  biomeServer = {language_server.name = "biome";};
+  biomeFmt = {
+    formatter = [biomeServer];
+  };
+  biomeWithActions = {
+    formatter = [
+      biomeServer
+      {code_action = "source.fixAll.biome";}
+      {code_action = "source.organizeImports.biome";}
+    ];
+  };
 in {
   programs.git = {
     enable = true;
@@ -101,6 +103,7 @@ in {
         hide_gitignore = true;
         dock = "right";
       };
+      git_panel.dock = "left";
       lsp = {
         qmljs = {
           binary = {
@@ -183,14 +186,12 @@ in {
         Svelte = {language_servers = ["!biome" "..."];};
         HTML = {
           language_servers = ["superhtml" "!biome"];
-          formatter = {
-            language_servers = ["superhtml" "!biome"];
-          };
+          formatter = [{language_server.name = "superhtml";}];
         };
-        "Nix" = {
+        Nix = {
           formatter = {
             external = {
-              command = "alejandra";
+              command = lib.getExe pkgs.alejandra;
               arguments = [
                 "-q"
                 "-"
