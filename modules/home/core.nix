@@ -205,6 +205,7 @@ in {
       pavucontrol
       brightnessctl
       playerctl
+      dust
       #  screenshot & clipboard
       grim
       slurp
