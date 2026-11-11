@@ -68,17 +68,6 @@
       ];
     };
 
-    fileSystems."/mnt/king" = {
-      device = "/dev/disk/by-uuid/69b503ae-a141-44f9-ad71-ba3051ca6a59";
-      fsType = "xfs";
-      options = [
-        "defaults"
-        "noatime"
-        "nofail"
-        "logbsize=256k"
-      ];
-    };
-
     # network stuff
     boot.kernel.sysctl = {
       "net.core.default_qdisc" = "fq";

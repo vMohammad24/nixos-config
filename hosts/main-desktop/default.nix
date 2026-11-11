@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./hardware-configuration.nix
+    ./disko.nix
     ./secrets.nix
     ../../modules/system/desktop.nix
   ];

@@ -95,6 +95,10 @@
       url = "git+https://codeberg.org/BANanaD3V/niri-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -149,6 +153,7 @@
       specialArgs = {inherit inputs;};
       modules = [
         ./hosts/main-desktop/default.nix
+        inputs.disko.nixosModules.disko
         ./modules/system
         home-manager.nixosModules.home-manager
         {
