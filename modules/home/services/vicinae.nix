@@ -74,6 +74,4 @@ in {
       autoStart = true;
     };
   };
-
-  systemd.user.services.vicinae.Service.UnsetEnvironment = ["MANGOHUD" "MANGOHUD_DLSYM"];
 }
