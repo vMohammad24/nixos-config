@@ -1,4 +1,9 @@
-{...}: let
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: let
   powerCmd = cmd: {
     preferences = {
       customProgram = cmd;
@@ -73,5 +78,14 @@ in {
       enable = true;
       autoStart = true;
     };
+
+    extensions = lib.flatten [
+      (with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
+        # bluetooth
+        nix
+        mullvad
+        seerr
+      ])
+    ];
   };
 }

@@ -79,6 +79,13 @@
       url = "github:vicinaehq/vicinae";
       inputs.systems.follows = "systems";
     };
+
+    vicinae-extensions = {
+      url = "github:vicinaehq/extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.vicinae.follows = "vicinae";
+    };
+
     nixarr = {
       url = "github:nix-media-server/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -152,9 +159,10 @@
 
     overlays.default = import ./packages;
 
-    packages.x86_64-linux.proton-cachyos = (
-      nixpkgs.legacyPackages.x86_64-linux.extend self.overlays.default
-    ).proton-cachyos;
+    packages.x86_64-linux.proton-cachyos =
+      (
+        nixpkgs.legacyPackages.x86_64-linux.extend self.overlays.default
+      ).proton-cachyos;
 
     nixosConfigurations.main-desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
