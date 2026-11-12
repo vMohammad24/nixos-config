@@ -149,6 +149,13 @@
       pkgs.writeShellScriptBin "alejandra" ''
         exec ${pkgs.alejandra}/bin/alejandra "''${@:-.}"
       '';
+
+    overlays.default = import ./packages;
+
+    packages.x86_64-linux.proton-cachyos = (
+      nixpkgs.legacyPackages.x86_64-linux.extend self.overlays.default
+    ).proton-cachyos;
+
     nixosConfigurations.main-desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [

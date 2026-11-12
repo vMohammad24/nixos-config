@@ -1,4 +1,6 @@
 {...}: {
+  nixpkgs.overlays = [(import ../../packages)];
+
   imports = [
     ./isDesktop.nix
     ./ai.nix
