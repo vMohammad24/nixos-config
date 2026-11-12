@@ -8,7 +8,7 @@
 
   networking.hostName = "main-desktop";
 
-  myConfig.ai.enable = true;
+  myConfig.ai.enable = false;
   myConfig.desktops.hyprland.enable = true;
   myConfig.desktops.mango.enable = false;
   myConfig.desktops.niri.enable = false;

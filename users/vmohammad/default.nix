@@ -15,6 +15,7 @@
       inputs.vicinae.homeManagerModules.default
       ../../modules/home/theme
       ../../modules/home/programs/dev.nix
+      ../../modules/home/programs/jellyfin.nix
       ../../modules/home/services/mako.nix
       ../../modules/home/services/vicinae.nix
       ../../modules/home/services/hyprpaper.nix
