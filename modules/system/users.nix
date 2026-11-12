@@ -36,6 +36,7 @@ in {
   programs.gamemode.enable = isDesktop;
   programs.steam = lib.mkIf isDesktop {
     enable = true;
+    extraCompatPackages = [(pkgs.callPackage ../../packages/proton-cachyos {})];
     gamescopeSession.enable = true;
     gamescopeSession.args = ["-W" "2560" "-H" "1440" "-r" "237" "--adaptive-sync"];
     remotePlay.openFirewall = true;
