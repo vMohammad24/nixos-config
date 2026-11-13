@@ -17,6 +17,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.limine = {
     enable = true;
+    efiInstallAsRemovable = true;
     resolution = lib.mkIf isDesktop "2560x1440";
     maxGenerations = 10;
   };
