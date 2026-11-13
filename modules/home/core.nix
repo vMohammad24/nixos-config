@@ -202,6 +202,7 @@ in {
       })
       vesktop
       labymod-launcher
+      r2modman
       blender
       (tesseract.override {enableLanguages = ["eng"];})
       jellyfin-mpv-shim
