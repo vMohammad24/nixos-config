@@ -23,4 +23,6 @@ in {
   };
 
   users.users.vmohammad.extraGroups = [client.user.group];
+
+  systemd.services.netbird-server-login.serviceConfig.TimeoutStartSec = "90s";
 }
