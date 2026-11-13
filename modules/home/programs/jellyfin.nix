@@ -1,6 +1,7 @@
-{...}: {
+{config, ...}: {
   services.jellyfin-mpv-shim = {
     enable = true;
+    mpvConfig = config.programs.mpv.config;
     settings = {
       allow_transcode_to_h265 = false;
       always_transcode = false;

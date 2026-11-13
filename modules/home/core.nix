@@ -80,6 +80,7 @@ in {
       ao = "pipewire";
       audio-samplerate = 0;
       audio-swresample-o = "dither_method=triangular";
+      gapless-audio = "yes";
       volume = 100;
       volume-max = 100;
       vo = "gpu-next";
@@ -88,6 +89,11 @@ in {
       deband = "yes";
       video-sync = "display-resample";
       interpolation = "yes";
+      hwdec = "auto-safe";
+      gpu-context = "waylandvk";
+      cache = "yes";
+      demuxer-max-bytes = "512MiB";
+      demuxer-max-back-bytes = "128MiB";
     };
   };
   programs.mangohud = lib.mkIf isDesktop {
