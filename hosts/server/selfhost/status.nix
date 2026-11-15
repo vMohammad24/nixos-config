@@ -23,7 +23,7 @@ in {
     backend = "podman";
     containers.status = {
       # renovate: docker
-      image = "registry.heliopolis.live/atums/status@sha256:0239c4e633358410eba0a722adc38cabdc4a98f161773260ee1b84608e1c3139";
+      image = "registry.heliopolis.live/atums/status@sha256:faefcc36dc95eb3cbb289b2ebd82713f2e5618a9d09f5e5b8b92de1ce55c26be";
       autoStart = true;
       extraOptions = [
         "--network=host"
