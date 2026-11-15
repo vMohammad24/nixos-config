@@ -234,6 +234,7 @@ in {
     qt6.qttools
     qt6.qtwayland
     kdePackages.qtdeclarative
+    android-tools
   ];
 
   home.sessionVariables = {
