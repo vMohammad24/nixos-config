@@ -15,6 +15,7 @@ in {
   "netbird-setup-key.age".publicKeys = [vmohammad server];
   "searx-secret-key.age".publicKeys = [vmohammad server];
   "honcho-env.age".publicKeys = [vmohammad server];
+  "twitch-discord-webhook.age".publicKeys = [vmohammad server];
   "prowlarr-milkie-apikey.age".publicKeys = [vmohammad server];
   "prowlarr-torrentleech-password.age".publicKeys = [vmohammad server];
   "prowlarr-torrentleech-2fa.age".publicKeys = [vmohammad server];

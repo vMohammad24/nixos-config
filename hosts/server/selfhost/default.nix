@@ -17,6 +17,7 @@ in {
     ./searx.nix
     ./unbound.nix
     ./honcho.nix
+    ./twitch-miner.nix
     ./forgejo
   ];
 

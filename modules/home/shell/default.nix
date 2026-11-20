@@ -9,6 +9,7 @@ in {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # disable greeting
+      fish_add_path $HOME/.local/bin
     '';
     shellAliases =
       {

@@ -40,6 +40,12 @@
           file = ../../secrets/honcho-env.age;
           mode = "0400";
         };
+        twitch-discord-webhook = {
+          file = ../../secrets/twitch-discord-webhook.age;
+          mode = "0400";
+          owner = "twitch-miner";
+          group = "twitch-miner";
+        };
       }
       (lib.mkIf config.myConfig.forgejo-runner.enable {
         heliopolis-runner-token = {
