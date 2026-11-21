@@ -6,7 +6,7 @@
   cfg = config.myConfig.honcho;
 
   openrouterBase = "https://openrouter.ai/api/v1";
-  model = "anthropic/claude-haiku-5.5";
+  model = "deepseek/deepseek-v4.1-flash-1017@preset/dsh-deepseek";
 
   commonEnv = {
     LOG_LEVEL = "INFO";
