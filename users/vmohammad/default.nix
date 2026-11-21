@@ -24,6 +24,7 @@
       ../../modules/home/services/voice-chain.nix
       ../../modules/home/terminal/kitty.nix
       ../../modules/home/programs/bars/waybar.nix
+      ../../modules/home/programs/ai.nix
     ];
 
   programs.nix-index.enable = true;
