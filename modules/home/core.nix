@@ -174,6 +174,8 @@ in {
     };
   };
 
+  programs.obs-studio.enable = isDesktop;
+
   home.packages = with pkgs;
     [
       rclone
