@@ -95,7 +95,15 @@
           options = ["NOPASSWD"];
         }
         {
+          command = "/run/current-system/sw/bin/nix-env --profile /nix/var/nix/profiles/system --set *";
+          options = ["NOPASSWD"];
+        }
+        {
           command = "^/nix/store/[a-z0-9]{32}-nixos-system-server-[^/]+/bin/switch-to-configuration$ ^(switch|boot|test)$";
+          options = ["NOPASSWD" "SETENV"];
+        }
+        {
+          command = "^/run/current-system/sw/bin/sh$ ^-c if test -d /run/systemd/system; then systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER -E NIXOS_NO_CHECK --collect --no-ask-password --wait --verbose '--output=cat' --quiet '--service-type=exec' '--unit=nixos-rebuild-switch-to-configuration' /nix/store/[a-z0-9]{32}-nixos-system-server-[^/]+/bin/switch-to-configuration (switch|boot|test); else /nix/store/[a-z0-9]{32}-nixos-system-server-[^/]+/bin/switch-to-configuration (switch|boot|test); fi$";
           options = ["NOPASSWD" "SETENV"];
         }
       ];
