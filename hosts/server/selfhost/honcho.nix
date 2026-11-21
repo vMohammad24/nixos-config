@@ -95,7 +95,7 @@ in {
       backend = "podman";
       containers.honcho-api = {
         # renovate: docker
-        image = "ghcr.io/plastic-labs/honcho@sha256:dadc1696b0300ec9ef0b8377b3a913554dc8a623b5c1d126eef413e84cd31d59";
+        image = "ghcr.io/plastic-labs/honcho@sha256:f0ed77d4f46f2eaaad477aacc9658909fe5cf63c200203f873b8fb7ba9fff680";
         autoStart = true;
         entrypoint = "/bin/sh";
         cmd = ["/app/docker/entrypoint.sh"];
@@ -113,7 +113,7 @@ in {
       };
       containers.honcho-deriver = {
         # renovate: docker
-        image = "ghcr.io/plastic-labs/honcho@sha256:dadc1696b0300ec9ef0b8377b3a913554dc8a623b5c1d126eef413e84cd31d59";
+        image = "ghcr.io/plastic-labs/honcho@sha256:f0ed77d4f46f2eaaad477aacc9658909fe5cf63c200203f873b8fb7ba9fff680";
         autoStart = true;
         entrypoint = "/app/.venv/bin/python";
         cmd = ["-m" "src.deriver"];
