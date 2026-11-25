@@ -106,6 +106,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tangled = {
+      url = "git+https://tangled.org/@tangled.org/core";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -189,7 +193,6 @@
             inputs.waybar.overlays.default
           ];
         }
-        inputs.hyprland.nixosModules.default
         ./modules/desktops/hyprland.nix
         ./modules/desktops/mango.nix
         inputs.niri.nixosModules.niri-nix
