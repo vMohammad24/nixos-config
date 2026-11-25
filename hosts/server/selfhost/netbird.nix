@@ -24,5 +24,11 @@ in {
 
   users.users.vmohammad.extraGroups = [client.user.group];
 
+  networking.firewall.interfaces.netbird0.allowedTCPPorts = [
+    2583
+    2584
+    2222
+  ];
+
   systemd.services.netbird-server-login.serviceConfig.TimeoutStartSec = "90s";
 }

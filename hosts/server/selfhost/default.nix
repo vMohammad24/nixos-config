@@ -18,6 +18,8 @@ in {
     ./unbound.nix
     ./honcho.nix
     ./twitch-miner.nix
+    ./pds.nix
+    ./knot.nix
     ./forgejo
   ];
 
@@ -66,6 +68,7 @@ in {
         };
 
         ingress = {
+          "vmohammad.dev" = "http://127.0.0.1:8099";
           "dev.vmohammad.dev" = "http://192.168.1.30:3000";
           "vw.vmohammad.dev" = "http://127.0.0.1:8222";
           "tidal.vmohammad.dev" = "http://127.0.0.1:3000";
@@ -125,6 +128,24 @@ in {
             '';
         };
       })
-      myServices;
+      myServices
+      // {
+        "vmohammad.dev" = {
+          listen = [
+            {
+              addr = "127.0.0.1";
+              port = 8099;
+            }
+          ];
+          serverName = "vmohammad.dev";
+          locations."/" = {
+            root = pkgs.writeTextDir "index.html" "hi world";
+            index = "index.html";
+          };
+          locations."/.well-known/atproto-did" = {
+            proxyPass = "http://127.0.0.1:2583";
+          };
+        };
+      };
   };
 }

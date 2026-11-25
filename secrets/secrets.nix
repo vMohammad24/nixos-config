@@ -25,4 +25,8 @@ in {
   "restic-local-password.age".publicKeys = [vmohammad server];
   "restic-s3-env.age".publicKeys = [vmohammad server];
   "alertmanager-discord-env.age".publicKeys = [vmohammad server];
+  "tranquil-env.age".publicKeys = [vmohammad server];
+  "tranquil-comms-env.age".publicKeys = [vmohammad server];
+  "knot-env.age".publicKeys = [vmohammad server];
+  "pds-account-password.age".publicKeys = [vmohammad server];
 }

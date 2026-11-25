@@ -46,6 +46,23 @@
           owner = "twitch-miner";
           group = "twitch-miner";
         };
+        tranquil-env = {
+          file = ../../secrets/tranquil-env.age;
+          mode = "0400";
+        };
+        tranquil-comms-env = {
+          file = ../../secrets/tranquil-comms-env.age;
+          mode = "0400";
+        };
+        knot-env = {
+          file = ../../secrets/knot-env.age;
+          mode = "0400";
+        };
+        pds-account-password = {
+          file = ../../secrets/pds-account-password.age;
+          mode = "0400";
+          owner = "vmohammad";
+        };
       }
       (lib.mkIf config.myConfig.forgejo-runner.enable {
         heliopolis-runner-token = {
