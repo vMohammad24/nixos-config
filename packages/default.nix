@@ -1,5 +1,6 @@
 final: prev: {
   proton-cachyos = final.callPackage ./proton-cachyos {};
+  linux-trackpad-driver = final.callPackage ./linux-trackpad-driver.nix {};
   netbird = prev.netbird.overrideAttrs (old: {
     version = "0.83.0";
     src = prev.fetchFromGitHub {

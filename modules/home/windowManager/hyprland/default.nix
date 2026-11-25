@@ -57,6 +57,17 @@ in {
           focus_on_activate = true;
         };
       };
+
+      device = [
+        {
+          name = "apple-inc.-magic-trackpad";
+          sensitivity = 1;
+        }
+        {
+          name = "linux-trackpad-driver";
+          sensitivity = 1;
+        }
+      ];
     };
   };
 }

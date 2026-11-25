@@ -4,6 +4,7 @@
     ./disko.nix
     ./secrets.nix
     ../../modules/system/desktop.nix
+    ../../modules/system/linux-trackpad-driver.nix
   ];
 
   networking.hostName = "main-desktop";
