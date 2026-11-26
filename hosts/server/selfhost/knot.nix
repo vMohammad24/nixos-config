@@ -19,6 +19,10 @@
       atproto.plc_directory = "https://plc.directory";
       contact.email = "vmohammad@vmohammad.dev";
       git.object_format = "sha1";
+      xrpc = {
+        trusted_proxy_header = "x-forwarded-for";
+        trusted_proxies = ["100.113.255.179"];
+      };
     };
   };
 }
