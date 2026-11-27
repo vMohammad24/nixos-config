@@ -1,4 +1,5 @@
 final: prev: {
+  mcp-for-blender = final.callPackage ./mcp-for-blender {};
   proton-cachyos = final.callPackage ./proton-cachyos {};
   linux-trackpad-driver = final.callPackage ./linux-trackpad-driver.nix {};
   netbird = prev.netbird.overrideAttrs (old: {

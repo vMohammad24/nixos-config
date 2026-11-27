@@ -25,6 +25,7 @@
       ../../modules/home/terminal/kitty.nix
       ../../modules/home/programs/bars/waybar.nix
       ../../modules/home/programs/ai.nix
+      ../../modules/home/programs/albedo.nix
     ];
 
   programs.nix-index.enable = true;
